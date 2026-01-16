@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetterLyrics - The Ultimate Lyrics Experience</title>
+    <style>
+        /* --- WinUI 3 风格变量 --- */
+        :root {
+            --bg: #000000;
+            --surface: rgba(32, 32, 32, 0.6);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #60cdff;
+            --accent-hover: #4cb7eb;
+            --font: "Segoe UI Variable", "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #000000 60%);
+        }
+
+        /* 顶部光晕特效 */
+        .glow {
+            position: absolute;
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(96,205,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* 导航栏 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-weight: 700; font-size: 1.25rem; display: flex; align-items: center; gap: 10px; }
+        .logo span { background: linear-gradient(90deg, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text); }
+
+        /* Hero 主视觉区 */
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0 0 24px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 30%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 按钮组 */
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(96, 205, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--border);
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #555;
+        }
+
+        /* 软件截图演示 (MacBook/Window 风格) */
+        .showcase {
+            max-width: 1100px;
+            margin: 40px auto 100px;
+            padding: 0 20px;
+            perspective: 1000px;
+        }
+        .app-window {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transform: rotateX(2deg); /* 微微的 3D 倾斜 */
+            transition: transform 0.5s ease;
+        }
+        .app-window:hover { transform: rotateX(0deg); }
+        
+        .placeholder-text {
+            color: #444; font-size: 1.5rem; text-align: center;
+        }
+
+        /* 特性网格 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .feature-card:hover { 
+            transform: translateY(-5px); 
+            border-color: rgba(96, 205, 255, 0.3); 
+        }
+
+        .icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .feature-card h3 { margin: 0 0 12px; font-size: 1.25rem; }
+        .feature-card p { color: var(--text-secondary); margin: 0; line-height: 1.6; }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { padding-top: 60px; }
+            .cta-group { flex-direction: column; }
+            .btn { width: 100%; box-sizing: border-box; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow"></div>
+
+    <header>
+        <div class="logo">🎵 <span>BetterLyrics</span></div>
+        <nav>
+            <a href="https://github.com/BetterLyrics-Org/BetterLyrics/wiki">Docs</a>
+            <a href="https://github.com/BetterLyrics-Org/BetterLyrics" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Lyrics, Reimagined <br>for Windows.</h1>
+        <p class="lead">
+            Experience the modern way to enjoy lyrics. Built with <strong>WinUI 3</strong> for seamless integration, high performance, and stunning aesthetics.
+        </p>
+        <div class="cta-group">
+            <a href="https://github.com/BetterLyrics-Org/BetterLyrics/releases/latest" class="btn btn-primary">
+                Download for Windows
+            </a>
+            <a href="https://github.com/BetterLyrics-Org/BetterLyrics" class="btn btn-secondary">
+                View Source Code
+            </a>
+        </div>
+    </section>
+
+    <section class="showcase">
+        <div class="app-window">
+            <div class="placeholder-text">
+                🖼️ Please upload a screenshot<br>named 'screenshot.png'
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <span class="icon">✨</span>
+            <h3>Native Fluent Design</h3>
+            <p>Embraces Windows 11 aesthetics with Mica material, rounded corners, and smooth animations. It feels like it belongs.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🧩</span>
+            <h3>Powerful Plugins</h3>
+            <p>Extend your experience with community plugins. Support for Netease Cloud, QQ Music, and custom transliteration engines.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🚀</span>
+            <h3>Performance First</h3>
+            <p>Written in C# and .NET 8 with AOT compilation. Starts instantly, uses minimal RAM, and never slows down your system.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 BetterLyrics Team. Licensed under MIT.</p>
+    </footer>
+
+</body>
+</html>
