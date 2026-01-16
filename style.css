@@ -1,41 +1,75 @@
-/* --- 变量定义 --- */
+/* =========================================
+   1. 变量定义 (CSS Variables)
+   ========================================= */
+
+/* 默认模式 (深色/Dark Mode) */
 :root {
     --bg: #000000;
+    --bg-gradient-top: #1a1a2e; /* 🔥 找回了午夜蓝背景 */
     --surface: rgba(32, 32, 32, 0.6);
     --border: rgba(255, 255, 255, 0.1);
+    
     --text: #ffffff;
     --text-secondary: #a0a0a0;
+    
     --accent: #60cdff;
     --accent-hover: #4cb7eb;
+    
+    --glow-opacity: 1; /* 深色模式下光晕完全不透明 */
     --font: "Segoe UI Variable", "Segoe UI", sans-serif;
 }
 
-/* --- 全局样式 --- */
+/* 浅色模式 (Light Mode) */
+[data-theme="light"] {
+    --bg: #f3f3f3;
+    --bg-gradient-top: #ffffff; /* 浅色模式顶部为白色 */
+    --surface: #ffffff;
+    --border: #e5e5e5;
+    
+    --text: #202020;
+    --text-secondary: #5e5e5e;
+    
+    --accent: #0067c0; /* 深蓝色，在白底上更清晰 */
+    --accent-hover: #005a9e;
+    
+    --glow-opacity: 0.5; /* 浅色模式下光晕淡一点 */
+}
+
+/* =========================================
+   2. 全局样式 (Global)
+   ========================================= */
+
 body {
     margin: 0;
     font-family: var(--font);
     background-color: var(--bg);
     color: var(--text);
     overflow-x: hidden;
-    /* 背景色稍微带点蓝黑渐变 */
-    background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #000000 60%);
+    transition: background-color 0.3s, color 0.3s;
+    /* 背景径向渐变：从顶部的特色色渐变到底部的背景色 */
+    background-image: radial-gradient(circle at 50% 0%, var(--bg-gradient-top) 0%, var(--bg) 60%);
 }
 
-/* 顶部光晕特效 */
+/* 顶部随动光晕特效 */
 .glow {
     position: absolute;
     width: 800px;
     height: 600px;
-    background: radial-gradient(circle, rgba(96,205,255,0.1) 0%, rgba(0,0,0,0) 70%);
+    /* 这里的颜色保持固定的天蓝色，但在浅色模式下通过 opacity 变淡 */
+    background: radial-gradient(circle, rgba(96,205,255,0.15) 0%, rgba(0,0,0,0) 70%);
     top: -200px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* 初始居中，JS 会覆盖这个 transform */
     z-index: -1;
     pointer-events: none;
-    transition: transform 0.1s ease-out; /* 为 JS 移动做平滑准备 */
+    opacity: var(--glow-opacity);
+    transition: opacity 0.3s;
 }
 
-/* 导航栏 */
+/* =========================================
+   3. 头部导航 (Header)
+   ========================================= */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -43,26 +77,92 @@ header {
     padding: 20px 40px;
     max-width: 1200px;
     margin: 0 auto;
+    /* 玻璃拟态 */
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.logo { font-weight: 700; font-size: 1.25rem; display: flex; align-items: center; gap: 10px; }
-.logo span { background: linear-gradient(90deg, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.logo { 
+    font-weight: 700; 
+    font-size: 1.25rem; 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.logo span { 
+    /* 文字渐变效果 */
+    background: linear-gradient(90deg, var(--text), var(--text-secondary)); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
+/* Header 右侧容器 */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+nav {
+    display: flex;
+    gap: 24px; /* 这里控制 Docs 和 GitHub 之间的距离 */
+    align-items: center;
+}
 
 nav a {
     color: var(--text-secondary);
     text-decoration: none;
-    margin-left: 32px;
     font-size: 0.95rem;
-	font-weight: 500; /* 稍微加粗一点点 */
     transition: color 0.2s;
+    font-weight: 500;
 }
 nav a:hover { color: var(--text); }
 
-/* Hero 主视觉区 */
+/* --- 控制按钮组 (语言/主题) --- */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+    padding-left: 20px;
+    border-left: 1px solid var(--border);
+}
+
+.icon-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    background-color: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.lang-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+/* =========================================
+   4. Hero 主视觉区
+   ========================================= */
+
 .hero {
     text-align: center;
     padding: 120px 20px 80px;
@@ -75,7 +175,8 @@ h1 {
     margin: 0 0 24px;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #ffffff 30%, #888888 100%);
+    /* 标题渐变：适配浅色和深色 */
+    background: linear-gradient(135deg, var(--text) 30%, var(--text-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -90,88 +191,56 @@ p.lead {
     margin-right: auto;
 }
 
-/* 按钮组 */
+/* =========================================
+   5. 下载徽章 (Badges)
+   ========================================= */
+
 .cta-group {
     display: flex;
     justify-content: center;
     gap: 16px;
+    flex-wrap: wrap; /* 移动端自动换行 */
 }
 
-.btn {
-    padding: 14px 36px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.2s;
-    border: 1px solid transparent;
+/* 通用徽章阴影和动效 */
+.ms-store-badge, .github-badge {
+    transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
-.btn-primary {
-    background-color: var(--accent);
-    color: #000;
-}
-.btn-primary:hover {
-    background-color: var(--accent-hover);
+.ms-store-badge:hover, .github-badge:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 30px rgba(96, 205, 255, 0.3);
+    filter: drop-shadow(0 8px 15px rgba(96, 205, 255, 0.3));
 }
 
-.btn-secondary {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: var(--border);
-    color: #fff;
-}
-.btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #555;
-}
-
-/* --- Microsoft Store 徽章专用样式 --- */
-
-/* 链接容器 */
-.ms-store-badge {
-    display: inline-block;
-    text-decoration: none;
-    transition: transform 0.2s, filter 0.2s;
-    /* 给徽章加一个基础阴影，让它更有层次感 */
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-}
-
-/* 徽章图片本身 */
+/* 微软商店图片 */
 .ms-store-badge img {
-    display: block; /* 消除图片底部的默认间隙 */
-    height: 48px;   /* 🔥关键：设定高度，使其与右侧按钮对齐 */
-    width: auto;    /* 宽度自动保持比例 */
+    display: block;
+    height: 48px;
+    width: auto;
 }
 
-/* 悬停效果 */
-.ms-store-badge:hover {
-    transform: scale(1.02); /* 轻微放大 */
-    /* 悬停时增加蓝色光晕阴影，呼应主题色 */
-    filter: drop-shadow(0 6px 12px rgba(96, 205, 255, 0.4));
-}
-
-/* --- GitHub 黑色徽章样式 (仿 Store 风格) --- */
-
+/* GitHub 手搓徽章 */
 .github-badge {
     display: inline-flex;
     align-items: center;
-    background-color: #000000; /* 全黑背景 */
+    background-color: #000000; /* 始终保持黑色背景，符合品牌 */
     color: #ffffff;
     text-decoration: none;
-    height: 48px; /* 🔥 强制高度，和微软商店图片对齐 */
+    height: 48px; /* 强制高度对齐 */
     padding: 0 16px;
-    border-radius: 8px; /* 圆角也要对齐 */
-    border: 1px solid #333; /* 微弱的边框，防止融入黑色背景 */
+    border-radius: 8px;
+    border: 1px solid #333;
     box-sizing: border-box;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    /* 阴影效果保持一致 */
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-    gap: 12px; /* 图标和文字的间距 */
+    gap: 12px;
 }
 
-/* 文字堆栈：让文字分两行显示 */
+/* 浅色模式下 GitHub 徽章微调 */
+[data-theme="light"] .github-badge {
+    background-color: #24292e; /* GitHub 官方深灰 */
+    border-color: transparent;
+}
+
 .badge-text-stack {
     display: flex;
     flex-direction: column;
@@ -192,36 +261,35 @@ p.lead {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-/* 悬停动效 */
-.github-badge:hover {
-    transform: scale(1.02);
-    border-color: #666;
-    /* 悬停时发出白色微光 */
-    filter: drop-shadow(0 6px 12px rgba(255, 255, 255, 0.15));
-}
+/* =========================================
+   6. 软件截图演示 (Showcase)
+   ========================================= */
 
-/* 软件截图演示 */
 .showcase {
     max-width: 1100px;
     margin: 40px auto 100px;
     padding: 0 20px;
-    perspective: 1000px;
+    perspective: 1000px; /* 3D 透视 */
 }
+
 .app-window {
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: #1e1e1e; /* 截图框底色 */
+    border: 1px solid var(--border);
     border-radius: 12px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
     overflow: hidden;
     aspect-ratio: 16/10;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    transform: rotateX(2deg);
+    transform: rotateX(2deg); /* 3D 倾斜 */
     transition: transform 0.5s ease;
 }
-.app-window:hover { transform: rotateX(0deg); }
+
+.app-window:hover { 
+    transform: rotateX(0deg); /* 悬停回正 */
+}
 
 .app-screenshot {
     width: 100%;
@@ -230,7 +298,10 @@ p.lead {
     display: block;
 }
 
-/* 特性网格 */
+/* =========================================
+   7. 特性网格 (Features)
+   ========================================= */
+
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -245,28 +316,55 @@ p.lead {
     border: 1px solid var(--border);
     padding: 32px;
     border-radius: 12px;
-    transition: transform 0.2s, border-color 0.2s;
-}
-.feature-card:hover { 
-    transform: translateY(-5px); 
-    border-color: rgba(96, 205, 255, 0.3); 
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
-.icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
-.feature-card h3 { margin: 0 0 12px; font-size: 1.25rem; }
-.feature-card p { color: var(--text-secondary); margin: 0; line-height: 1.6; }
+.feature-card:hover { 
+    transform: translateY(-5px); 
+    border-color: rgba(96, 205, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+}
+
+.icon { 
+    font-size: 2.5rem; 
+    margin-bottom: 20px; 
+    display: block; 
+}
+
+.feature-card h3 { 
+    margin: 0 0 12px; 
+    font-size: 1.25rem; 
+    color: var(--text);
+}
+
+.feature-card p { 
+    color: var(--text-secondary); 
+    margin: 0; 
+    line-height: 1.6; 
+}
+
+/* =========================================
+   8. 页脚 (Footer) & 移动端适配
+   ========================================= */
 
 footer {
     text-align: center;
     padding: 60px 20px;
     border-top: 1px solid var(--border);
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     .hero { padding-top: 60px; }
-    .cta-group { flex-direction: column; }
-    .btn { width: 100%; box-sizing: border-box; text-align: center; }
+    
+    /* 移动端导航简化 */
+    header { padding: 15px 20px; }
+    .logo span { display: none; /* 移动端只显示 Logo 图标，隐藏文字防止拥挤 */ }
+    nav a { margin-left: 16px; }
+    
+    .cta-group { flex-direction: column; align-items: center; }
+    .ms-store-badge img, .github-badge { width: 100%; max-width: 300px; }
+    .github-badge { justify-content: center; }
 }

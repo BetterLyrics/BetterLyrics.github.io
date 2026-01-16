@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BetterLyrics - The Ultimate Lyrics Experience</title>
+    <title>BetterLyrics</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,29 +15,45 @@
             <img src="logo.png" alt="Logo" height="32" style="display:block;">
             <span>BetterLyrics</span>
         </div>
-        <nav>
-            <a href="https://betterlyrics.github.io/BetterLyrics.Plugins">Plugin Store</a>
-            <a href="https://github.com/jayfunc/BetterLyrics/blob/dev/docs/USER_GUIDE.md">Docs</a>
-            <a href="https://github.com/jayfunc/BetterLyrics" target="_blank">GitHub</a>
-        </nav>
+        
+        <div class="header-right">
+            <nav>
+                <a href="https://betterlyrics.github.io/BetterLyrics.Plugins/" data-i18n="nav_plugins_store">Plugins Store</a>
+                <a href="https://github.com/jayfunc/BetterLyrics/blob/dev/docs/USER_GUIDE.md" data-i18n="nav_docs">Docs</a>
+                <a href="https://github.com/jayfunc/BetterLyrics" target="_blank">GitHub</a>
+            </nav>
+            
+            <div class="controls">
+                <button id="btn-lang" class="icon-btn" aria-label="Switch Language">
+                    <span class="lang-text">中</span>
+                </button>
+                <button id="btn-theme" class="icon-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>Lyrics, Reimagined <br>for Windows.</h1>
-        <p class="lead">
+        <h1 data-i18n="hero_title">Lyrics, Reimagined <br>for Windows.</h1>
+        <p class="lead" data-i18n="hero_desc">
             Experience the modern way to enjoy lyrics. Built with <strong>WinUI 3</strong> for seamless integration, high performance, and stunning aesthetics.
         </p>
         <div class="cta-group">
             <a href="https://apps.microsoft.com/detail/9p1wcd1p597r" target="_blank" class="ms-store-badge">
                 <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store">
             </a>
-            <a href="https://github.com/jayfunc/BetterLyrics" target="_blank" class="github-badge">
-                <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true" fill="white">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                </svg>
-                
+
+            <a href="https://github.com/BetterLyrics-Org/BetterLyrics" target="_blank" class="github-badge">
+                <svg height="24" viewBox="0 0 16 16" width="24" fill="white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
                 <div class="badge-text-stack">
-                    <span class="sub">Check it out on</span>
+                    <span class="sub" data-i18n="github_sub">Check it out on</span>
                     <span class="main">GitHub</span>
                 </div>
             </a>
@@ -53,23 +69,23 @@
     <section class="features">
         <div class="feature-card">
             <span class="icon">✨</span>
-            <h3>Native Fluent Design</h3>
-            <p>Embraces Windows 11 aesthetics with Mica material, rounded corners, and smooth animations. It feels like it belongs.</p>
+            <h3 data-i18n="feat_1_title">Native Fluent Design</h3>
+            <p data-i18n="feat_1_desc">Embraces Windows 11 aesthetics with Mica material.</p>
         </div>
         <div class="feature-card">
             <span class="icon">🧩</span>
-            <h3>Sources & Plugins</h3>
-            <p>Integrated with <strong>multiple popular lyrics sources</strong> right out of the box. Extend capabilities with tools like the <strong>Japanese Romaji</strong> plugin.</p>
+            <h3 data-i18n="feat_2_title">Sources & Plugins</h3>
+            <p data-i18n="feat_2_desc">Integrated with multiple popular lyrics sources.</p>
         </div>
         <div class="feature-card">
             <span class="icon">🚀</span>
-            <h3>Lightweight & Fast</h3>
-            <p>Built with modern .NET and <strong>code trimming</strong> technology. Ensures a compact footprint, instant startup, and minimal RAM usage.</p>
+            <h3 data-i18n="feat_3_title">Lightweight & Fast</h3>
+            <p data-i18n="feat_3_desc">Built with modern .NET and code trimming technology.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 BetterLyrics. Licensed under GPL-3.0.</p>
+        <p data-i18n="footer">© 2026 BetterLyrics. Licensed under GPL-3.0.</p>
     </footer>
 
     <script src="script.js"></script>
