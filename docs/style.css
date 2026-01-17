@@ -1,20 +1,12 @@
-/* docs/style.css - The Pure WinUI Docs Theme */
+/* docs/style.css - The Pure WinUI Docs Theme (Dark Default) */
 
 /* =========================================
    2. 侧边栏 (Sidebar) - WinUI Acrylic 风格
    ========================================= */
 .sidebar {
-  /* 关键：使用 rgba 设置半透明 */
-  /* 前三个数字是 RGB (深灰色)，最后一个 0.2 是透明度 (0=全透, 1=不透) */
-  background-color: rgba(20, 20, 20, 0.2) !important;
-
-  /* 加上磨砂模糊效果 */
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-
-  /* 稍微淡一点的右边框，显得更通透 */
-  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-right: 1px solid var(--border) !important;
   width: 300px;
+  height: 100%;
 }
 
 /* 侧边栏列表 */
@@ -23,7 +15,6 @@
   padding: 0;
   list-style: none;
 }
-
 .sidebar li {
   margin: 4px 0;
 }
@@ -32,27 +23,49 @@
 .sidebar a {
   display: block;
   padding: 6px 20px;
-  color: var(--text-secondary, #a0a0a0);
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.95rem;
-  border-left: 3px solid transparent; /* 左侧指示条 */
+  border-left: 3px solid transparent; /* 左侧指示条占位 */
   transition: all 0.1s;
 }
 
-/* 链接悬停 & 激活 */
+/* 链接悬停 */
 .sidebar a:hover {
   color: var(--text);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--sidebar-hover);
 }
 
+/* =========================================
+   WinUI 3 风格选中项 (ListView/NavigationView Item)
+   ========================================= */
+
+/* 1. 选中项的主体容器 */
 .sidebar li.active > a {
-  color: var(--accent, #60cdff);
+  color: var(--text) !important;
   font-weight: 600;
-  border-left-color: var(--accent); /* WinUI 风格：左侧亮条 */
-  background: linear-gradient(90deg, rgba(96, 205, 255, 0.1), transparent);
+
+  /* 使用变量，默认为暗色背景 */
+  background-color: var(--sidebar-active-bg) !important;
+
+  border-left: none !important;
+  position: relative;
+  border-radius: 4px;
 }
 
-/* 隐藏 Docsify 自动生成的 App Name (因为你有 Header 了) */
+/* 2. 左侧的“蓝色小药丸”指示条 (Selection Indicator) */
+.sidebar li.active > a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background-color: var(--accent);
+}
+
+/* 隐藏 Docsify App Name */
 .app-name {
   display: none;
 }
@@ -62,16 +75,15 @@
    ========================================= */
 .content {
   padding-top: 20px;
-  /* 关键：给左边留出 Sidebar 的位置 */
   margin-left: 300px;
   position: relative;
 }
 
-/* 限制最大宽度，提升阅读体验 */
+/* 限制最大宽度 */
 .markdown-section {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 40px 60px 40px; /* 上 右 下 左 */
+  padding: 0 40px 60px 40px;
 }
 
 /* 标题样式 */
@@ -85,7 +97,7 @@
   font-size: 1.8rem;
   margin-top: 40px;
   margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 8px;
 }
 .markdown-section h3 {
@@ -94,9 +106,9 @@
   margin-bottom: 15px;
 }
 .markdown-section h1,
-.markdown-section h2,
-.markdown-section h3,
-.markdown-section h4 {
+h2,
+h3,
+h4 {
   color: var(--text);
   font-weight: 600;
 }
@@ -106,7 +118,7 @@
 .markdown-section ul,
 .markdown-section ol {
   line-height: 1.8;
-  color: var(--text-secondary, #d0d0d0);
+  color: var(--text-secondary);
   margin-bottom: 1.2em;
 }
 
@@ -115,10 +127,17 @@
   margin: 2em 0;
   padding-left: 20px;
   border-left: 4px solid var(--accent);
-  color: #b0b0b0;
-  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  /* 默认为微弱的白色背景 */
+  background: rgba(255, 255, 255, 0.05);
   padding: 10px 20px;
   border-radius: 0 4px 4px 0;
+}
+/* 亮色模式下的引用块背景调整 */
+[data-theme="light"] {
+  .markdown-section blockquote {
+    background: rgba(0, 0, 0, 0.03);
+  }
 }
 
 /* 表格 */
@@ -130,6 +149,7 @@
   overflow-x: auto;
 }
 .markdown-section th {
+  /* 默认为暗色模式表头 */
   background: rgba(255, 255, 255, 0.1);
   color: var(--text);
   font-weight: bold;
@@ -141,6 +161,12 @@
   border: 1px solid var(--border);
   color: var(--text-secondary);
 }
+/* 亮色模式表头调整 */
+[data-theme="light"] {
+  .markdown-section th {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
 
 /* 链接 */
 .markdown-section a {
@@ -151,9 +177,9 @@
   text-decoration: underline;
 }
 
-/* 代码块背景 (PrismJS 容器) */
+/* 代码块 (PrismJS) */
 .markdown-section pre {
-  background: #1e1e1e !important; /* 强制深色底 */
+  background: var(--code-bg) !important;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 15px;
@@ -169,6 +195,13 @@
   font-family: "Cascadia Code", Consolas, monospace;
   font-size: 0.9em;
 }
+/* 亮色模式下行内代码背景加深一点，以便看清 */
+[data-theme="light"] {
+  .markdown-section code {
+    background: rgba(0, 0, 0, 0.06);
+    color: #d11600; /* 亮色模式下改用深红/橙色，对比度更高 */
+  }
+}
 
 /* =========================================
    4. 搜索框重构 (Search)
@@ -179,6 +212,7 @@
 }
 
 .sidebar .search {
+  margin-top: 20px;
   margin-bottom: 20px;
   padding: 0 20px;
   border: 0px;
@@ -187,24 +221,25 @@
 
 .sidebar .search input {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--input-bg);
   color: var(--text);
   border-radius: 4px;
   padding: 8px 10px;
   outline: none;
   transition: all 0.2s;
+  border: 1px solid transparent; /* 预留边框位置防止跳动 */
 }
 
 .sidebar .search input:focus {
   border-color: var(--accent);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--bg); /* 聚焦时背景加深 */
   border-bottom-width: 2px;
 }
 
 /* 搜索结果面板 */
 .sidebar .search .results-panel {
-  display: none; /* 默认隐藏，有结果JS会显示 */
-  background: var(--bg);
+  display: none;
+  background: #252525; /* 默认暗色背景 */
   position: absolute;
   top: 40px;
   left: 10px;
@@ -220,20 +255,27 @@
   display: block;
 }
 
+/* 亮色模式搜索结果面板 */
+[data-theme="light"] {
+  .sidebar .search .results-panel {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
 /* =========================================
-   5. 移动端适配 (Mobile Responsive)
+   5. 移动端适配
    ========================================= */
-/* 移动端汉堡菜单按钮 */
 .sidebar-toggle {
   position: fixed;
   top: 90px;
   left: 20px;
-  z-index: 1001; /* 比 Header 高 */
+  z-index: 1001;
   background: transparent;
   border: none;
   outline: none;
   cursor: pointer;
-  display: none; /* PC端隐藏 */
+  display: none;
 }
 .sidebar-toggle span {
   display: block;
@@ -243,87 +285,67 @@
   margin-bottom: 4px;
 }
 
-/* WinUI 3 风格分割线 */
+/* =========================================
+   WinUI 3 分割线 (HR) & 高亮 (Mark)
+   ========================================= */
+
+/* HR: 默认使用暗色模式样式 (白色渐变) */
 hr {
   border: none;
   height: 1px;
   margin: 24px 0;
-  /* 使用线性渐变模拟 WinUI 3 的细微质感 */
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.08) 10%,
-    rgba(0, 0, 0, 0.08) 90%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: var(--hr-gradient);
 }
 
-/* 适配暗黑模式 (如果你的 Docsify 开启了暗黑主题) */
-@media (prefers-color-scheme: dark) {
-  hr {
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.1) 10%,
-      rgba(255, 255, 255, 0.1) 90%,
-      rgba(255, 255, 255, 0) 100%
-    );
-  }
-}
-
-/* WinUI 3 风格的高亮 (Mark) */
+/* Mark: 默认使用暗色模式样式 (深金底白字) */
 mark {
-  /* 核心色彩：采用 WinUI 典型的 TextHighlighter 颜色 */
-  background-color: #fff1ad; /* 浅金色，更温润 */
-  color: #1b1b1b;
-
-  /* 形状：Windows 11 的标准小圆角 */
+  background-color: #4d4426; /* 深金色背景 */
+  color: #ffea8c; /* 亮色字体 */
   border-radius: 4px;
-
-  /* 间距：避免高亮色紧贴文字 */
   padding: 2px 4px;
   margin: 0 1px;
-
-  /* 字体：保持一致性 */
   font-weight: 500;
 }
-
-/* 如果你更喜欢“强调色”风格的高亮（类似选中态） */
 mark.accent {
-  background-color: rgba(0, 120, 212, 0.2); /* 20% 透明度的系统主题色 */
-  color: var(--accent-color);
+  background-color: rgba(0, 120, 212, 0.35);
+  color: #ffffff;
 }
 
-/* 暗黑模式适配 */
-@media (prefers-color-scheme: dark) {
+/* --- 亮色模式覆盖 (Light Mode Overrides) --- */
+[data-theme="light"] {
+  /* Mark: 变回浅金底黑字 */
   mark {
-    background-color: #4d4426; /* 深金色背景 */
-    color: #ffea8c; /* 亮色字体，确保可读性 */
+    background-color: #fff1ad;
+    color: #1b1b1b;
   }
-
   mark.accent {
-    background-color: rgba(0, 120, 212, 0.35);
-    color: #ffffff;
+    background-color: rgba(0, 120, 212, 0.2);
+    color: #0078d4;
   }
 }
 
 /* 屏幕变窄时的逻辑 */
 @media screen and (max-width: 768px) {
   .sidebar {
-    transform: translateX(-110%); /* 默认把侧边栏藏到左边 */
-    top: 0; /* 移动端铺满 */
+    transform: translateX(-110%);
+    top: 0;
     z-index: 2000;
+    background-color: #202020; /* 移动端不透明背景，防止看不清 */
+  }
+  /* 移动端亮色模式背景 */
+  [data-theme="light"] {
+    .sidebar {
+      background-color: #f3f3f3;
+    }
   }
 
   body.ready.close .sidebar {
-    transform: translateX(0); /* 打开时滑出来 */
+    transform: translateX(0);
   }
-
   .content {
-    margin-left: 0; /* 内容不留空 */
+    margin-left: 0;
   }
-
   .sidebar-toggle {
-    display: block; /* 显示按钮 */
+    display: block;
   }
 }

@@ -16,7 +16,7 @@ const translations = {
     feat_3_title: "Lightweight & Fast",
     feat_3_desc:
       "Built with modern .NET and code trimming technology. Ensures a compact footprint and instant startup.",
-    footer: "© 2026 BetterLyrics Team. Licensed under MIT.",
+    footer: "© 2025-2026 BetterLyrics. Licensed under GPL-3.0.",
   },
   zh: {
     nav_plugins_store: "插件商店",
@@ -34,7 +34,7 @@ const translations = {
     feat_3_title: "轻量且极速",
     feat_3_desc:
       "基于现代 .NET 和代码裁剪技术构建。体积小巧，启动瞬间完成，几乎不占内存。",
-    footer: "© 2026 BetterLyrics Team. Licensed under MIT.",
+    footer: "© 2025-2026 BetterLyrics. Licensed under GPL-3.0.",
   },
 };
 

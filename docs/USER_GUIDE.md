@@ -14,8 +14,8 @@ Some players require extra configuration. Please check [here](#known-supported-m
 
 1. Ensure the local songs folder has been added to the software (Refer to Step 1 in [How to set up local lyrics sources?](#-how-to-set-up-local-lyrics-sources)).
 2. Open `Music Library`.
-    - Can be opened via the book button in the top-left area of the lyrics window.
-    - Or by right-clicking the software icon in the system tray and selecting "Open Music Library".
+   - Can be opened via the book button in the top-left area of the lyrics window.
+   - Or by right-clicking the software icon in the system tray and selecting "Open Music Library".
 
 ## 🪟 Window & Interaction
 
@@ -48,11 +48,13 @@ When the window is too small to display the panel, you can only show the playbac
 ### 🤔 Incorrect lyrics displayed (Mismatch)
 
 - Please go to `Settings` -> `Playback Sources` -> `Lyrics Search Strategy` and select `Best Match`.
-> Note: For each song, the first time using Best Match will take about 10 seconds. Please be patient.
+
+  > Note: For each song, the first time using Best Match will take about 10 seconds. Please be patient.
 
 - Or open the lyrics search window to manually search for the correct lyrics.
 
 > The lyrics search window can be opened in one of the following ways:
+>
 > - Move the mouse to the lower area of the window until the bottom control bar appears, then click the magnifying glass icon (🔍) on the bottom right to open the search window.
 > - Right-click the software icon in the system tray and select "Open Lyrics Window".
 
@@ -70,19 +72,21 @@ The software supports two methods:
 
 1.  **External Lyrics Files (.lrc/.eslrc/.ttml)**
     When comparing, the software **does not distinguish word order** and **automatically ignores punctuation**.
-    * **Recommended Naming:** `Artist - Title.lrc`
-    * **Also Supports:** `Title Artist.lrc`
-    * **Also Supports:** `Title (Live) - Artist.lrc`
-    * *Example: When playing Taylor Swift's "Love Story", the filename `love_story_taylor_swift.lrc` can also be accurately identified.*
+    - **Recommended Naming:** `Artist - Title.lrc`
+    - **Also Supports:** `Title Artist.lrc`
+    - **Also Supports:** `Title (Live) - Artist.lrc`
+    - _Example: When playing Taylor Swift's "Love Story", the filename `love_story_taylor_swift.lrc` can also be accurately identified._
 
 2.  **Embedded Lyrics**
     If lyrics are already written into the tags of your local music files (.mp3/.flac, etc.), the software will also automatically read them.
 
 > We recommend the following ways to check music file tag information:
+>
 > - [Music Tag](https://www.cnblogs.com/vinlxc/p/11347744.html): Browse local song metadata.
 > - If **Step 1: Add Folder** is completed, go to the BetterLyrics `Music Library` and click the three dots icon (···) on the right of a music entry to show parsed metadata (may differ from actual info).
 
 > To ensure smooth matching for the **Embedded Lyrics** method, the following tools are recommended:
+>
 > - [Music Tag](https://www.cnblogs.com/vinlxc/p/11347744.html): Batch write **all metadata** into local music file tags.
 > - [LDDC](https://github.com/chenmozhijin/LDDC): Batch write **verbatim lyrics** into local music file tags.
 
@@ -115,14 +119,3 @@ You can import window status files shared by others: Go to `Settings` -> `Lyrics
 
 Please attach software logs when reporting issues. The log location is as follows:
 `%LocalAppData%\Packages\37412.BetterLyrics_rd1g0rsrrtxw8\LocalCache\logs`
-
-# Lyrics Source Configuration
-
-## Apple Music
-
-- Open the [Apple Music website](https://music.apple.com/) and the Developer Tools window.
-- Log in to your account.
-- Refresh the page.
-- Return to the Developer Tools window, select `Fetch/XHR`, choose a request, find the `media-user-token` header in the request headers, and copy its value.
-- Open BetterLyrics and go to `Playback Sources` settings.
-- Input the copied value into the `Apple Music media-user-token` setting, then click the accept icon on the right.
