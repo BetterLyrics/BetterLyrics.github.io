@@ -3,37 +3,37 @@ const translations = {
   en: {
     nav_plugins_store: "Plugins Store",
     nav_docs: "Docs",
-    hero_title: "Lyrics that Move<br>Visuals that Delight",
+    hero_title: "Strums the Heartstrings<br>Graces the Wordscapes",
     hero_desc:
       "An elegant and deeply customizable lyrics visualizer & versatile music player, built with WinUI3/Win2D",
     github_sub: "Check it out on",
     feat_1_title: "Native Fluent Design",
     feat_1_desc:
-      "Embraces Windows 11 aesthetics with Mica material, rounded corners, and smooth animations.",
+      "Embraces Windows 11 aesthetics with dynamic material, rounded corners, and smooth animations.",
     feat_2_title: "Sources & Plugins",
     feat_2_desc:
       "Integrated with multiple popular lyrics sources right out of the box. Extend capabilities with plugins.",
     feat_3_title: "Lightweight & Fast",
     feat_3_desc:
-      "Built with modern .NET and code trimming technology. Ensures a compact footprint and instant startup.",
+      "Built on the modern .NET stack. It balances a compact package size with rich visual effects and stable performance.",
     footer: "© 2025-2026 BetterLyrics. Licensed under GPL-3.0.",
   },
   zh: {
     nav_plugins_store: "插件商店",
     nav_docs: "文档",
-    hero_title: "曲动人心 词悦双目",
+    hero_title: "曲拨心弦<br>词落云笺",
     hero_desc:
       "一款优雅且高度自定义的歌词可视化与全能音乐播放应用，基于 WinUI3/Win2D 构建",
     github_sub: "前往下载",
     feat_1_title: "原生流畅设计",
     feat_1_desc:
-      "完美契合 Windows 11 美学，拥有云母 (Mica) 材质、圆角设计和丝滑的动画效果。",
+      "完美契合 Windows 11 美学，拥有动态材质、圆角设计和丝滑的动画效果。",
     feat_2_title: "多源与插件",
     feat_2_desc:
-      "开箱即用，内置多种流行歌词源支持。并通过插件系统无限扩展功能。",
+      "开箱即用，内置多种流行歌词源支持。并通过插件系统扩展功能。",
     feat_3_title: "轻量且极速",
     feat_3_desc:
-      "基于现代 .NET 和代码裁剪技术构建。体积小巧，启动瞬间完成，几乎不占内存。",
+      "采用现代 .NET 技术栈。在保持安装包体积紧凑的同时，兼顾了丰富的视觉动效与稳定的运行效率。",
     footer: "© 2025-2026 BetterLyrics. Licensed under GPL-3.0.",
   },
 };
