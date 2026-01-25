@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightThemeNova from "starlight-theme-nova";
+import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -97,7 +98,7 @@ export default defineConfig({
           ],
         },
       ],
-      plugins: [starlightThemeNova(/* options */)],
+      plugins: [starlightThemeNova(/* options */), viewTransitions()],
       favicon: "/favicon.ico",
       title: "BetterLyrics",
       customCss: [
