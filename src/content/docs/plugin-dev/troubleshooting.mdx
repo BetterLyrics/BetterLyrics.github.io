@@ -1,0 +1,55 @@
+---
+title: Troubleshooting
+---
+
+### Compilation Errors
+
+:::danger[Build Error: Code 9009]
+`Command ... BetterLyrics.DevTools.exe exited with code 9009`
+:::
+
+**Cause**: The build script cannot find the `DevTools` executable.
+
+**Solution**:
+1. Check if the `<AnalyzerPath>` path in your `.csproj` is correct.
+2. Ensure you have compiled the `BetterLyrics.DevTools` project at least once.
+
+---
+
+### Runtime Errors
+
+:::danger[FileNotFoundException]
+`FileNotFoundException: BetterLyrics.Core`
+:::
+
+**Cause**: You tried to run the plugin DLL manually, or `Smart Trim` failed.
+
+**Solution**:
+1. This is **expected behavior**. The plugin *should not* include `BetterLyrics.Core.dll` because the host application provides it.
+2. Please test by loading the plugin through the Host Application.
+
+<br />
+
+:::danger[TypeLoadException]
+`TypeLoadException: Could not load type 'PluginConfigBase'`
+:::
+
+**Cause**: The version of `BetterLyrics.Core` running in the host application is older than the version used when compiling the plugin.
+
+**Solution**:
+1. **Recompile the host application** (`BetterLyrics.WinUI3`) to ensure it includes the latest Core.
+2. Check if a conflicting copy of `BetterLyrics.Core.dll` exists in the `LocalState/plugins` folder.
+
+---
+
+### Warning Messages
+
+:::caution[System library missing]
+System library missing warning appears after publishing
+:::
+
+**Cause**: The Native AOT Trimmer stripped away system classes you are using via reflection.
+
+**Solution**:
+1. Check the Host's `PluginConfigs` folder. Does `MyPlugin_TrimmerRoots.xml` exist?
+2. If it exists, recompile the Host. This configuration file acts as a whitelist for the Trimmer.

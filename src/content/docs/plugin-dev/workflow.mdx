@@ -1,0 +1,136 @@
+---
+title: Core Development Process
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+This chapter guides you through writing the core code of your plugin. Thanks to the "Code First" architecture of BetterLyrics, you only need to focus on business logic and configuration definitions. The framework automatically handles UI construction and internationalization.
+
+## 1. Plugin Entry Point (`Plugin.cs`)
+
+`Plugin.cs` is the "brain" of the plugin. You need to inherit from `PluginBase<TConfig>` and implement specific functional interfaces (such as `ILyricsTransliterator`) based on your requirements.
+
+:::tip[Best Practices for Resource Loading]
+If your plugin needs to load local files (e.g., dictionaries, models, or dependencies), be sure to do so in `OnInitializeAsync` and use `Context.PluginDirectory` to obtain the correct physical path.
+:::
+
+```csharp title="BetterLyrics.Plugins.Transliteration.Romaji/Plugin.cs"
+using BetterLyrics.Core.Abstractions;
+using BetterLyrics.Core.Interfaces.Features;
+using BetterLyrics.Plugins.Transliteration.Romaji.Helpers; // Hypothetical helper namespace
+
+namespace BetterLyrics.Plugins.Transliteration.Romaji
+{
+    // TConfig associates your configuration class with the plugin; the framework handles loading and saving automatically
+    public class Plugin : PluginBase<Config>, ILyricsTransliterator
+    {
+        // The title displayed in the UI
+        public override string Title { get; set; } = "Romaji";
+
+        protected override async Task OnInitializeAsync()
+        {
+            // Initialization logic (runs once when the plugin loads)
+            // Example: Initialize local dictionary, use Context.PluginDirectory to get the plugin directory
+            RomajiHelper.Init(Context.PluginDirectory);
+            await Task.CompletedTask;
+        }
+
+        // Implement interface methods (e.g., convert lyrics to Romaji)
+        public Task<string?> GetTransliterationAsync(string text, string targetLangCode)
+        {
+            string? result = null;
+            
+            // Example business logic
+            if (targetLangCode == "ja-latin")
+            {
+                var lines = text.Split("\n");
+                // Call your core processing logic
+                result = string.Join("\n", lines.Select(p => 
+                    string.Join(" ", RomajiHelper.ToRomaji(p).FirstOrDefault()?.Units.Select(q => q.Romaji) ?? [""])
+                ));
+            }
+            
+            return Task.FromResult(result);
+        }
+
+        protected override async Task OnShutdownAsync()
+        {
+            // Clean up resources (runs once when the plugin unloads)
+            RomajiHelper.Cleanup();
+            await Task.CompletedTask;
+        }
+    }
+}
+
+```
+
+## 2. Configuration & Properties (`Config.cs`)
+
+In BetterLyrics, `Config.cs` is the **Single Source of Truth** for configuration data.
+
+You don't need to write any UI code. Simply define C# properties and add `[Display]` annotations, and the framework will automatically:
+
+1. **Generate Settings UI**: Automatically render corresponding UI components based on property types (string, int, bool, etc.).
+2. **Handle Persistence**: Automatically save and read user settings.
+3. **Generate Language Files**: Extract `Name` and `Description` for internationalization.
+
+```csharp title="BetterLyrics.Plugins.AI.Local.LLM/Config.cs"
+using BetterLyrics.Core.Abstractions;
+using System.ComponentModel.DataAnnotations;
+
+namespace BetterLyrics.Plugins.AI.Local.LLM
+{
+    public class Config : PluginConfigBase
+    {
+        [Display(Name = "Model Path", Description = "Input model absolute uri here")]
+        public string ModelPath
+        {
+            // Get("") provides the default value
+            get => Get(""); 
+            set => Set(value);
+        }
+
+        [Display(Name = "Context Size", Description = "Set the context size for the model")]
+        public int ContextSize
+        {
+            get => Get(2048);
+            set => Set(value);
+        }
+
+        [Display(Name = "GPU Layer Count", Description = "Set the number of layers to offload to GPU. Set 0 to use CPU only.")]
+        public int GpuLayerCount
+        {
+            get => Get(0);
+            set => Set(value);
+        }
+
+        [Display(Name = "Threads", Description = "Set the number of threads to use for inference")]
+        public int Threads
+        {
+            get => Get(4);
+            set => Set(value);
+        }
+    }
+}
+
+```
+
+## 3. Automated Translation (i18n)
+
+This is the most worry-free step in the automation process. You **do not need to manually create** JSON files; the build system does it for you.
+
+1. **Write Config Code**
+As shown in the previous step, add configuration items with `[Display]` attributes in `Config.cs`.
+2. **Build Project**
+Press `Ctrl + B` in Visual Studio or run the build. `DevTools` will automatically scan your code.
+3. **Check Generated Results**
+After the build completes, observe the **Solution Explorer**.
+* You will find a `Langs` folder automatically generated/updated in the project root.
+* It contains `en.json` (default) and other language files.
+
+
+4. **Incremental Updates**
+When you add new properties to `Config.cs` and rebuild:
+* The tool will **automatically append** new keys to all `.json` files.
+* New values will be marked as `[TODO] ...` to help you quickly locate content that needs translation.
+* **Rest Assured**: Your existing translations **will not** be overwritten.

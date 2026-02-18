@@ -1,0 +1,141 @@
+---
+title: Environment Setup
+---
+
+import { Steps, FileTree } from '@astrojs/starlight/components';
+
+Follow the steps below to initialize your plugin project.
+
+<Steps>
+
+1.  **Prepare the Development Environment**
+
+    * **IDE**: Visual Studio 2026
+    * **SDK**: .NET 10 SDK
+    * **Host Source Code**: You need the `BetterLyrics` solution locally to reference `Core` and `DevTools`.
+
+2.  **Create Project**
+
+    Create a new **Class Library** project. We recommend naming it `BetterLyrics.Plugins.PluginType.YourPluginName` to maintain naming consistency.
+    * **Target Framework**: `.NET 10` (`net10.0-windows10.0.26100.0`)
+    * `PluginType` can be `Source`, `Translator`, `Transliterator`, `AI`, etc., depending on your plugin type and functional positioning.
+
+3.  **Configure .csproj**
+
+    Replace the content of your `.csproj` file with the template below. This template connects the entire automation toolchain.
+
+    ```xml title="BetterLyrics.Plugins.PluginType.YourPluginName.csproj"
+    <Project Sdk="Microsoft.NET.Sdk">
+
+      <PropertyGroup>
+        <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+        <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <Description>[TODO]Plugin Description</Description>
+        <Version>[TODO]Plugin Version</Version>
+        <Authors>[TODO]Plugin Author</Authors>
+        <RepositoryUrl>[TODO]Plugin GitHub Repository URL</RepositoryUrl>
+        <Copyright>[TODO]Plugin Copyright Info</Copyright>
+        <Company>$(Authors)</Company>
+      </PropertyGroup>
+
+      <ItemGroup>
+        <ProjectReference Include="..\..\BetterLyrics.Core\BetterLyrics.Core.csproj" >
+          <Private>false</Private>
+          <ExcludeAssets>runtime</ExcludeAssets>
+        </ProjectReference>
+      </ItemGroup>
+
+      <Target Name="AutoExcludeSharedAssemblies" AfterTargets="ResolveAssemblyReferences">
+        <PropertyGroup>
+          <HostOutputDir>..\..\BetterLyrics.WinUI3\bin\x64\$(Configuration)\$(TargetFramework)\</HostOutputDir>
+        </PropertyGroup>
+
+        <Message Text="[Debug] Searching for Host Assemblies in: $(HostOutputDir)" Importance="High" />
+
+        <ItemGroup>
+          <FilesToCopy Include="@(ReferenceCopyLocalPaths)" />
+          <SharedFiles Include="@(FilesToCopy)" Condition="Exists('$(HostOutputDir)%(Filename)%(Extension)')" />
+          <ReferenceCopyLocalPaths Remove="@(SharedFiles)" />
+        </ItemGroup>
+
+        <Message Text="[Smart Trim] Excluded shared assemblies:%0a@(SharedFiles->'    -&gt; %(Filename)%(Extension)', '%0a')" Importance="High" Condition="'@(SharedFiles)' != ''" />
+      </Target>
+
+      <Target Name="RunDevTools" AfterTargets="PostBuildEvent">
+        <PropertyGroup>
+          <AnalyzerPath>..\..\BetterLyrics.DevTools\bin\$(Configuration)\$(TargetFramework)\BetterLyrics.DevTools.exe</AnalyzerPath>
+          <MainAppConfigDir>..\..\BetterLyrics.WinUI3\PluginConfigs\</MainAppConfigDir>
+          <SourceLangDir>$(ProjectDir)Langs\</SourceLangDir>
+          <OutputLangDir>$(TargetDir)Langs\</OutputLangDir>
+        </PropertyGroup>
+
+        <Message Text="[Analyzer] Generating resources to Project Directory..." Importance="High" />
+
+        <Exec Command="&quot;$(AnalyzerPath)&quot; &quot;$(TargetPath)&quot; All &quot;$(ProjectDir)\&quot;" />
+
+        <ItemGroup>
+          <FreshLangFiles Include="$(SourceLangDir)*.json" />
+        </ItemGroup>
+        <Copy SourceFiles="@(FreshLangFiles)" DestinationFolder="$(OutputLangDir)" />
+
+        <Copy SourceFiles="$(TargetDir)$(ProjectName)_TrimmingConfig.cs" DestinationFolder="$(MainAppConfigDir)" SkipUnchangedFiles="true" />
+        <Copy SourceFiles="$(TargetDir)$(ProjectName)_TrimmerRoots.xml" DestinationFolder="$(MainAppConfigDir)" SkipUnchangedFiles="true" />
+      </Target>
+
+      <Target Name="PackagePluginToZip" AfterTargets="Build">
+        <PropertyGroup>
+          <PackageOutputDir>$(ProjectDir)..\_Dist\$(Configuration)\</PackageOutputDir>
+          <ZipFileName>$(AssemblyName).v$(Version).blp</ZipFileName>
+          <FinalZipPath>$(PackageOutputDir)$(ZipFileName)</FinalZipPath>
+          <StagingDir>$(OutputPath)_TempStaging\</StagingDir>
+        </PropertyGroup>
+
+        <ItemGroup>
+          <FilesToPack Include="$(OutputPath)**\*" />
+          <FilesToPack Remove="$(OutputPath)$(ProjectName)_TrimmingConfig.cs" />
+          <FilesToPack Remove="$(OutputPath)$(ProjectName)_TrimmerRoots.xml" />
+          <FilesToPack Remove="$(StagingDir)**\*" />
+        </ItemGroup>
+
+        <RemoveDir Directories="$(StagingDir)" />
+        <Copy SourceFiles="@(FilesToPack)" DestinationFolder="$(StagingDir)%(RecursiveDir)" />
+
+        <ZipDirectory SourceDirectory="$(StagingDir)" DestinationFile="$(FinalZipPath)" Overwrite="true" />
+
+        <RemoveDir Directories="$(StagingDir)" />
+
+        <Message Text="[Packager] The plugin package has been generated in the parent directory: $(FinalZipPath)" Importance="High" />
+      </Target>
+
+    </Project>
+    ```
+
+</Steps>
+
+After a successful compilation, your project structure should look like this:
+
+<FileTree>
+- BetterLyrics/
+  - BetterLyrics.WinUI3/
+    - PluginConfigs/
+      - BetterLyrics.Plugins.PluginType.YourPluginName_TrimmerRoots.xml
+      - BetterLyrics.Plugins.PluginType.YourPluginName_TrimmingConfig.cs
+      - ...
+  - Plugins/
+    - _Dist/
+      - $(Configuration)/
+        - BetterLyrics.Plugins.PluginType.YourPluginName.vVersion.blp
+        - ...
+    - BetterLyrics.Plugins.PluginType.YourPluginName/
+      - Langs/
+        - en.json
+        - ...
+      - Config.cs
+      - Plugin.cs
+      - BetterLyrics.Plugins.PluginType.YourPluginName.csproj
+  - ...
+</FileTree>

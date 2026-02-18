@@ -1,0 +1,49 @@
+---
+title: Plugin Development Overview
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+:::caution[Preview Documentation]
+This documentation applies to the preview version of **BetterLyrics**. The APIs, build toolchain, and development workflows mentioned herein are in an **extremely unstable** state and are subject to breaking changes at any time without prior notice. Please proceed with caution.
+:::
+
+Welcome to the BetterLyrics development community! This guide will help you get started with plugin development quickly.
+
+We provide a highly automated build system based on the **"Code-First"** philosophy—code is the Single Source of Truth. We delegate **tedious tasks** to automated tools: from automatically avoiding dependency conflicts (DLL Hell) to solving Native AOT trimming challenges, and even auto-generating multi-language resources. No manual handling is required by the developer.
+
+## Build Process Overview
+
+To ensure maximum performance and stability of plugins in a Native AOT environment, we have customized an MSBuild pipeline:
+
+### Smart Exclusion
+
+The build script automatically compares dependencies against the Host App's existing libraries (such as `BetterLyrics.Core` or system libraries). Once duplicates are detected, redundant DLLs are automatically **excluded** from the output. This reduces file size and eliminates version conflicts.
+
+### Source-First Localization
+
+`DevTools` directly scans your `Config` definition classes and automatically generates or synchronizes JSON language files within your source directory, making multi-language support practically "zero-cost."
+
+### Automatic Anti-Trim Injection
+
+The tools automatically analyze reflection calls in your code, generating `TrimmerRoots.xml` and `Config` code, which are then **injected** into the host project's `PluginConfigs` directory. This ensures your plugin code "survives" the aggressive Native AOT trimming mode without polluting the final plugin package.
+
+## Build Process Diagram
+
+```mermaid
+graph TD
+    subgraph BuildPipeline [Build Pipeline]
+    A[Compile Plugin] --> B{Dependency Check}
+    B -->|Host Has It| C[Exclude DLL]
+    B -->|Private Dep| D[Keep DLL]
+    
+    A --> E{Run DevTools}
+    E -->|Scan Config| F["Sync Langs/*.json in Source"]
+    E -->|Analyze Reflection| G[Generate Trimmer Config]
+    
+    F --> H["Output to Bin"]
+    G --> I["Inject into Host (PluginConfigs)"]
+    end
+    
+    H --> J["Pack Artifact (.blp)"]
+    I -.->|Exclude| J

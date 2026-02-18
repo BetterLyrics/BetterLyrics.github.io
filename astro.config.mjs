@@ -1,12 +1,21 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightThemeNova from "starlight-theme-nova";
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
+import mermaid from 'astro-mermaid';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
+    mermaid({
+      theme: 'default',
+      autoTheme: true,
+      mermaidConfig: {
+        flowchart: {
+          curve: 'basis'
+        }
+      }
+    }),
     starlight({
       sidebar: [
         {
@@ -18,6 +27,13 @@ export default defineConfig({
             { slug: "get-started/welcome" },
             { slug: "get-started/download" },
           ],
+        },
+        {
+          label: "Settings",
+          translations: {
+            "zh-CN": "设置",
+          },
+          items: [{ slug: "settings/appearance-and-behaviors" }],
         },
         {
           label: "FAQ",
@@ -100,8 +116,20 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: "Plugin Dev",
+          translations: {
+            "zh-CN": "插件开发",
+          },
+          items: [
+            { slug: "plugin-dev/intro" },
+            { slug: "plugin-dev/setup" },
+            { slug: "plugin-dev/workflow" },
+            { slug: "plugin-dev/troubleshooting" },
+          ],
+        },
       ],
-      plugins: [starlightThemeNova(/* options */), viewTransitions()],
+      plugins: [viewTransitions()],
       favicon: "/favicon.ico",
       title: "BetterLyrics",
       customCss: [

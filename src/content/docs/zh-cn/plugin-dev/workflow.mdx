@@ -1,0 +1,137 @@
+---
+title: 开发核心流程
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+本章节将指导你完成插件的核心代码编写。得益于 BetterLyrics 的 “代码优先” 架构，你只需关注业务逻辑和配置定义，剩下的 UI 构建和国际化工作将由框架自动完成。
+
+## 1. 插件入口（`Plugin.cs`）
+
+`Plugin.cs` 是插件的 “大脑”。你需要继承 `PluginBase<TConfig>` 并根据需求实现特定的功能接口（如 `ILyricsTransliterator`）。
+
+:::tip[资源加载最佳实践]
+如果你的插件需要加载本地文件（例如字典、模型或依赖库），请务必在 `OnInitializeAsync` 中进行，并使用 `Context.PluginDirectory` 获取正确的物理路径。
+:::
+
+```csharp title="BetterLyrics.Plugins.Transliteration.Romaji/Plugin.cs"
+using BetterLyrics.Core.Abstractions;
+using BetterLyrics.Core.Interfaces.Features;
+using BetterLyrics.Plugins.Transliteration.Romaji.Helpers; // 假设的辅助类命名空间
+
+namespace BetterLyrics.Plugins.Transliteration.Romaji
+{
+    // TConfig 将你的配置类与插件关联，框架会自动加载和保存
+    public class Plugin : PluginBase<Config>, ILyricsTransliterator
+    {
+        // 插件在 UI 中显示的标题
+        public override string Title { get; set; } = "Romaji";
+
+        protected override async Task OnInitializeAsync()
+        {
+            // 初始化逻辑（插件加载时运行一次）
+            // 示例：初始化本地词典，使用 Context.PluginDirectory 获取插件所在目录
+            RomajiHelper.Init(Context.PluginDirectory);
+            await Task.CompletedTask;
+        }
+
+        // 实现接口方法（例如：将歌词转换为罗马音）
+        public Task<string?> GetTransliterationAsync(string text, string targetLangCode)
+        {
+            string? result = null;
+            
+            // 示例业务逻辑
+            if (targetLangCode == "ja-latin")
+            {
+                var lines = text.Split("\n");
+                // 调用你的核心处理逻辑
+                result = string.Join("\n", lines.Select(p => 
+                    string.Join(" ", RomajiHelper.ToRomaji(p).FirstOrDefault()?.Units.Select(q => q.Romaji) ?? [""])
+                ));
+            }
+            
+            return Task.FromResult(result);
+        }
+
+        protected override async Task OnShutdownAsync()
+        {
+            // 清理资源（插件卸载时运行一次）
+            RomajiHelper.Cleanup();
+            await Task.CompletedTask;
+        }
+    }
+}
+
+```
+
+## 2. 配置与属性（`Config.cs`）
+
+在 BetterLyrics 中，`Config.cs` 是配置数据的 **单一事实来源（Single Source of Truth）**。
+
+你不需要编写任何 UI 代码。只需定义 C# 属性并加上 `[Display]` 注解，框架会自动：
+
+1. **生成设置界面**：根据属性类型（string, int, bool 等）自动渲染对应的 UI 组件。
+2. **处理持久化**：自动保存和读取用户设置。
+3. **生成语言文件**：提取 Name 和 Description 用于国际化。
+
+```csharp title="BetterLyrics.Plugins.AI.Local.LLM/Config.cs"
+using BetterLyrics.Core.Abstractions;
+using System.ComponentModel.DataAnnotations;
+
+namespace BetterLyrics.Plugins.AI.Local.LLM
+{
+    public class Config : PluginConfigBase
+    {
+        [Display(Name = "Model Path", Description = "Input model absolute uri here")]
+        public string ModelPath
+        {
+            // Get("") 提供默认值
+            get => Get(""); 
+            set => Set(value);
+        }
+
+        [Display(Name = "Context Size", Description = "Set the context size for the model")]
+        public int ContextSize
+        {
+            get => Get(2048);
+            set => Set(value);
+        }
+
+        [Display(Name = "GPU Layer Count", Description = "Set the number of layers to offload to GPU. Set 0 to use CPU only.")]
+        public int GpuLayerCount
+        {
+            get => Get(0);
+            set => Set(value);
+        }
+
+        [Display(Name = "Threads", Description = "Set the number of threads to use for inference")]
+        public int Threads
+        {
+            get => Get(4);
+            set => Set(value);
+        }
+    }
+}
+
+```
+
+## 3. 自动化翻译（i18n）
+
+这是自动化流程中最省心的一步。你 **不需要手动创建** JSON 文件，构建系统会为你完成。
+
+1. **编写 Config 代码**
+如上一步所示，在 `Config.cs` 中添加带有 `[Display]` 属性的配置项。
+
+2. **构建项目**
+在 Visual Studio 中按下 `Ctrl + B` 或运行构建。`DevTools` 会自动扫描你的代码。
+
+3. **检查生成结果**
+构建完成后，观察 **解决方案资源管理器**。
+    * 你会发现项目根目录下自动生成/更新了 `Langs` 文件夹。
+    * 里面包含了 `en.json`（默认）和其他语言文件。
+
+4. **增量更新**
+当你向 `Config.cs` 添加了新属性并重新构建：
+    * 工具会 **自动追加** 新键到所有 `.json` 文件中。
+    * 新建的值会被标记为 `[TODO] ...`，以便你快速定位需要翻译的内容。
+    * **安心**：你现有的翻译 **不会** 被覆盖。

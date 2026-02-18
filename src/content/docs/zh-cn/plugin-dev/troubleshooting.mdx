@@ -1,0 +1,55 @@
+---
+title: 故障排除
+---
+
+### 编译错误
+
+:::danger[Build Error: Code 9009]
+`Command ... BetterLyrics.DevTools.exe exited with code 9009`
+:::
+
+**原因**: 构建脚本找不到 `DevTools` 可执行文件。
+
+**解决方法**:
+1. 检查 `.csproj` 中的 `<AnalyzerPath>` 路径是否正确。
+2. 确保你已经至少编译过一次 `BetterLyrics.DevTools` 项目。
+
+---
+
+### 运行时错误
+
+:::danger[FileNotFoundException]
+`FileNotFoundException: BetterLyrics.Core`
+:::
+
+**原因**: 你尝试手动运行插件 DLL，或者 `智能排除` 失败。
+
+**解决方法**:
+1. 这是**预期行为**。插件 *不应该* 包含 `BetterLyrics.Core.dll`，因为宿主程序会提供它。
+2. 请通过宿主程序（Host Application）加载插件进行测试。
+
+<br />
+
+:::danger[TypeLoadException]
+`TypeLoadException: Could not load type 'PluginConfigBase'`
+:::
+
+**原因**: 宿主程序运行的 `BetterLyrics.Core` 版本旧于插件编译时使用的版本。
+
+**解决方法**:
+1. **重新编译宿主程序**（`BetterLyrics.WinUI3`）以确保其包含最新的 Core。
+2. 检查 `LocalState/plugins` 文件夹中是否存在冲突的 `BetterLyrics.Core.dll` 副本。
+
+---
+
+### 警告信息
+
+:::caution[System library missing]
+发布后出现系统库丢失警告
+:::
+
+**原因**: Native AOT 裁剪器（Trimmer）剥离了你通过反射使用的系统类。
+
+**解决方法**:
+1. 检查 Host 的 `PluginConfigs` 文件夹。是否存在 `MyPlugin_TrimmerRoots.xml` ？
+2. 如果存在，请重新编译 Host。该配置文件充当了 Trimmer 的白名单。
