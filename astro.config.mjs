@@ -26,6 +26,7 @@ export default defineConfig({
           items: [
             { slug: "get-started/welcome" },
             { slug: "get-started/download" },
+            { slug: "get-started/install" },
           ],
         },
         {
