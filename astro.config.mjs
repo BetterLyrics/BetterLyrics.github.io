@@ -63,7 +63,7 @@ export default defineConfig({
           label: "Player Config",
           translations: {
             "zh-CN": "播放器配置",
-          }，
+          },
           items: [
             { slug: "player-cfg" },
             {
