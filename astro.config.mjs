@@ -54,7 +54,9 @@ export default defineConfig({
           translations: {
             "zh-CN": "歌词源配置",
           },
-          items: [{ slug: "lyrics-cfg/apple-music" }],
+          items: [
+            { slug: "lyrics-cfg/apple-music" }],
+            { slug: "lyrics-cfg/locallyrics" },
         },
         {
           label: "Player Config",
