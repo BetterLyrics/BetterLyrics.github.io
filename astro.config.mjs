@@ -55,14 +55,15 @@ export default defineConfig({
             "zh-CN": "歌词源配置",
           },
           items: [
-            { slug: "lyrics-cfg/apple-music" }],
+            { slug: "lyrics-cfg/apple-music" },
             { slug: "lyrics-cfg/locallyrics" },
+          ],
         },
         {
           label: "Player Config",
           translations: {
             "zh-CN": "播放器配置",
-          },
+          }，
           items: [
             { slug: "player-cfg" },
             {
