@@ -121,6 +121,13 @@ export default defineConfig({
           ],
         },
         {
+          label: "Plugins Store",
+          translations: {
+            "zh-CN": "插件商店",
+          },
+          link: "/plugins-store",
+        },
+        {
           label: "Plugin Dev",
           translations: {
             "zh-CN": "插件开发",
