@@ -30,6 +30,13 @@ export default defineConfig({
           ],
         },
         {
+          label: "Layout Editor",
+          translations: {
+            "zh-CN": "布局编辑器",
+          },
+          link: "/layout-editor",
+        },
+        {
           label: "Settings",
           translations: {
             "zh-CN": "设置",
