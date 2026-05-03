@@ -2,69 +2,75 @@
 title: "Layout Editor"
 ---
 
-Welcome to the BetterLyrics Custom Layout Editor! This powerful visual tool allows you to design your lyrics window layout with total freedom. Whether you are adjusting grids, dragging components, or fine-tuning properties, everything can be achieved through intuitive interaction.
+Welcome to the BetterLyrics Custom Layout Editor! This powerful visual tool allows you to freely design the typography of your lyrics window. Whether adjusting the grid, dragging and dropping components, or fine-tuning properties, you can easily accomplish it all through intuitive interactions.
 
-## Canvas & Grid Management
+## Canvas and Grid Management
 
-The foundation of your layout is the **Grid System**. Think of the entire lyrics window as a table where you can freely define rows and columns.
+The foundation of the layout is the **Grid System**. You can think of the entire lyrics window as a table where you can freely divide rows and columns.
 
 ### Global Settings
-In the "Canvas Settings" area on the left, you can control the base structure of the grid:
-* **Add/Remove Rows & Columns**: Use the top buttons to quickly append or remove entire rows/columns at the end of the grid.
-* **Gap Settings**: Adjust global row and column spacing to give your components some "breathing room."
-* **Canvas Padding**: Set the top, bottom, left, and right padding to control the distance between the content and the window edges.
+In the "Canvas" properties panel of the editor, you can control the base shape of the entire grid:
+* **Row/Column Spacing**: Adjust the global Row Spacing and Column Spacing to give components some breathing room.
+* **Canvas Padding**: Set the top, bottom, left, and right padding of the canvas individually to control the distance between the content and the window edges.
 
-### Quick Grid Actions (Context Menu)
-Click or right-click on the **Row Headers (numbers on the left)** or **Column Headers (numbers at the top)** in the central canvas to bring up the advanced menu:
-* **Insert**: Insert a new row/column before or after the current one.
-* **Delete**: Remove the selected row/column directly.
-* **Toggle Sizing Mode**: Click the star icon to switch between "Auto-fit" and "Proportional" sizing.
+### Quick Grid Actions
+Click on the **Row Headers (numbers on the left)** or **Column Headers (numbers on the top)** in the central canvas area to bring up the advanced settings menu:
+* **Insert and Delete**: Insert new rows/columns before or after the current one, or delete the current row/column directly.
+* **Adjust Size**: Supports precisely setting the size of the current row or column, offering three modes:
+  * **Auto**: Automatically expands based on the content of the components inside.
+  * **\***: Proportionally divides the remaining available space.
+  * **px**: Sets a fixed pixel size.
 
-## Adding Components & Layer Management
+## Component Addition and Management
 
-The left interface contains your "Component Toolbox" and "Layer List."
+The interface includes a "Component Toolbox" and a "Placed Components" list.
 
-* **Available Components**: This section lists all usable UI elements. Simply **click and drag a component** into a grid cell on the canvas to place it.
-* **Placed Components**: This displays all components currently on the canvas in a list format. Clicking an item here allows you to quickly select it on the canvas—ideal for when components are overlapping or hidden.
+* **Pending Components**: This lists all available UI elements. Simply **click and drag** a component onto the central canvas grid to place it in the desired location.
+* **Placed Components**: This displays a list of all components currently existing on the canvas. Clicking an item in the list will quickly select it on the canvas, which is very useful when components overlap or are obscured.
 
-## Component Properties & Adjustments
+## Component Properties and Adjustments
 
-When you click to select a component on the canvas, it will be highlighted with a blue border and adjustment handles. The "Property Panel" on the right will then become active.
+When you click to select a component on the canvas, it will be highlighted (with a white border and resize handles), and the properties panel will automatically switch to "Component".
 
-### Adjusting Position & Size
-* **Drag to Move**: Click and hold the selected component to move it to a different grid cell.
-* **Resize Handles**: Drag the handles on the right, bottom, or bottom-right corner to change how many rows or columns the component spans.
-* **Manual Precision**: You can also manually input the `Start Row`, `Start Column`, `Row Span`, and `Column Span` in the right property panel.
+### Adjusting Position and Span
+* **Drag to Move**: Simply click and drag the selected component to move it to a new grid cell.
+* **Handle Resizing**: Drag the resize handles on the right, bottom, or bottom-right corner of the component to quickly change the number of rows and columns it spans.
+* **Exact Values**: You can also manually input the `Row`, `Column`, `Row Span`, and `Column Span` in the properties panel.
 
-### Alignment & Margins
-* **Margins**: Set the top, bottom, left, and right margins in the property panel to fine-tune the component's position within its cell.
-* **Alignment**: Supports horizontal (Left, Center, Right, Stretch) and vertical (Top, Center, Bottom, Stretch) alignment to determine how the component sits within the grid area.
+### Size, Alignment, and Margins
+* **Fixed Size**: Toggle the width and height of the component between `Auto` (adaptive) and `px` (fixed pixels) and specify values.
+* **Margins**: Set the top, bottom, left, and right margins of the component to fine-tune its exact position within the grid cell.
+* **Alignment**: Supports horizontal (Left, Center, Right, Stretch) and vertical (Top, Center, Bottom, Stretch) alignment to determine how the component docks within the cell.
 
-## Canvas View Controls
+## Canvas View and History Controls
 
-To help you manage complex layouts, the top toolbar provides several view control features:
+To facilitate editing complex layouts, the editor provides a range of view and history control features:
 
-* **Hand Tool**: Click the hand icon to activate. Once active, drag the canvas to pan your view freely.
-* **Zoom In / Out**: Use the magnifying glass icons to adjust the canvas scale, or click "Reset Zoom" to automatically fit the canvas to the available space.
+* **Hand Tool**: Click the hand icon on the top toolbar to activate. Once activated, you can freely pan the view by dragging the canvas.
+* **Zoom Controls**: Use the magnifying glass icons on the top toolbar to adjust the canvas scale, or click "Reset Zoom" to make the canvas automatically fit the current available space.
+* **Minimap Navigation**: When the canvas is zoomed in and exceeds the current visible window area, a minimap will automatically hover in the bottom right corner. Drag the highlighted box in the minimap to quickly pan the view across large areas of the canvas.
+* **Undo & Redo**: The editor automatically records every step of your modifications, allowing you to undo mistaken actions at any time using keyboard shortcuts.
 
-## Keyboard Shortcuts Quick Reference
+## Keyboard Shortcuts Reference
 
-Using shortcuts can significantly speed up your workflow. You can also press `F1` or `Ctrl + /` within the editor to call up this help menu.
+Mastering keyboard shortcuts can significantly increase your layout building efficiency. Press `F1` or `Ctrl + /` at any time to bring up the shortcut help menu within the editor.
 
-### View Navigation
+### View & History Navigation
 | Action | Shortcut |
 | :--- | :--- |
-| **Temporarily Activate Hand Tool** | Long press `Space` |
+| **Temporarily Activate Hand Tool** | Hold `Spacebar` |
 | **Zoom Canvas** | `Ctrl` + Mouse Wheel |
 | **Horizontal Scroll** | `Shift` + Mouse Wheel |
+| **Undo** | `Ctrl` + `Z` |
+| **Redo** | `Ctrl` + `Y` or `Ctrl` + `Shift` + `Z` |
 
 ### Component Operations
 | Action | Shortcut |
 | :--- | :--- |
+| **Select Next Component** | `Tab` |
+| **Select Previous Component** | `Shift` + `Tab` |
+| **Focus on Selected Component** | `F` |
 | **Move Selected Component** | Arrow Keys or `W` `A` `S` `D` |
 | **Change Component Span (Size)** | `Shift` + Arrow Keys or `W` `A` `S` `D` |
 | **Delete Selected Component** | `Delete` or `Backspace` |
 | **Deselect** | `Esc` |
-
----
-*Tip: All modifications are previewed in real-time. Feel free to drag, drop, and adjust until you achieve the perfect look!*
