@@ -128,11 +128,15 @@ export default defineConfig({
           ],
         },
         {
-          label: "Plugins Store",
+          label: "Add-ons",
           translations: {
-            "zh-CN": "插件商店",
+            "zh-CN": "扩展",
           },
-          link: "/plugins-store",
+          items: [
+            { slug: "add-ons/layouts-store" },
+            { slug: "add-ons/modes-store" },
+            { slug: "add-ons/plugins-store" },
+          ],
         },
         {
           label: "Plugin Dev",
