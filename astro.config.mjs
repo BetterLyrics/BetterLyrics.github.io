@@ -145,9 +145,6 @@ export default defineConfig({
           },
           items: [
             { slug: "plugin-dev/intro" },
-            { slug: "plugin-dev/setup" },
-            { slug: "plugin-dev/workflow" },
-            { slug: "plugin-dev/troubleshooting" },
           ],
         },
       ],
