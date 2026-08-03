@@ -79,6 +79,7 @@ export default defineConfig({
             },
             { slug: "player-cfg/amll-player" },
             { slug: "player-cfg/apple-music" },
+            { slug: "player-cfg/bodian-music", badge: { text: "Config", variant: "note" } },
             { slug: "player-cfg/betterlyrics" },
             {
               slug: "player-cfg/foobar2000",
