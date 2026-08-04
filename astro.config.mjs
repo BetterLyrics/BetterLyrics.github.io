@@ -2,19 +2,19 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
-import mermaid from 'astro-mermaid';
+import mermaid from "astro-mermaid";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     mermaid({
-      theme: 'default',
+      theme: "default",
       autoTheme: true,
       mermaidConfig: {
         flowchart: {
-          curve: 'basis'
-        }
-      }
+          curve: "basis",
+        },
+      },
     }),
     starlight({
       sidebar: [
@@ -79,7 +79,10 @@ export default defineConfig({
             },
             { slug: "player-cfg/amll-player" },
             { slug: "player-cfg/apple-music" },
-            { slug: "player-cfg/bodian-music", badge: { text: "Config", variant: "note" },
+            {
+              slug: "player-cfg/bodian-music",
+              badge: { text: "Config", variant: "note" },
+            },
             { slug: "player-cfg/betterlyrics" },
             {
               slug: "player-cfg/foobar2000",
@@ -144,9 +147,7 @@ export default defineConfig({
           translations: {
             "zh-CN": "插件开发",
           },
-          items: [
-            { slug: "plugin-dev/intro" },
-          ],
+          items: [{ slug: "plugin-dev/intro" }],
         },
       ],
       plugins: [viewTransitions()],
