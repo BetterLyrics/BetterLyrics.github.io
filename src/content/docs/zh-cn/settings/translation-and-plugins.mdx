@@ -1,0 +1,53 @@
+---
+title: 翻译与注音 (扩展引擎)
+description: 设置 BetterLyrics 的多语言翻译引擎（包括 LibreTranslate 离线翻译）、罗马音注音支持以及繁简转换过滤。
+sidebar:
+  order: 5
+---
+
+BetterLyrics 提供了完善的本地化和多语言歌词处理支持，让你能够无障碍地欣赏来自世界各地的音乐。
+
+## 歌词翻译引擎 (Translation Engine)
+
+软件内置了多种翻译集成方案，帮助你快速获取外文歌曲的母语含义。
+
+### 开启与目标语言
+- **全局翻译开关 (Enable Translation)**：一键开启或关闭所有翻译功能。
+- **目标语言 (Target Language Code)**：你可以指定你希望翻译成的目标语言（默认会根据你的系统语言自动推断）。无论原唱是英语、日语还是法语，只要翻译源支持，都会统一翻译为你设定的目标语言。
+
+### LibreTranslate 离线引擎
+除了依赖在线歌词源自带的翻译外，BetterLyrics 还支持接入 **LibreTranslate**：
+- 这是一款强大的开源机器翻译引擎。你可以部署在本地或局域网，实现**完全离线**、**无延迟**且**隐私安全**的实时歌词翻译。
+- 在设置中勾选开启并输入你的 `LibreTranslate Server URL`（例如 `http://localhost:5000`）即可生效。
+
+---
+
+## 罗马音与注音系统 (Romanization)
+
+对于非母语学习者或 KTV 爱好者，BetterLyrics 提供了强大的注音功能，无需翻译即可跟唱。
+
+你可以针对以下语言独立开启**注音/罗马音 (Romanization)** 转换：
+- **日语罗马音 (Japanese Romanization)**：将假名和汉字自动转换为罗马拼音 (Romaji)。
+- **韩语罗马音 (Korean Romanization)**：将韩文转换为拼音字母。
+- **普通话拼音 (Mandarin Romanization)**：为中文汉字标注标准汉语拼音。
+- **粤语拼音 (Cantonese Romanization)**：为粤语歌曲标注粤拼 (Jyutping) 或耶鲁拼音。
+
+> [!NOTE]
+> 注音功能通常由独立的插件提供支持（例如 `BetterLyrics.Plugins.Transliteration.Romaji`）。请确保你已经在“插件管理”中启用了对应的语言解析器插件。
+
+---
+
+## 文本过滤与简繁转换 (Text Filtering & Conversion)
+
+由于网上的歌词源质量参差不齐，BetterLyrics 提供了一层数据清洗层。
+
+### 简繁中文转换 (Chinese Conversion)
+- 强制统一中文显示格式。你可以选择：
+  - 不转换 (Unspecified)
+  - 强制转为 **简体中文 (Simplified)**
+  - 强制转为 **繁体中文 (Traditional)**
+- 这在混合收听大陆、港台流行音乐时特别有用，能保持统一的视觉体验。
+
+### 歌词降噪过滤器 (Filter Enabled)
+- 开启后，软件将使用内部算法自动过滤掉歌词中无关的“噪音”信息。
+- 例如：自动去除某些歌词网站强加的“贡献者名单”、“上传者广告”或不标准的标点符号，还你一个纯净的歌词显示。

@@ -30,18 +30,54 @@ export default defineConfig({
           ],
         },
         {
-          label: "Layout Editor",
+          label: "Configuration & Settings",
           translations: {
-            "zh-CN": "布局编辑器",
+            "zh-CN": "配置与设置",
           },
-          link: "/layout-editor",
+          items: [
+            { slug: "settings/appearance-and-behaviors" },
+            { slug: "settings/lyrics-style-and-effects" },
+            { slug: "settings/background-visuals" },
+            { slug: "settings/translation-and-plugins" },
+          ],
         },
         {
-          label: "Settings",
+          label: "Core Features",
           translations: {
-            "zh-CN": "设置",
+            "zh-CN": "核心功能",
           },
-          items: [{ slug: "settings/appearance-and-behaviors" }],
+          items: [
+            { slug: "features/music-gallery" },
+            { slug: "features/layout-editor" },
+            {
+              label: "Lyrics Config",
+              translations: {
+                "zh-CN": "歌词源配置",
+              },
+              items: [
+                { slug: "features/lyrics-cfg/apple-music" },
+                { slug: "features/lyrics-cfg/locallyrics" },
+              ]
+            }
+          ],
+        },
+        {
+          label: "Player Integration",
+          translations: {
+            "zh-CN": "播放器对接",
+          },
+          autogenerate: { directory: "player-cfg" },
+        },
+        {
+          label: "Ecosystem",
+          translations: {
+            "zh-CN": "扩展生态",
+          },
+          items: [
+            { slug: "add-ons/layouts-store" },
+            { slug: "add-ons/modes-store" },
+            { slug: "add-ons/plugins-store" },
+          ],
         },
         {
           label: "FAQ",
@@ -54,92 +90,6 @@ export default defineConfig({
             { slug: "faq/modes-and-appearance" },
             { slug: "faq/playback-and-connection" },
             { slug: "faq/window-and-interaction" },
-          ],
-        },
-        {
-          label: "Lyrics Config",
-          translations: {
-            "zh-CN": "歌词源配置",
-          },
-          items: [
-            { slug: "lyrics-cfg/apple-music" },
-            { slug: "lyrics-cfg/locallyrics" },
-          ],
-        },
-        {
-          label: "Player Config",
-          translations: {
-            "zh-CN": "播放器配置",
-          },
-          items: [
-            { slug: "player-cfg" },
-            {
-              slug: "player-cfg/aimp",
-              badge: { text: "Config", variant: "note" },
-            },
-            { slug: "player-cfg/amll-player" },
-            { slug: "player-cfg/apple-music" },
-            {
-              slug: "player-cfg/bodian-music",
-              badge: { text: "Config", variant: "note" },
-            },
-            { slug: "player-cfg/betterlyrics" },
-            {
-              slug: "player-cfg/foobar2000",
-              badge: { text: "Config & Limited", variant: "caution" },
-            },
-            { slug: "player-cfg/google-chrome" },
-            { slug: "player-cfg/hyplayer" },
-            {
-              slug: "player-cfg/itunes",
-              badge: { text: "Config", variant: "note" },
-            },
-            {
-              slug: "player-cfg/kugoumusic",
-              badge: { text: "Limited", variant: "caution" },
-            },
-            { slug: "player-cfg/listen1" },
-            {
-              slug: "player-cfg/lx-music",
-              badge: { text: "Config", variant: "note" },
-            },
-            { slug: "player-cfg/microsoft-edge" },
-            { slug: "player-cfg/moekoe-music" },
-            {
-              slug: "player-cfg/musicbee",
-              badge: { text: "Config", variant: "note" },
-            },
-            { slug: "player-cfg/musicplayer2" },
-            {
-              slug: "player-cfg/neteasecloudmusic",
-              badge: { text: "Config", variant: "note" },
-            },
-            { slug: "player-cfg/planetmusic" },
-            { slug: "player-cfg/potplayer" },
-            {
-              slug: "player-cfg/qqmusic",
-              badge: { text: "Config", variant: "note" },
-            },
-            {
-              slug: "player-cfg/salt-player-for-windows",
-              badge: { text: "Limited", variant: "caution" },
-            },
-            { slug: "player-cfg/spotify" },
-            {
-              slug: "player-cfg/windows-media-player",
-              badge: { text: "Limited", variant: "caution" },
-            },
-          ],
-        },
-        {
-          label: "Add-ons",
-          translations: {
-            "zh-CN": "扩展",
-          },
-          items: [
-            { slug: "add-ons/layouts-store" },
-            { slug: "add-ons/modes-store" },
-            { slug: "add-ons/plugins-store" },
           ],
         },
         {
