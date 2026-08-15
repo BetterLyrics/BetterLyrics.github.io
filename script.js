@@ -4,12 +4,14 @@ const translations = {
     pageTitle: "BetterLyrics 文档",
     heroTitle: "BetterLyrics",
     heroSubtitle: "曲拨心弦，词落云笺。",
+    searchPlaceholder: "搜索文档...",
   },
   en: {
     logoText: "BetterLyrics",
     pageTitle: "BetterLyrics Documentation",
     heroTitle: "BetterLyrics",
     heroSubtitle: "Strums the Heartstrings, Graces the Wordscapes.",
+    searchPlaceholder: "Search docs...",
   },
 };
 
@@ -43,6 +45,11 @@ function applyTranslations(lang) {
         el.classList.remove("lang-switching");
       }, 300);
     }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    el.setAttribute("placeholder", translations[lang][key]);
   });
 }
 
@@ -434,3 +441,171 @@ async function loadMarkdown(path) {
 
 // 初始化
 loadSidebar();
+
+// 全文搜索逻辑
+const searchInput = document.getElementById("search-input");
+const searchResultsContainer = document.getElementById("search-results");
+let searchCache = {};
+let isFetchingSearchCache = false;
+
+// 简单的 Markdown 去除
+function stripMarkdown(md) {
+  return md
+    .replace(/^---[\s\S]*?---\r?\n/, '') // Remove frontmatter
+    .replace(/<[^>]+>/g, '') // Remove HTML tags
+    .replace(/[#*`_\[\]()>-]/g, '') // Remove basic markdown symbols
+    .replace(/\n+/g, ' ') // Replace newlines with space
+    .trim();
+}
+
+// 缓存当前语言的所有文档
+async function prepareSearchCache(lang) {
+  if (searchCache[lang]) return;
+  if (isFetchingSearchCache) return;
+  isFetchingSearchCache = true;
+  
+  try {
+    const data = await fetchSidebarData(); // Gets sidebarData[currentLang]
+    const items = [];
+    if (!sidebarData || !sidebarData[lang]) return;
+    
+    sidebarData[lang].forEach(group => {
+      group.items.forEach(item => items.push(item));
+    });
+    
+    const cache = [];
+    await Promise.all(items.map(async (item) => {
+      try {
+        const res = await fetch(item.path);
+        if (res.ok) {
+          const text = await res.text();
+          cache.push({
+            title: item.title,
+            path: item.path,
+            content: stripMarkdown(text)
+          });
+        }
+      } catch (e) {
+        console.error("Failed to fetch for search cache", item.path);
+      }
+    }));
+    
+    searchCache[lang] = cache;
+  } catch (err) {
+    console.error("Failed to prepare search cache", err);
+  } finally {
+    isFetchingSearchCache = false;
+  }
+}
+
+if (searchInput && searchResultsContainer) {
+  // 聚焦时提前加载
+  searchInput.addEventListener("focus", () => {
+    prepareSearchCache(currentLang);
+  });
+  
+  // 点击外部关闭搜索结果
+  document.addEventListener("click", (e) => {
+    if (!searchInput.contains(e.target) && !searchResultsContainer.contains(e.target)) {
+      searchResultsContainer.classList.remove("active");
+    }
+  });
+
+  searchInput.addEventListener("input", async (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    
+    if (!query) {
+      searchResultsContainer.classList.remove("active");
+      searchResultsContainer.innerHTML = "";
+      return;
+    }
+
+    if (!searchCache[currentLang]) {
+      searchResultsContainer.classList.add("active");
+      searchResultsContainer.innerHTML = `<div class="search-result-item" style="cursor:default;"><div class="search-result-snippet">Loading...</div></div>`;
+      await prepareSearchCache(currentLang);
+    }
+    
+    const cache = searchCache[currentLang];
+    if (!cache) return;
+
+    const results = [];
+    cache.forEach(doc => {
+      const titleMatch = doc.title.toLowerCase().includes(query);
+      const contentIndex = doc.content.toLowerCase().indexOf(query);
+      
+      if (titleMatch || contentIndex !== -1) {
+        let snippet = "";
+        if (contentIndex !== -1) {
+          const start = Math.max(0, contentIndex - 40);
+          const end = Math.min(doc.content.length, contentIndex + query.length + 40);
+          snippet = (start > 0 ? "..." : "") + doc.content.substring(start, end) + (end < doc.content.length ? "..." : "");
+        } else {
+          snippet = doc.content.substring(0, 80) + "...";
+        }
+        
+        // Escape query for regex
+        const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${safeQuery})`, 'gi');
+        
+        const highlightedTitle = doc.title.replace(regex, '<span class="search-highlight">$1</span>');
+        const highlightedSnippet = snippet.replace(regex, '<span class="search-highlight">$1</span>');
+
+        results.push({
+          titleHtml: highlightedTitle,
+          snippetHtml: highlightedSnippet,
+          path: doc.path
+        });
+      }
+    });
+
+    if (results.length === 0) {
+      searchResultsContainer.innerHTML = `<div class="search-result-item" style="cursor:default;"><div class="search-result-snippet">No results found</div></div>`;
+    } else {
+      searchResultsContainer.innerHTML = results.map(r => `
+        <a href="#${r.path}" class="search-result-item" data-path="${r.path}">
+          <div class="search-result-title">${r.titleHtml}</div>
+          <div class="search-result-snippet">${r.snippetHtml}</div>
+        </a>
+      `).join('');
+      
+      searchResultsContainer.querySelectorAll(".search-result-item").forEach(el => {
+        el.addEventListener("click", (evt) => {
+          evt.preventDefault();
+          const path = el.getAttribute("data-path");
+          
+          let gIdx = -1, iIdx = -1;
+          sidebarData[currentLang].forEach((g, gIndex) => {
+            g.items.forEach((item, iIndex) => {
+              if(item.path === path) {
+                gIdx = gIndex;
+                iIdx = iIndex;
+              }
+            });
+          });
+          
+          if (gIdx !== -1 && iIdx !== -1) {
+             currentGroupIndex = gIdx;
+             currentItemIndex = iIdx;
+             document.querySelectorAll("#sidebar-nav a").forEach(link => link.classList.remove("active"));
+             let linkIndex = 0;
+             const links = sidebarNav.querySelectorAll("a");
+             sidebarData[currentLang].forEach((g, _g) => g.items.forEach((i, _i) => {
+               if (_g === currentGroupIndex && _i === currentItemIndex && links[linkIndex]) {
+                 links[linkIndex].classList.add("active");
+               }
+               linkIndex++;
+             }));
+          }
+
+          window.location.hash = "#" + path;
+          loadMarkdown(path);
+          searchResultsContainer.classList.remove("active");
+          searchInput.blur();
+        });
+      });
+    }
+    
+    searchResultsContainer.classList.add("active");
+  });
+}
