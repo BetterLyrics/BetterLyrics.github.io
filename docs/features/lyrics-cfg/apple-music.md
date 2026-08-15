@@ -1,0 +1,9 @@
+# Apple Music
+
+- Open the [Apple Music website](https://music.apple.com/).
+- Log in to your account.
+- Open the Developer Tools window (F12).
+- In the Developer Tools window, first locate the `Application` tab, then locate and expand the `Cookie` in the left panel, and choose `https://music.apple.com`.
+- Type `media-user-token` in the filter bar, and copy its value.
+- Open BetterLyrics and go to the [Playback Source](betterlyrics://settings/PlaybackLib) settings.
+- Input the copied value into the `Apple Music media-user-token` setting, then click the accept icon on the right.

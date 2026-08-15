@@ -1,0 +1,25 @@
+# Window & Interaction
+
+### How to move and resize the window?
+
+If you cannot select or move the window, please check if you have set the `Draggable Area` option to `None` by mistake in the `Window` settings under [`Lyrics Window Management`](betterlyrics://settings/lyricswindowmgr).
+
+### I can't see any buttons / The bottom command bar is hidden
+
+**Top & Bottom Command Bars:**
+
+- By default, when the mouse moves out of the top command bar and bottom command bar (playback control panel) areas, they automatically hide. Simply hover your mouse over these areas to show them again.
+- If the window is locked, just hover over the window, and you'll see the unlock button.
+
+**Cannot summon bottom panel:**
+When the window is too small to display the panel, you can only show the playback control panel by hovering over the bottom of the lyrics window and clicking the white line.
+
+### What are the default shortcuts?
+
+- `Ctrl + Alt + H`: Show/Hide lyrics window
+- `Ctrl + Alt + S`: Switch lyrics window status (mode)
+- `Ctrl + Alt + P`: Play/Pause current track
+- `Ctrl + Alt + Right`: Next track
+- `Ctrl + Alt + Left`: Previous track
+
+> You can go to `Settings` -> [`App Appearance & Behavior`](betterlyrics://settings/app) to change the above shortcuts.

@@ -1,0 +1,31 @@
+# 播放器适配指南
+
+import { Badge } from '@astrojs/starlight/components';
+
+> 本小节汇总了已经过测试的主流播放器及其配置指南。请在左侧导航栏中选择您使用的播放器查看详情。
+> 
+> 未列出的播放器不代表不可用。若您发现其他能正常运行的播放器，欢迎编辑此页，参与文档贡献。
+
+## 核心机制说明
+
+BetterLyrics 主要通过 **[系统媒体传输控制（SMTC）](https://learn.microsoft.com/zh-cn/windows/uwp/audio-video-camera/integrate-with-systemmediatransportcontrols)** 来获取播放信息。根据适配难度，播放器通常分为两类：
+
+### 1. 开箱即用（原生支持 SMTC）
+凡是完整接入了 **SMTC** 的现代播放器，通常 **无需任何配置** 即可直接使用。
+* **包括**：Spotify, Apple Music, Windows Media Player（新版）, Chrome/Edge 浏览器等。
+
+### 2. 需要配置（插件/设置）
+部分传统播放器或深度定制的软件，需要 **安装专用插件** 或 **开启特定开关** 才能对外暴露播放信息。
+* **包括**：AIMP, foobar2000, 网易云音乐, QQ 音乐等。
+
+## 标签说明
+
+在左侧导航栏中，我们使用以下标签标识播放器的适配状态：
+
+| 标签 | 含义 | 说明 |
+| :--- | :--- | :--- |
+| （无） | **免配置** | 开箱即用，原生支持 SMTC，无需任何操作。 |
+| <Badge variant="note" text="Config" /> | **需配置** | 需在软件设置中开启特定开关，或安装第三方插件。 |
+| <Badge variant="caution" text="Limited" /> | **受限** | 存在功能缺失（如无法拖拽进度条、时间轴偏差等）。 |
+
+> ⚠️ **注意**：支持列表持续更新中，请以软件实际体验为准。

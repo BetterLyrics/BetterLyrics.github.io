@@ -1,0 +1,20 @@
+# NetEase Cloud Music
+
+> [NetEase Cloud Music](https://music.163.com) (Chinese: 网易云音乐) is a Chinese freemium music streaming service developed and owned by NetEase, Inc. The streaming service was launched to the public on 23 April 2013. In April 2017 it received its series A financing of 750 million CNY (US$107 million), and was valued at 8 billion CNY (US$1.14 billion). The main features of NetEase Cloud Music include playlists, live streaming, online karaoke, and social networking. As of May 2022, more than 450,000 independent musicians have registered with NetEase Cloud Music, rising to over 611,000 registered artists by December 2022 with a music database consisting of over 60 million songs. It is one of the biggest competitors in the Chinese music streaming business, primarily competing with Tencent's QQ Music.[^1]
+
+## Setup Guide
+
+### Basic Setup
+
+Please install the following components **in order**:
+
+1. **Base Framework**: Install [BetterNCM](https://microblock.cc/betterncm).
+2. **Connector Plugin**: Install [InfLink-rs](https://github.com/apoint123/inflink-rs) within BetterNCM.
+
+For issues related to BetterNCM, please refer to the [User Documentation (Community)](https://my.feishu.cn/docx/UZkSd9d46o4fVOxaPNBcGXSenme) for solutions.
+
+### Precise Matching
+
+For precise matching, please ensure **NetEase Cloud Music** is placed at the top of the lyrics source list.
+
+[^1]: [Wikipedia](https://en.wikipedia.org/wiki/NetEase_Cloud_Music)

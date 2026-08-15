@@ -1,0 +1,12 @@
+# LX Music
+
+> 一个基于 Electron & Vue 开发的音乐软件[^1]
+
+## Setup Guide
+
+Please follow these configuration steps:
+
+1. **LX Music**: In Settings under **Open API**, check **Enable Open API Service**.
+2. **BetterLyrics**: Enter the corresponding server address in the [**Playback Source**](betterlyrics://settings/playbacklib) section.
+
+[^1]: [GitHub](https://github.com/lyswhut/lx-music-desktop)

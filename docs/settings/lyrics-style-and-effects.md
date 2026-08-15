@@ -1,0 +1,65 @@
+# Lyrics Styles & Effects
+
+BetterLyrics provides an extensive range of customization options for lyrics styles and dynamic effects, allowing you to fine-tune the visual experience to perfection.
+
+## Typography & Layout
+
+From the settings panel, you can perform pixel-perfect adjustments to the lyrics text:
+
+### Font Size & Spacing
+- **Dynamic Font Size**: You can independently set the font sizes for **Primary Lyrics (Original)**, **Phonetic Lyrics (e.g., Romaji)**, and **Translated Lyrics**.
+- **Line Spacing adjustments**:
+  - `Overall Spacing Factor`: Controls the vertical distance between two independent lines of lyrics.
+  - `Inner Spacing Factor`: Controls the vertical distance between the original line and its translation/phonetic line within the same lyrics block.
+- **Font Weight**: Adjust the boldness of the lyrics text to match different background styles.
+
+### Alignment
+- Supports **Left**, **Center**, and **Right** alignment out of the box.
+- `Auto Wrap`: Automatically wraps lyrics that exceed the screen width. This ensures complete visibility in narrow-screen modes or multitasking windows.
+
+### Multi-layer Lyrics Order
+If you enable original, translated, and phonetic lyrics simultaneously, you can freely arrange their **Layer Order**. For instance, you could place the original lyrics in the middle, phonetic on top, and translation at the bottom.
+
+---
+
+## Colors & Opacity
+
+To ensure lyrics remain legible against complex backgrounds, BetterLyrics introduces adaptive coloring and deep opacity management.
+
+- **Opacity Management**:
+  - Separately control the opacity of **Played** and **Unplayed** original lyrics (e.g., unplayed lyrics default to 30% opacity to highlight the current focus).
+  - Independently control the opacity of translated and phonetic lyrics (defaults to 60%).
+- **Adaptive Font Color**: Automatically extracts the text color with the highest contrast based on the currently playing album art or background.
+- **Custom Colors**: You can forcefully override the Foreground, Background, and Stroke colors of the lyrics.
+
+---
+
+## Advanced Lyrics Effects
+
+This is the core of BetterLyrics' visual experience. Beyond basic scrolling, you can enable a variety of rendering effects.
+
+### Word-by-Word Highlight
+When playing `.lrc` or `.ttml` lyrics with word-level timestamps, BetterLyrics parses and renders a **syllable-by-syllable highlight** effect. Combined with smooth scrolling, it delivers a precise karaoke-like experience.
+
+### Glow & Long Syllable Persistence
+- When enabled, the currently sung text emits a soft glow.
+- **Long Syllable Effect**: Designed specifically for slow songs or sustained notes. You can set a trigger threshold (e.g., syllables longer than `700ms`). During sustained notes, the scale and glow intensity will dynamically adjust over time.
+
+### Scale & Float Animation
+- **Scale Effect**: The currently playing line or syllable slightly enlarges (default 115%) to emphasize the vocal focus.
+- **Float Animation**: Lyrics gently float up and down while scrolling or idling, breathing life into the interface.
+
+### Additional Visual Filters
+- **Blur**: Applies a Gaussian blur to unplayed background lyrics.
+- **Fade Out** & **Edge Feathering**: Adds fading layers to the top and bottom edges of the lyrics window, ensuring smooth transitions as lyrics scroll in and out of the screen.
+- **Out of Sight**: Unplayed lyrics beyond a certain range will fade backward with a 3D depth perspective.
+
+### Effect Parameter Fine-tuning
+Advanced users can tweak the timing curves (Easing Types) for all animations:
+- `Scroll Duration` and `Ease Mode` (supports Quad, Cubic, etc.).
+- Even the bounce and transition times when paging reaches the `Top Duration` and `Bottom Duration` can be individually adjusted.
+
+## 3D Space
+BetterLyrics natively supports projecting the flat 2D lyrics layer into a 3D space.
+- Enable **Auto 3D** to let the software automatically tweak the X, Y, and Z tilt angles based on the music's rhythm and spectrum.
+- Or, manually adjust the **Fan Lyrics** angle, X/Y/Z tilts, and **3D Depth** to craft a unique perspective lyrics desktop.

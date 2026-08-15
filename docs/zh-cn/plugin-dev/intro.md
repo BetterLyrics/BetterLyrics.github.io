@@ -1,0 +1,33 @@
+# 插件开发指南
+
+## 1. 环境准备
+
+* 下载并安装 [Microsoft Visual Studio 2026](https://visualstudio.microsoft.com/vs/)。
+
+## 2. 获取主项目
+
+克隆主项目仓库并完成本地构建：
+
+```bash
+git clone https://github.com/jayfunc/BetterLyrics.git
+```
+
+## 3. 创建插件项目
+
+通过以下模板链接克隆并创建你的插件项目：
+
+* [BetterLyrics 插件模板](https://github.com/new?template_name=BetterLyrics.Plugins.Template&template_owner=BetterLyrics)
+
+## 4. 开发与配置
+
+1. 打开插件项目，全局搜索并修改标注有 `// TODO` 的地方，编写你的插件核心逻辑。
+2. 打开项目配置文件，将 `BetterLyricsHostDir` 修改为你本地 `BetterLyrics` 主项目解决方案所在的绝对路径。
+
+## 5. 编译与打包
+
+完成开发后，直接编译（Build）插件项目。成功后将自动生成相关产物：
+
+* **语言包文件夹 (`Langs`)**：位于 `BetterLyrics.Plugins.Template/Langs`
+* **插件安装包 (`.blp`)**：位于 `BetterLyrics.Plugins.Template/Dist`
+
+> 💡 **提示**：如果后续需要完善或新增多语言支持，只需修改 `Langs` 中的内容并重新编译即可。
