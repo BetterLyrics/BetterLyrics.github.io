@@ -1,10 +1,10 @@
 # Plugins Store
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-<CardGrid>
-  <LinkCard title="Romaji Converter" description="Convert Japanese Kanji/Kana to Romaji." href="https://github.com/BetterLyrics/BetterLyrics.Plugins.Transliteration.Romaji/releases/latest" />
-  <LinkCard title="AI Lyrics Translation Assistant" description="This is an AI-generated LibreTranslate adapter. Simply enter your AI API key to emulate a LibreTranslate server, enabling AI-powered translation for your music lyrics." href="https://github.com/pliok7485/BetterLyrics-AI-Lyrics-Translation-Assistant/releases/latest" />
-</CardGrid>
+<cardGrid>
+  <linkCard title="Romaji Converter" description="Convert Japanese Kanji/Kana to Romaji." href="https://github.com/BetterLyrics/BetterLyrics.Plugins.Transliteration.Romaji/releases/latest" />
+  <linkCard title="AI Lyrics Translation Assistant" description="This is an AI-generated LibreTranslate adapter. Simply enter your AI API key to emulate a LibreTranslate server, enabling AI-powered translation for your music lyrics." href="https://github.com/pliok7485/BetterLyrics-AI-Lyrics-Translation-Assistant/releases/latest" />
+  <linkCard title="Musixmatch" description="Adds Musixmatch as a lyrics source." href="https://github.com/NimiGames68/Musixmatch-BetterLyrics/releases/latest" />
+</cardGrid>
 
 More plugins are on the ways...

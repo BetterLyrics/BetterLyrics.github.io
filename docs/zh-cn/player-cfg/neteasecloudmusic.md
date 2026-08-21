@@ -7,8 +7,7 @@
 ### 基础设置
 
 请 **按顺序** 安装以下组件：
-
-1. **基础框架**：安装 [BetterNCM](https://microblock.cc/betterncm)。
+ **基础框架**：安装 [BetterNCM](https://microblock.cc/betterncm)。
 2. **对接插件**：安装完 BetterNCM 后，启动网易云并在 BetterNCM 插件市场中安装 InfLink-rs
 
 另附Github项目页[InfLink-rs](https://github.com/apoint123/inflink-rs)。

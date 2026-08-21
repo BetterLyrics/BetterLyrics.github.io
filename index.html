@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-i18n="pageTitle">BetterLyrics Documentation</title>
+    <title>BetterLyrics</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Lora:wght@500;600&family=Noto+Sans+SC:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap"
@@ -11,7 +11,111 @@
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      /* Landing Page Specific Styles */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      .hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-grow: 1;
+        padding: 4rem 2rem;
+        z-index: 10;
+        position: relative;
+      }
+      .hero-logo {
+        width: 140px;
+        height: auto;
+        margin-bottom: 2rem;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      .hero-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 4.5rem;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        background: linear-gradient(135deg, var(--text-color), #888);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-subtitle {
+        font-family: 'LXGW WenKai Lite', serif;
+        font-size: 1.8rem;
+        color: var(--text-color);
+        opacity: 0.8;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        line-height: 1.5;
+        min-height: 54px;
+        transition: opacity 0.3s ease;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        max-width: 800px;
+      }
+      .btn {
+        padding: 0.8rem 2.5rem;
+        border-radius: 50px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .btn-primary {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        border: 2px solid var(--text-color);
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--text-color);
+        border: 2px solid var(--shape-color);
+        backdrop-filter: blur(10px);
+      }
+      .btn-secondary:hover {
+        background-color: var(--shape-color);
+        transform: translateY(-3px);
+      }
+      [data-theme="dark"] .hero-title {
+        background: linear-gradient(135deg, #fff, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      @media (max-width: 768px) {
+        .hero-title { font-size: 3rem; }
+        .hero-subtitle { font-size: 1.2rem; }
+        .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
+        .btn { justify-content: center; }
+      }
+      .lang-switching {
+        opacity: 0 !important;
+      }
+    </style>
   </head>
   <body>
     <div class="custom-cursor-dot"></div>
@@ -23,11 +127,8 @@
       <div class="shape shape-4"></div>
     </div>
 
-    <nav class="navbar">
+    <nav class="navbar" style="position: absolute; width: 100%; top: 0; background: transparent; border-bottom: none; z-index: 20;">
       <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
-        <img src="public/favicon.ico" alt="Logo" class="app-logo" style="height: 28px; width: auto;" />
-        <div class="logo" data-i18n="logoText">BetterLyrics</div>
-        <div class="slogan" data-i18n="heroSubtitle">Strums the Heartstrings, Graces the Wordscapes.</div>
       </div>
       <div class="controls">
         <div class="custom-lang-switch" id="lang-switch-container">
@@ -56,29 +157,142 @@
       </div>
     </nav>
 
-    <div class="docs-container">
-      <aside class="sidebar reveal">
-        <div class="search-container">
-          <input type="text" id="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Search docs..." autocomplete="off" />
-          <i class="ph ph-magnifying-glass search-icon"></i>
-          <div id="search-results" class="search-results"></div>
-        </div>
-        <nav id="sidebar-nav">
-          <!-- Sidebar generated by JS -->
-        </nav>
-      </aside>
+    <main class="hero-section">
+      <img src="public/favicon.ico" alt="BetterLyrics" class="hero-logo" />
+      <h1 class="hero-title">BetterLyrics</h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">Strums the Heartstrings, Graces the Wordscapes.</p>
       
-      <main class="content-area reveal">
-        <div id="markdown-content">
-          <!-- Markdown injected here -->
-        </div>
-      </main>
-    </div>
+      <div class="hero-buttons">
+        <a href="https://apps.microsoft.com/detail/9p1wcd1p597r" class="btn btn-secondary" target="_blank" id="btn-ms-store">
+          <i class="ph ph-shopping-bag"></i> <span data-i18n="btnMsStore">Microsoft Store</span>
+        </a>
+        <a href="https://github.com/jayfunc/BetterLyrics/releases" class="btn btn-secondary" target="_blank" id="btn-github">
+          <i class="ph ph-github-logo"></i> <span data-i18n="btnGithub">GitHub Releases</span>
+        </a>
+        <a href="docs.html" class="btn btn-secondary">
+          <i class="ph ph-book-open"></i> <span data-i18n="btnDocs">Documentation</span>
+        </a>
+      </div>
+    </main>
 
-    <footer>
+    <footer style="position: absolute; bottom: 0; width: 100%; border-top: none; background: transparent;">
       <p>© 2026 BetterLyrics</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+      // 1. 语言切换逻辑
+      const translations = {
+        en: {
+          heroSubtitle: "Strums the Heartstrings, Graces the Wordscapes.",
+          btnMsStore: "Microsoft Store",
+          btnGithub: "GitHub Releases",
+          btnDocs: "Documentation"
+        },
+        zh: {
+          heroSubtitle: "曲拨心弦，词落云笺。",
+          btnMsStore: "微软商店",
+          btnGithub: "GitHub 下载",
+          btnDocs: "文档"
+        }
+      };
+
+      const langContainer = document.getElementById("lang-switch-container");
+      const langToggle = document.getElementById("lang-toggle");
+      const langMenu = document.getElementById("lang-menu");
+      const currentLangText = document.getElementById("current-lang");
+      const langOptions = langMenu.querySelectorAll("li");
+
+      let currentLang = "en";
+
+      langToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        langContainer.classList.toggle("open");
+      });
+
+      document.addEventListener("click", () => {
+        langContainer.classList.remove("open");
+      });
+
+      function applyTranslations(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          el.classList.add("lang-switching");
+          setTimeout(() => {
+            el.innerHTML = translations[lang][key];
+            el.classList.remove("lang-switching");
+          }, 300);
+        });
+      }
+
+      langOptions.forEach((option) => {
+        option.addEventListener("click", (e) => {
+          const lang = e.target.getAttribute("data-value");
+          const langText = e.target.textContent;
+
+          currentLang = lang;
+          currentLangText.textContent = langText;
+          langOptions.forEach((opt) => opt.classList.remove("active"));
+          e.target.classList.add("active");
+          langContainer.classList.remove("open");
+
+          applyTranslations(lang);
+        });
+      });
+
+      // 2. 日夜主题切换逻辑
+      const themeSwitch = document.getElementById("theme-switch");
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const currentTheme = localStorage.getItem("theme") || (prefersDarkScheme.matches ? "dark" : "light");
+
+      document.documentElement.setAttribute("data-theme", currentTheme);
+
+      themeSwitch.addEventListener("click", () => {
+        let theme = document.documentElement.getAttribute("data-theme");
+        let switchToTheme = theme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", switchToTheme);
+        localStorage.setItem("theme", switchToTheme);
+      });
+
+      // 3. 极简几何背景鼠标跟随逻辑
+      document.addEventListener("mousemove", (e) => {
+        const shapes = document.querySelectorAll(".shape");
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        shapes.forEach((shape, index) => {
+          const speed = (index + 1) * 20;
+          shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+      });
+
+      // 4. 自定义鼠标跟随与悬停效果
+      const cursorDot = document.querySelector(".custom-cursor-dot");
+      const cursorRing = document.querySelector(".custom-cursor-ring");
+
+      if (window.matchMedia("(pointer: fine)").matches && cursorDot && cursorRing) {
+        let mouseX = -100, mouseY = -100;
+        let ringX = -100, ringY = -100;
+
+        window.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+        });
+
+        const renderCursor = () => {
+          ringX += (mouseX - ringX) * 0.15;
+          ringY += (mouseY - ringY) * 0.15;
+          cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+          requestAnimationFrame(renderCursor);
+        };
+        requestAnimationFrame(renderCursor);
+
+        const hoverElements = document.querySelectorAll("a, button, .lang-menu li, #lang-toggle");
+        hoverElements.forEach((el) => {
+          el.addEventListener("mouseenter", () => cursorRing.classList.add("hover"));
+          el.addEventListener("mouseleave", () => cursorRing.classList.remove("hover"));
+        });
+      }
+    </script>
   </body>
 </html>

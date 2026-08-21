@@ -169,17 +169,68 @@ let currentGroupIndex = 0;
 let currentItemIndex = 0;
 
 async function loadSidebar(isLanguageSwitch = false) {
-  const data = await fetchSidebarData();
+  await fetchSidebarData(); // Ensure sidebarData is loaded
+
+  if (!isLanguageSwitch) {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      let detectedLang = null;
+      for (const lang in sidebarData) {
+        sidebarData[lang].forEach(group => {
+          group.items.forEach(item => {
+            if (item.path === hash) {
+              detectedLang = lang;
+            }
+          });
+        });
+      }
+      if (detectedLang && detectedLang !== currentLang) {
+        currentLang = detectedLang;
+        langOptions.forEach(opt => {
+          if (opt.getAttribute("data-value") === currentLang) {
+            opt.classList.add("active");
+            currentLangText.textContent = opt.textContent;
+          } else {
+            opt.classList.remove("active");
+          }
+        });
+        applyTranslations(currentLang);
+      }
+    }
+  }
+
+  const data = sidebarData[currentLang];
   sidebarNav.innerHTML = "";
   
   data.forEach((group, gIdx) => {
     const section = document.createElement("div");
     const title = document.createElement("h3");
-    title.textContent = group.category;
+    title.innerHTML = `<span>${group.category}</span>
+      <svg viewBox="0 0 24 24" class="chevron" style="width:14px; height:14px; transition: transform 0.2s; transform: rotate(0deg);">
+        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>`;
     title.style.margin = "1rem 0 0.5rem 0";
     title.style.fontSize = "0.9rem";
     title.style.opacity = "0.6";
     title.style.textTransform = "uppercase";
+    title.style.cursor = "pointer";
+    title.style.display = "flex";
+    title.style.justifyContent = "space-between";
+    title.style.alignItems = "center";
+    title.style.userSelect = "none";
+    
+    title.addEventListener("click", () => {
+      const isCollapsed = ul.style.display === "none";
+      if (isCollapsed) {
+        ul.style.display = "block";
+        title.querySelector(".chevron").style.transform = "rotate(0deg)";
+        title.style.opacity = "0.6";
+      } else {
+        ul.style.display = "none";
+        title.querySelector(".chevron").style.transform = "rotate(-90deg)";
+        title.style.opacity = "0.4";
+      }
+    });
     
     const ul = document.createElement("ul");
     group.items.forEach((item, iIdx) => {
@@ -270,11 +321,8 @@ async function loadMarkdown(path) {
     // Remove frontmatter if exists (handling both \n and \r\n)
     text = text.replace(/^---[\s\S]*?---\r?\n/, '');
 
-    // Remove Astro Starlight imports
-    text = text.replace(/^import\s+.*?;?\s*$/gm, '');
-
-    // Remove Astro <Steps> components (tags only)
-    text = text.replace(/<\/?Steps>/g, '');
+    // Remove JS imports (e.g. Astro/Starlight components)
+    text = text.replace(/^[ \t]*import\s+.*?;?[ \t]*$/gm, '');
 
     // Parse Markdown Footnotes
     let footnotesHTML = "";
@@ -291,11 +339,11 @@ async function loadMarkdown(path) {
     text = text.replace(/\[\^([a-zA-Z0-9_-]+)\]/g, `<sup id="fnref-$1"><a href="#fn-$1" class="footnote-ref">$1</a></sup>`);
 
     // Parse <CardGrid>
-    text = text.replace(/<CardGrid>/g, '<div class="card-grid">');
-    text = text.replace(/<\/CardGrid>/g, '</div>');
+    text = text.replace(/<cardGrid>/ig, '<div class="card-grid">');
+    text = text.replace(/<\/cardGrid>/ig, '</div>');
 
     // Parse <LinkCard>
-    text = text.replace(/<LinkCard([^>]+)\/?>/g, (match, attrs) => {
+    text = text.replace(/<linkCard([^>]+)\/?>/ig, (match, attrs) => {
       const titleMatch = attrs.match(/title=["'](.*?)["']/);
       const descMatch = attrs.match(/description=["'](.*?)["']/);
       const hrefMatch = attrs.match(/href=["'](.*?)["']/);
@@ -306,11 +354,20 @@ async function loadMarkdown(path) {
     });
 
     // Parse <Card>
-    text = text.replace(/<Card([^>]*)>([\s\S]*?)<\/Card>/g, (match, attrs, content) => {
+    text = text.replace(/<card([^>]*)>([\s\S]*?)<\/card>/ig, (match, attrs, content) => {
       const titleMatch = attrs.match(/title=["'](.*?)["']/);
       const title = titleMatch ? titleMatch[1] : '';
       const renderedContent = marked.parse(content);
       return `<div class="card">${title ? `<div class="card-title">${title}</div>` : ''}<div class="card-content">${renderedContent}</div></div>`;
+    });
+
+    // Parse <Badge>
+    text = text.replace(/<badge([^>]+)\/?>/ig, (match, attrs) => {
+      const variantMatch = attrs.match(/variant=["'](.*?)["']/);
+      const textMatch = attrs.match(/text=["'](.*?)["']/);
+      const variant = variantMatch ? variantMatch[1] : 'note';
+      const badgeText = textMatch ? textMatch[1] : '';
+      return `<span class="nav-badge nav-badge-${variant}">${badgeText}</span>`;
     });
 
     // Parse admonitions (:::type[title] ... :::) handling indentation and CRLF
@@ -452,6 +509,7 @@ let isFetchingSearchCache = false;
 function stripMarkdown(md) {
   return md
     .replace(/^---[\s\S]*?---\r?\n/, '') // Remove frontmatter
+    .replace(/^[ \t]*import\s+.*?;?[ \t]*$/gm, '') // Remove JS imports
     .replace(/<[^>]+>/g, '') // Remove HTML tags
     .replace(/[#*`_\[\]()>-]/g, '') // Remove basic markdown symbols
     .replace(/\n+/g, ' ') // Replace newlines with space

@@ -2,7 +2,7 @@
 
 ## 1. Environment Preparation
 
-* Download and install [Microsoft Visual Studio 2026](https://visualstudio.microsoft.com/vs/).
+- Download and install [Microsoft Visual Studio 2026](https://visualstudio.microsoft.com/vs/).
 
 ## 2. Get the Main Project
 
@@ -16,7 +16,7 @@ git clone https://github.com/jayfunc/BetterLyrics.git
 
 Clone and create your plugin project using the template link below:
 
-* [BetterLyrics Plugin Template](https://github.com/new?template_name=BetterLyrics.Plugins.Template&template_owner=BetterLyrics)
+- [BetterLyrics Plugin Template](https://github.com/new?template_name=BetterLyrics.Plugins.Template&template_owner=BetterLyrics)
 
 ## 4. Development & Configuration
 
@@ -27,7 +27,7 @@ Clone and create your plugin project using the template link below:
 
 Once development is complete, build the plugin project directly. Upon a successful build, the relevant outputs will be automatically generated:
 
-* **Language Pack Folder (`Langs`)**: Located at `BetterLyrics.Plugins.Template/Langs`
-* **Plugin Installation Package (`.blp`)**: Located at `BetterLyrics.Plugins.Template/Dist`
+- **Language Pack Folder (`Langs`)**: Located at `BetterLyrics.Plugins.Template/Langs`
+- **Plugin Installation Package (`.blp`)**: Located at `BetterLyrics.Plugins.Template/Dist`
 
 > 💡 **Tip**: If you need to improve or add multi-language support later, simply modify the contents in `Langs` and rebuild the project.

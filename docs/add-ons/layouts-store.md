@@ -1,16 +1,14 @@
 # Layouts Store
 
-import { Badge } from '@astrojs/starlight/components';
-import { Card } from '@astrojs/starlight/components';
 
-<Card title="Taskbar Triple View">
+<card title="Taskbar Triple View">
 
 by Leon
 
 ![](https://github.com/jayfunc/BetterLyrics/blob/dev/resources/lyrics-window-layouts/taskbar-triple-view.png?raw=true)
 
-Recommended for use with <Badge text="Taskbar Mode" variant="note" size="medium" />
+Recommended for use with <badge text="Taskbar Mode" variant="note" size="medium" />
 
 [View config file](https://raw.githubusercontent.com/jayfunc/BetterLyrics/refs/heads/dev/resources/lyrics-window-layouts/taskbar-triple-view.json)
 
-</Card>
+</card>

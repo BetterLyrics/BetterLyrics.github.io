@@ -42,6 +42,10 @@
       "category": "Player Configuration",
       "items": [
         {
+          "title": "Player Setup Guide",
+          "path": "docs/player-cfg/index.md"
+        },
+        {
           "title": "AIMP",
           "path": "docs/player-cfg/aimp.md",
           "badge": {
@@ -80,10 +84,6 @@
         {
           "title": "HyPlayer",
           "path": "docs/player-cfg/hyplayer.md"
-        },
-        {
-          "title": "Player Setup Guide",
-          "path": "docs/player-cfg/index.md"
         },
         {
           "title": "iTunes",
@@ -295,6 +295,10 @@
       "category": "播放器配置",
       "items": [
         {
+          "title": "播放器适配指南",
+          "path": "docs/zh-cn/player-cfg/index.md"
+        },
+        {
           "title": "AIMP",
           "path": "docs/zh-cn/player-cfg/aimp.md",
           "badge": {
@@ -333,10 +337,6 @@
         {
           "title": "HyPlayer",
           "path": "docs/zh-cn/player-cfg/hyplayer.md"
-        },
-        {
-          "title": "播放器适配指南",
-          "path": "docs/zh-cn/player-cfg/index.md"
         },
         {
           "title": "iTunes",

@@ -1,7 +1,5 @@
 # Installation
 
-import { Steps } from '@astrojs/starlight/components';
-
 ## Install via Sideloading Package
 
 :::caution[Attention]
@@ -10,31 +8,25 @@ Please save your current work before proceeding.
 
 ### Method 1: Install via PowerShell Script
 
-<Steps>
-
 1. Extract the downloaded `.zip` file, right-click `install.ps1`, and select **Run with PowerShell**.
 
 2. Press **Enter** to continue and accept the prompts in the pop-up windows.
 
 3. Type `Y` to install the certificate.
 
-    :::caution[Attention]
-    Wait for the installation to complete. This step may take some time, and other applications might close or restart automatically. Please ensure your work is saved before starting.
-    :::
+   :::caution[Attention]
+   Wait for the installation to complete. This step may take some time, and other applications might close or restart automatically. Please ensure your work is saved before starting.
+   :::
 
-    Everything is now ready.
+   Everything is now ready.
 
-</Steps>
-
-*Note: If the installation fails while an older version is present, please try uninstalling the previous version before reinstalling.*
+_Note: If the installation fails while an older version is present, please try uninstalling the previous version before reinstalling._
 
 ### Method 2: Semi-Automatic Installation
 
 #### Manually Install the Certificate
 
 Double-click the `.cer` certificate file and follow these steps:
-
-<Steps>
 
 1. `Install Certificate...`
 2. `Local Machine`
@@ -45,8 +37,6 @@ Double-click the `.cer` certificate file and follow these steps:
 7. `OK`
 8. `Next`
 9. `Finish`
-
-</Steps>
 
 #### Install the App Package
 

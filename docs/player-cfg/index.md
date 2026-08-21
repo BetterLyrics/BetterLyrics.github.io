@@ -1,6 +1,5 @@
 # Player Setup Guide
 
-import { Badge } from '@astrojs/starlight/components';
 
 > This section summarizes the mainstream players supported by BetterLyrics along with their configuration guides. Please select your specific player from the list on the left for details.
 > 
@@ -21,7 +20,7 @@ Some legacy players or heavily customized software require **installing specific
 | Badge | Meaning | Description |
 | :--- | :--- | :--- |
 | (None) | **Native** | Out-of-the-box support. No setup required. |
-| <Badge variant="note" text="Config" /> | **Config** | Requires changing settings or installing third-party plugins. |
-| <Badge variant="caution" text="Limited" /> | **Limited** | Functional limitations (e.g., read-only seek, timeline offset). |
+| <badge variant="note" text="Config" /> | **Config** | Requires changing settings or installing third-party plugins. |
+| <badge variant="caution" text="Limited" /> | **Limited** | Functional limitations (e.g., read-only seek, timeline offset). |
 
 > ⚠️ **Note**: The support list is continuously updated. Please refer to the actual experience with the software.

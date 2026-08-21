@@ -19,8 +19,7 @@ git clone https://github.com/jayfunc/BetterLyrics.git
 * [BetterLyrics 插件模板](https://github.com/new?template_name=BetterLyrics.Plugins.Template&template_owner=BetterLyrics)
 
 ## 4. 开发与配置
-
-1. 打开插件项目，全局搜索并修改标注有 `// TODO` 的地方，编写你的插件核心逻辑。
+ 打开插件项目，全局搜索并修改标注有 `// TODO` 的地方，编写你的插件核心逻辑。
 2. 打开项目配置文件，将 `BetterLyricsHostDir` 修改为你本地 `BetterLyrics` 主项目解决方案所在的绝对路径。
 
 ## 5. 编译与打包
