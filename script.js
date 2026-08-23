@@ -22,7 +22,7 @@ const langMenu = document.getElementById("lang-menu");
 const currentLangText = document.getElementById("current-lang");
 const langOptions = langMenu.querySelectorAll("li");
 
-let currentLang = "en";
+let currentLang = localStorage.getItem("lang") || "en";
 
 langToggle.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -53,12 +53,24 @@ function applyTranslations(lang) {
   });
 }
 
+// Initialize language on load
+langOptions.forEach((opt) => {
+  if (opt.getAttribute("data-value") === currentLang) {
+    opt.classList.add("active");
+    currentLangText.textContent = opt.textContent;
+  } else {
+    opt.classList.remove("active");
+  }
+});
+applyTranslations(currentLang);
+
 langOptions.forEach((option) => {
   option.addEventListener("click", (e) => {
     const lang = e.target.getAttribute("data-value");
     const langText = e.target.textContent;
 
     currentLang = lang;
+    localStorage.setItem("lang", lang);
     currentLangText.textContent = langText;
     langOptions.forEach((opt) => opt.classList.remove("active"));
     e.target.classList.add("active");
@@ -186,6 +198,7 @@ async function loadSidebar(isLanguageSwitch = false) {
       }
       if (detectedLang && detectedLang !== currentLang) {
         currentLang = detectedLang;
+        localStorage.setItem("lang", currentLang);
         langOptions.forEach(opt => {
           if (opt.getAttribute("data-value") === currentLang) {
             opt.classList.add("active");
@@ -667,3 +680,79 @@ if (searchInput && searchResultsContainer) {
     searchResultsContainer.classList.add("active");
   });
 }
+
+// Page Entry/Exit Transition Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const curtain = document.getElementById("page-curtain");
+  if (!curtain) return;
+
+  // 1. Check for entry animation
+  const transitionState = sessionStorage.getItem('page-transition');
+  if (transitionState === 'slide-up') {
+    curtain.style.display = 'block';
+    curtain.className = "page-transition-curtain curtain-slide-up-enter";
+    sessionStorage.removeItem('page-transition');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        curtain.classList.add("loaded");
+      });
+    });
+  }
+
+  // 2. Add exit animation when clicking logo to return to landing page
+  const logoLink = document.querySelector('a[href="index.html"]');
+  if (logoLink) {
+    logoLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      
+      curtain.style.display = 'block';
+      curtain.className = "page-transition-curtain curtain-slide-down-exit";
+      void curtain.offsetWidth; // Force reflow
+      curtain.classList.add("active");
+      
+      const contentArea = document.querySelector('.content-area');
+      const sidebar = document.querySelector('.sidebar');
+      if (contentArea) {
+         contentArea.style.transition = 'transform 0.6s cubic-bezier(0.75, 0, 0.25, 1), opacity 0.4s ease';
+         contentArea.style.transform = 'translateY(40px)';
+         contentArea.style.opacity = '0';
+      }
+      if (sidebar) {
+         sidebar.style.transition = 'transform 0.6s cubic-bezier(0.75, 0, 0.25, 1), opacity 0.4s ease';
+         sidebar.style.transform = 'translateY(40px)';
+         sidebar.style.opacity = '0';
+      }
+      
+      sessionStorage.setItem('page-transition', 'slide-down');
+      
+      // Wait for animation, then navigate
+      setTimeout(() => {
+        window.location.href = logoLink.href;
+      }, 600);
+    });
+  }
+});
+
+// Keyboard Shortcuts
+document.addEventListener('keydown', (e) => {
+  const searchInput = document.getElementById('search-input');
+  
+  // Ignore if user is typing in an input or textarea (unless it's the search box and they press Escape)
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+    if (e.key === 'Escape' && e.target === searchInput) {
+      searchInput.value = '';
+      searchInput.blur();
+      const searchResultsContainer = document.getElementById('search-results');
+      if (searchResultsContainer) searchResultsContainer.classList.remove('active');
+    }
+    return;
+  }
+
+  // '/' or 'Cmd/Ctrl + K' focuses the search input
+  if (e.key === '/' || (e.key.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey))) {
+    if (searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  }
+});

@@ -126,6 +126,8 @@
       <div class="shape shape-3"></div>
       <div class="shape shape-4"></div>
     </div>
+    
+    <div class="page-transition-curtain" id="page-curtain" style="display: none;"></div>
 
     <nav class="navbar" style="position: absolute; width: 100%; top: 0; background: transparent; border-bottom: none; z-index: 20;">
       <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
@@ -202,7 +204,7 @@
       const currentLangText = document.getElementById("current-lang");
       const langOptions = langMenu.querySelectorAll("li");
 
-      let currentLang = "en";
+      let currentLang = localStorage.getItem("lang") || "en";
 
       langToggle.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -224,12 +226,24 @@
         });
       }
 
+      // Initialize language on load
+      langOptions.forEach((opt) => {
+        if (opt.getAttribute("data-value") === currentLang) {
+          opt.classList.add("active");
+          currentLangText.textContent = opt.textContent;
+        } else {
+          opt.classList.remove("active");
+        }
+      });
+      applyTranslations(currentLang);
+
       langOptions.forEach((option) => {
         option.addEventListener("click", (e) => {
           const lang = e.target.getAttribute("data-value");
           const langText = e.target.textContent;
 
           currentLang = lang;
+          localStorage.setItem("lang", lang);
           currentLangText.textContent = langText;
           langOptions.forEach((opt) => opt.classList.remove("active"));
           e.target.classList.add("active");
@@ -291,6 +305,45 @@
         hoverElements.forEach((el) => {
           el.addEventListener("mouseenter", () => cursorRing.classList.add("hover"));
           el.addEventListener("mouseleave", () => cursorRing.classList.remove("hover"));
+        });
+      }
+
+      // 5. Page Transition Logic
+      const docBtn = document.querySelector('a[href="docs.html"]');
+      const curtain = document.getElementById("page-curtain");
+      const heroSection = document.querySelector(".hero-section");
+
+      // Handle entering index.html
+      const transitionState = sessionStorage.getItem('page-transition');
+      if (transitionState === 'slide-down' && curtain) {
+        curtain.style.display = 'block';
+        curtain.className = "page-transition-curtain curtain-slide-down-enter";
+        sessionStorage.removeItem('page-transition');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            curtain.classList.add("loaded");
+          });
+        });
+      }
+
+      // Handle exiting to docs.html
+      if (docBtn && curtain) {
+        docBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          
+          // Trigger animations
+          curtain.style.display = 'block';
+          curtain.className = "page-transition-curtain curtain-slide-up-exit";
+          void curtain.offsetWidth; // Force reflow
+          curtain.classList.add("active");
+          if (heroSection) heroSection.classList.add("exit-active");
+          
+          sessionStorage.setItem('page-transition', 'slide-up');
+          
+          // Wait for animation, then navigate
+          setTimeout(() => {
+            window.location.href = docBtn.href;
+          }, 600);
         });
       }
     </script>

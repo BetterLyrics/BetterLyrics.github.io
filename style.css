@@ -470,6 +470,65 @@ footer {
 }
 
 /* 移动端适配 */
+@media (max-width: 900px) { .slogan { display: none; } .search-container { width: 180px; } } @media (max-width: 600px) { .search-container { display: none; /* Hide on extremely small screens to prevent overflow, or could make it full width below navbar */ } }
+
+/* =========================================
+   Page Transition (Expressive Curtain)
+   ========================================= */
+.page-transition-curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  z-index: 99999;
+  pointer-events: none;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.curtain-slide-up-enter {
+  transform: translateY(0);
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.curtain-slide-up-enter.loaded {
+  transform: translateY(-100%);
+}
+
+.curtain-slide-up-exit {
+  transform: translateY(100%);
+  transition: transform 0.7s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.curtain-slide-up-exit.active {
+  transform: translateY(0);
+}
+
+.curtain-slide-down-enter {
+  transform: translateY(0);
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+
+}
+.curtain-slide-down-enter.loaded {
+  transform: translateY(100%);
+}
+
+.curtain-slide-down-exit {
+  transform: translateY(-100%);
+  transition: transform 0.7s cubic-bezier(0.75, 0, 0.25, 1);
+}
+.curtain-slide-down-exit.active {
+  transform: translateY(0);
+}
+
+.hero-section {
+  transition: transform 0.7s cubic-bezier(0.75, 0, 0.25, 1), opacity 0.5s ease;
+}
+.hero-section.exit-active {
+  transform: scale(0.92) translateY(-40px);
+  opacity: 0;
+}
+
 @media (max-width: 768px) {
   .shape-1 {
     width: 150px;
@@ -753,6 +812,8 @@ footer {
   text-decoration-color: var(--accent-color);
   text-underline-offset: 4px;
   transition: var(--transition);
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 #markdown-content a:hover {
@@ -1143,5 +1204,25 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
 }
-@ m e d i a   ( m a x - w i d t h :   9 0 0 p x )   {   . s l o g a n   {   d i s p l a y :   n o n e ;   }   . s e a r c h - c o n t a i n e r   {   w i d t h :   1 8 0 p x ;   }   }   @ m e d i a   ( m a x - w i d t h :   6 0 0 p x )   {   . s e a r c h - c o n t a i n e r   {   d i s p l a y :   n o n e ;   / *   H i d e   o n   e x t r e m e l y   s m a l l   s c r e e n s   t o   p r e v e n t   o v e r f l o w ,   o r   c o u l d   m a k e   i t   f u l l   w i d t h   b e l o w   n a v b a r   * /   }   }  
+@ m e d i a   ( m a x - w i d t h :   9 0 0 p x )   {   . s l o g a n   {   d i s p l a y :   n o n e ;   }   . s e a r c h - c o n t a i n e r   {   w i d t h :   1 8 0 p x ;   }   }   @ m e d i a   ( m a x - w i d t h :   6 0 0 p x )   {   . s e a r c h - c o n t a i n e r   {   d i s p l a y :   n o n e ;   / *   H i d e   o n   e x t r e m e l y   s m a l l   s c r e e n s   t o   p r e v e n t   o v e r f l o w ,   o r   c o u l d   m a k e   i t   f u l l   w i d t h   b e l o w   n a v b a r   * /   }   } 
  
+ 
+.search-kbd {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--shape-color);
+  color: var(--accent-color);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  pointer-events: none;
+  border: 1px solid rgba(150, 150, 150, 0.2);
+  transition: opacity 0.2s;
+}
+
+.search-container input:focus ~ .search-kbd {
+  opacity: 0;
+}
