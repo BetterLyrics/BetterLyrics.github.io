@@ -1,5 +1,10 @@
 # Modes Store
 
+## Installation Guide
+1. Click **View config file** to open the `.json` file in a new tab.
+2. Right-click on the page and select **Save as...** (or use `Ctrl + S`) to save it to your computer.
+3. Open BetterLyrics, go to **Settings** -> **Lyrics Window Management** -> **Import** and select the downloaded `.json` file to apply the mode/status.
+
 <cardGrid>
 
 <card title="Narrow Rhythm (Vertical)">

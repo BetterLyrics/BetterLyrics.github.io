@@ -1,5 +1,10 @@
 # Plugins Store
 
+## Installation Guide
+1. Click the plugin link to open its GitHub release page.
+2. Download the `.blp` file from the latest release assets.
+3. Drag and drop the downloaded `.blp` file directly into the BetterLyrics settings window, or double-click it to install. *(Alternatively, go to **Settings** -> **Plugin Management** to manually import and enable the plugin).*
+
 
 <cardGrid>
   <linkCard title="Romaji Converter" description="Convert Japanese Kanji/Kana to Romaji." href="https://github.com/BetterLyrics/BetterLyrics.Plugins.Transliteration.Romaji/releases/latest"></linkCard>
