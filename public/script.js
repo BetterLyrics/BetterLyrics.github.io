@@ -501,7 +501,17 @@ async function prepareSearchCache(lang) {
         const req = await fetch(fetchPath);
         if (req.ok) {
           const html = await req.text();
-          cache.push({ title: item.title, path: fetchPath, content: stripMarkdown(html) });
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const article = doc.querySelector(`article[data-lang="${lang}"]`);
+          let text = '';
+          if (article) {
+             text = article.textContent || article.innerText || '';
+          } else {
+             text = stripMarkdown(html);
+          }
+          text = text.replace(/\s+/g, ' ').trim();
+          cache.push({ title: item.title, path: fetchPath, content: text });
         }
       } catch (e) {
         console.error('Failed to fetch for search cache', item.path);
