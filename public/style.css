@@ -891,6 +891,11 @@ footer {
   opacity: 0.9;
 }
 
+#markdown-content pre.astro-code code {
+  color: inherit;
+  background: transparent;
+}
+
 #markdown-content blockquote {
   border-left: 4px solid var(--accent-color);
   margin-bottom: 1.5rem;
