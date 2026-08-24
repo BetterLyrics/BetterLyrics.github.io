@@ -1,0 +1,53 @@
+{
+  "Id": "a7eacf9b-717c-441d-a1dc-0b133d6b998f",
+  "Mode": 999,
+  "Name": "\u53CC\u680F\u6C89\u6D78\u5E03\u5C40 Immersive Split Layout",
+  "RowDefinitions": [
+    "1*"
+  ],
+  "ColumnDefinitions": [
+    "Auto",
+    "1*"
+  ],
+  "RowSpacing": 0,
+  "ColumnSpacing": 12,
+  "Placements": [
+    {
+      "ComponentType": 3,
+      "Row": 0,
+      "Column": 0,
+      "RowSpan": 1,
+      "ColumnSpan": 1,
+      "MarginLeft": 0,
+      "MarginTop": 0,
+      "MarginRight": 0,
+      "MarginBottom": 0,
+      "HorizontalAlignment": 0,
+      "VerticalAlignment": 1,
+      "Width": "NaN",
+      "Height": "NaN",
+      "IsActive": false
+    },
+    {
+      "ComponentType": 1,
+      "Row": 0,
+      "Column": 1,
+      "RowSpan": 1,
+      "ColumnSpan": 1,
+      "MarginLeft": 0,
+      "MarginTop": 0,
+      "MarginRight": 0,
+      "MarginBottom": 0,
+      "HorizontalAlignment": 3,
+      "VerticalAlignment": 3,
+      "Width": "NaN",
+      "Height": "NaN",
+      "IsActive": false
+    }
+  ],
+  "PaddingLeft": 0,
+  "PaddingTop": 0,
+  "PaddingRight": 12,
+  "PaddingBottom": 0,
+  "IsActive": false
+}

@@ -1,5 +1,6 @@
 # Modes Store
 
+<cardGrid>
 
 <card title="Narrow Rhythm (Vertical)">
 
@@ -12,3 +13,17 @@ Recommended for use with <badge text="Top Album Art Bottom Lyrics Layout (Compac
 [View config file](https://raw.githubusercontent.com/jayfunc/BetterLyrics/refs/heads/dev/resources/lyrics-window-status/narrow-rhythm-vert.json)
 
 </card>
+
+<card title="Immersive Cover & Lyrics">
+
+by jayfunc
+
+![](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Immersive_Cover_&_Lyrics_沉浸大图歌词.png?raw=true)
+
+Recommended for use with <badge text="Immersive Split Layout" variant="note" size="medium"></badge>
+
+[View config file](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Immersive_Cover_&_Lyrics_沉浸大图歌词.json)
+
+</card>
+
+</cardGrid>

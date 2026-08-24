@@ -1,14 +1,29 @@
 # Layouts Store
 
+<cardGrid>
 
 <card title="Taskbar Triple View">
 
 by Leon
 
-![](https://github.com/jayfunc/BetterLyrics/blob/dev/resources/lyrics-window-layouts/taskbar-triple-view.png?raw=true)
+![](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Taskbar_Triple_View_任务栏三视图.png?raw=true)
 
 Recommended for use with <badge text="Taskbar Mode" variant="note" size="medium"></badge>
 
-[View config file](https://raw.githubusercontent.com/jayfunc/BetterLyrics/refs/heads/dev/resources/lyrics-window-layouts/taskbar-triple-view.json)
+[View config file](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Taskbar_Triple_View_任务栏三视图.json)
 
 </card>
+
+<card title="Immersive Split Layout">
+
+by jayfunc
+
+![](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_双栏沉浸布局_Immersive_Split_Layout.png?raw=true)
+
+Recommended for use with <badge text="Immersive Cover & Lyrics" variant="note" size="medium"></badge>
+
+[View config file](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_双栏沉浸布局_Immersive_Split_Layout.json)
+
+</card>
+
+</cardGrid>

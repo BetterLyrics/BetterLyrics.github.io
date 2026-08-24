@@ -1,14 +1,29 @@
 # 模式商店
 
+<cardGrid>
 
 <card title="窄屏律动（竖屏）">
 
 by Owleam
 
-![](https://github.com/jayfunc/BetterLyrics/blob/dev/resources/lyrics-window-status/narrow-rhythm-vert.png?raw=true)
+![](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Narrow_Rhythm_窄屏律动.png?raw=true)
 
 推荐与 <badge text="顶部专辑封面 底部歌词布局（紧凑型）" variant="note" size="medium"></badge> 搭配使用
 
-[查看配置文件](https://raw.githubusercontent.com/jayfunc/BetterLyrics/refs/heads/dev/resources/lyrics-window-status/narrow-rhythm-vert.json)
+[查看配置文件](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Narrow_Rhythm_窄屏律动.json)
 
 </card>
+
+<card title="沉浸大图歌词">
+
+by jayfunc
+
+![](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Immersive_Cover_&_Lyrics_沉浸大图歌词.png?raw=true)
+
+推荐与 <badge text="双栏沉浸布局" variant="note" size="medium"></badge> 搭配使用
+
+[查看配置文件](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Immersive_Cover_&_Lyrics_沉浸大图歌词.json)
+
+</card>
+
+</cardGrid>
