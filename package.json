@@ -29,5 +29,8 @@
     "@astrojs/mdx": "^7.0.7",
     "astro": "^7.2.4",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "jsdom": "^30.0.1"
   }
 }

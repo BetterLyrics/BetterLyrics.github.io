@@ -87,7 +87,7 @@ let isGlobalInitialized = false;
 
 document.addEventListener('astro:page-load', () => {
   // Update sidebar active link dynamically if persisted
-  const normalizePath = (p) => p.replace(/\.html$/, '').replace(/\/$/, '');
+  const normalizePath = (p) => p.replace(/\.html$/, '').replace(/\/$/, '').split('?')[0];
   const currentPath = normalizePath(window.location.pathname);
   document.querySelectorAll('#sidebar-nav a').forEach(a => {
     if (normalizePath(a.getAttribute('href')) === currentPath) {
@@ -96,6 +96,7 @@ document.addEventListener('astro:page-load', () => {
       a.classList.remove('active');
     }
   });
+
 
   // 1. Language logic setup
   const langContainer = document.getElementById('lang-switch-container');
@@ -274,7 +275,7 @@ document.addEventListener('astro:page-load', () => {
           searchResultsContainer.innerHTML = `<div class="search-result-item" style="cursor:default;"><div class="search-result-snippet">No results found</div></div>`;
         } else {
           searchResultsContainer.innerHTML = results.map(r => `
-            <a href="${r.path}" class="search-result-item">
+            <a href="${r.path}?highlight=${encodeURIComponent(query)}" class="search-result-item">
               <div class="search-result-title">${r.titleHtml}</div>
               <div class="search-result-snippet">${r.snippetHtml}</div>
             </a>
@@ -411,6 +412,72 @@ document.addEventListener('astro:page-load', () => {
     });
   }
 
+  // Handle Search Highlight from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const highlightQuery = urlParams.get('highlight');
+  if (highlightQuery) {
+    const activeArticle = document.querySelector(`article[data-lang="${currentLang}"]`);
+    if (activeArticle) {
+      const safeQuery = highlightQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${safeQuery})`, 'gi');
+      
+      const walker = document.createTreeWalker(activeArticle, NodeFilter.SHOW_TEXT, null, false);
+      const textNodes = [];
+      let node;
+      while (node = walker.nextNode()) {
+        if (node.parentNode && node.parentNode.nodeName !== 'SCRIPT' && node.parentNode.nodeName !== 'STYLE') {
+          regex.lastIndex = 0; // Reset lastIndex because regex is global
+          if (regex.test(node.nodeValue)) {
+            textNodes.push(node);
+          }
+        }
+      }
+      
+      textNodes.forEach(textNode => {
+        const span = document.createElement('span');
+        const escapeHTML = str => str.replace(/[&<>'"]/g, 
+          tag => ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              "'": '&#39;',
+              '"': '&quot;'
+          }[tag] || tag)
+        );
+        span.innerHTML = escapeHTML(textNode.nodeValue).replace(regex, '<mark class="active-highlight">$1</mark>');
+        
+        const fragment = document.createDocumentFragment();
+        Array.from(span.childNodes).forEach(child => fragment.appendChild(child.cloneNode(true)));
+        textNode.parentNode.replaceChild(fragment, textNode);
+      });
+      
+      setTimeout(() => {
+        const firstHighlight = document.querySelector('.active-highlight');
+        if (firstHighlight) {
+          firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+
+      const removeHighlight = () => {
+        document.querySelectorAll('.active-highlight').forEach(el => {
+          if (el.parentNode) {
+            const parent = el.parentNode;
+            parent.replaceChild(document.createTextNode(el.textContent), el);
+            parent.normalize(); 
+          }
+        });
+        const url = new URL(window.location);
+        url.searchParams.delete('highlight');
+        window.history.replaceState({}, '', url);
+        document.removeEventListener('click', removeHighlight);
+      };
+      
+      setTimeout(() => {
+        document.addEventListener('click', removeHighlight);
+      }, 100);
+    }
+  }
+
   // --- GLOBAL LISTENERS (Attached only once) ---
   if (!isGlobalInitialized) {
     document.addEventListener('click', (e) => {
@@ -480,7 +547,21 @@ function getCleanHash(path) {
 }
 
 function stripMarkdown(md) {
-  return md.replace(/^---[\s\S]*?---\r?\n/, '').replace(/<[^>]+>/g, '').replace(/[#*`_\[\]()>-]/g, '').replace(/\n+/g, ' ').trim();
+  let text = md.replace(/^---[\s\S]*?---\r?\n/, '');
+  text = text.replace(/<linkCard([^>]+)\/?>/ig, (match, attrs) => {
+    const titleMatch = attrs.match(/title=["'](.*?)["']/);
+    const descMatch = attrs.match(/description=["'](.*?)["']/);
+    return ` ${(titleMatch ? titleMatch[1] : '')} ${(descMatch ? descMatch[1] : '')} `;
+  });
+  text = text.replace(/<card([^>]*)>/ig, (match, attrs) => {
+    const titleMatch = attrs.match(/title=["'](.*?)["']/);
+    return titleMatch ? ` ${titleMatch[1]} ` : ' ';
+  });
+  text = text.replace(/<badge([^>]+)\/?>/ig, (match, attrs) => {
+    const textMatch = attrs.match(/text=["'](.*?)["']/);
+    return textMatch ? ` ${textMatch[1]} ` : ' ';
+  });
+  return text.replace(/<[^>]+>/g, '').replace(/[#*`_\[\]()>-]/g, '').replace(/\n+/g, ' ').trim();
 }
 
 async function prepareSearchCache(lang) {
@@ -506,6 +587,22 @@ async function prepareSearchCache(lang) {
           const article = doc.querySelector(`article[data-lang="${lang}"]`);
           let text = '';
           if (article) {
+             // 提取自定义组件的属性文本到 DOM 中，以确保 textContent 能获取到它们
+             article.querySelectorAll('card').forEach(c => {
+                 const title = c.getAttribute('title');
+                 if (title) c.appendChild(doc.createTextNode(' ' + title + ' '));
+             });
+             article.querySelectorAll('linkcard, linkCard').forEach(c => {
+                 const title = c.getAttribute('title');
+                 const desc = c.getAttribute('description');
+                 if (title) c.appendChild(doc.createTextNode(' ' + title + ' '));
+                 if (desc) c.appendChild(doc.createTextNode(' ' + desc + ' '));
+             });
+             article.querySelectorAll('badge').forEach(c => {
+                 const textAttr = c.getAttribute('text');
+                 if (textAttr) c.appendChild(doc.createTextNode(' ' + textAttr + ' '));
+             });
+             
              text = article.textContent || article.innerText || '';
           } else {
              text = stripMarkdown(html);

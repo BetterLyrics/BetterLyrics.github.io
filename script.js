@@ -520,9 +520,26 @@ let isFetchingSearchCache = false;
 
 // 简单的 Markdown 去除
 function stripMarkdown(md) {
-  return md
+  let text = md
     .replace(/^---[\s\S]*?---\r?\n/, '') // Remove frontmatter
-    .replace(/^[ \t]*import\s+.*?;?[ \t]*$/gm, '') // Remove JS imports
+    .replace(/^[ \t]*import\s+.*?;?[ \t]*$/gm, ''); // Remove JS imports
+    
+  // Extract custom component attributes to text before removing tags
+  text = text.replace(/<linkCard([^>]+)\/?>/ig, (match, attrs) => {
+    const titleMatch = attrs.match(/title=["'](.*?)["']/);
+    const descMatch = attrs.match(/description=["'](.*?)["']/);
+    return ` ${(titleMatch ? titleMatch[1] : '')} ${(descMatch ? descMatch[1] : '')} `;
+  });
+  text = text.replace(/<card([^>]*)>/ig, (match, attrs) => {
+    const titleMatch = attrs.match(/title=["'](.*?)["']/);
+    return titleMatch ? ` ${titleMatch[1]} ` : ' ';
+  });
+  text = text.replace(/<badge([^>]+)\/?>/ig, (match, attrs) => {
+    const textMatch = attrs.match(/text=["'](.*?)["']/);
+    return textMatch ? ` ${textMatch[1]} ` : ' ';
+  });
+
+  return text
     .replace(/<[^>]+>/g, '') // Remove HTML tags
     .replace(/[#*`_\[\]()>-]/g, '') // Remove basic markdown symbols
     .replace(/\n+/g, ' ') // Replace newlines with space

@@ -1232,3 +1232,13 @@ footer {
 .footnotes li p {
   margin: 0.5rem 0;
 }
+ 
+ / *   S e a r c h   H i g h l i g h t   * /  
+ . a c t i v e - h i g h l i g h t   {  
+     b a c k g r o u n d - c o l o r :   r g b a ( 2 5 5 ,   2 1 5 ,   0 ,   0 . 4 ) ;  
+     c o l o r :   i n h e r i t ;  
+     b o r d e r - r a d i u s :   2 p x ;  
+     p a d d i n g :   0   2 p x ;  
+     t r a n s i t i o n :   b a c k g r o u n d - c o l o r   0 . 3 s   e a s e ;  
+ }  
+ 
