@@ -87,9 +87,10 @@ let isGlobalInitialized = false;
 
 document.addEventListener('astro:page-load', () => {
   // Update sidebar active link dynamically if persisted
-  const currentPath = window.location.pathname;
+  const normalizePath = (p) => p.replace(/\.html$/, '').replace(/\/$/, '');
+  const currentPath = normalizePath(window.location.pathname);
   document.querySelectorAll('#sidebar-nav a').forEach(a => {
-    if (a.getAttribute('href') === currentPath) {
+    if (normalizePath(a.getAttribute('href')) === currentPath) {
       a.classList.add('active');
     } else {
       a.classList.remove('active');
