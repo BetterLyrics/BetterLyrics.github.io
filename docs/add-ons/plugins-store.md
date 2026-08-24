@@ -3,7 +3,12 @@
 ## Installation Guide
 1. Click the plugin link to open its GitHub release page.
 2. Download the `.blp` file from the latest release assets.
-3. Drag and drop the downloaded `.blp` file directly into the BetterLyrics settings window, or double-click it to install. *(Alternatively, go to **Settings** -> **Plugin Management** to manually import and enable the plugin).*
+3. **Auto Install**: Double-click the `.blp` file to install it automatically (the app will restart). Alternatively, go to **Settings** -> **Plugins**, click **Install Plugin**, and select the `.blp` file.
+4. **Manual Install** (If auto-install fails):
+   1. Completely close BetterLyrics.
+   2. Extract the plugin into: `%LocalAppData%\Packages\37412.BetterLyrics_rd1g0rsrrtxw8\LocalState\plugins`
+   3. *(Optional)* Clear all contents in this folder: `%LocalAppData%\Packages\37412.BetterLyrics_rd1g0rsrrtxw8\LocalState\plugins-pending`
+   4. Restart BetterLyrics.
 
 
 <cardGrid>

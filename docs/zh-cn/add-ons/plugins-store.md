@@ -3,7 +3,12 @@
 ## 如何安装
 1. 点击插件卡片进入其 GitHub Release 页面。
 2. 从最新发布的 Assets 中下载以 `.blp` 结尾的插件安装包。
-3. 将下载的 `.blp` 文件直接拖拽到 BetterLyrics 设置窗口中，或直接双击运行以进行安装。*（或者进入 **设置** -> **插件管理** 页面手动导入并启用该插件）。*
+3. **自动安装**：直接双击 `.blp` 文件，程序将自行安装并自动重启。你也可以进入 **设置** -> **插件**，点按“**安装插件**”，选择 `.blp` 文件进行安装。
+4. **手动安装**（仅在自动安装失败时使用）：
+   1. 彻底关闭 BetterLyrics。
+   2. 将插件解压缩至目录：`%LocalAppData%\Packages\37412.BetterLyrics_rd1g0rsrrtxw8\LocalState\plugins`
+   3. *（可选）*清空此文件夹下的所有内容：`%LocalAppData%\Packages\37412.BetterLyrics_rd1g0rsrrtxw8\LocalState\plugins-pending`
+   4. 重新启动 BetterLyrics。
 
 
 <cardGrid>
