@@ -249,7 +249,7 @@ async function loadSidebar(isLanguageSwitch = false) {
     group.items.forEach((item, iIdx) => {
       const li = document.createElement("li");
       const a = document.createElement("a");
-      a.href = "#" + item.path;
+      a.href = "#" + getCleanHash(item.path);
       
       let badgeHtml = "";
       if (item.badge) {
@@ -278,7 +278,7 @@ async function loadSidebar(isLanguageSwitch = false) {
   if (isLanguageSwitch) {
     const newItem = data[currentGroupIndex]?.items[currentItemIndex];
     if (newItem) {
-      window.location.hash = "#" + newItem.path;
+      window.location.hash = "#" + getCleanHash(newItem.path);
       loadMarkdown(newItem.path);
       
       let linkIndex = 0;
@@ -316,7 +316,7 @@ async function loadSidebar(isLanguageSwitch = false) {
       currentGroupIndex = 0;
       currentItemIndex = 0;
       const firstPath = data[0].items[0].path;
-      window.location.hash = "#" + firstPath;
+      window.location.hash = "#" + getCleanHash(firstPath);
       loadMarkdown(firstPath);
       const firstLink = sidebarNav.querySelector("a");
       if (firstLink) firstLink.classList.add("active");
@@ -634,7 +634,7 @@ if (searchInput && searchResultsContainer) {
       searchResultsContainer.innerHTML = `<div class="search-result-item" style="cursor:default;"><div class="search-result-snippet">No results found</div></div>`;
     } else {
       searchResultsContainer.innerHTML = results.map(r => `
-        <a href="#${r.path}" class="search-result-item" data-path="${r.path}">
+        <a href="#${getCleanHash(r.path)}" class="search-result-item" data-path="${r.path}">
           <div class="search-result-title">${r.titleHtml}</div>
           <div class="search-result-snippet">${r.snippetHtml}</div>
         </a>
@@ -669,7 +669,7 @@ if (searchInput && searchResultsContainer) {
              }));
           }
 
-          window.location.hash = "#" + path;
+          window.location.hash = "#" + getCleanHash(path);
           loadMarkdown(path);
           searchResultsContainer.classList.remove("active");
           searchInput.blur();

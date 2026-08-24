@@ -1,0 +1,33 @@
+{
+  "name": "betterlyrics.github.io",
+  "version": "1.0.0",
+  "description": "The official documentation site for [BetterLyrics](https://github.com/BetterLyrics).",
+  "main": "script.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BetterLyrics/BetterLyrics.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BetterLyrics/BetterLyrics.github.io/issues"
+  },
+  "homepage": "https://github.com/BetterLyrics/BetterLyrics.github.io#readme",
+  "devDependencies": {
+    "@astrojs/mdx": "^7.0.7",
+    "astro": "^7.2.4",
+    "typescript": "^7.0.2"
+  }
+}

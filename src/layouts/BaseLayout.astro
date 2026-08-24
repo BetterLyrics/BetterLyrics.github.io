@@ -1,0 +1,122 @@
+---
+// src/layouts/BaseLayout.astro
+import { ClientRouter } from 'astro:transitions';
+const { title = "BetterLyrics", showNavLogo = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <ClientRouter fallback="swap" />
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Lora:wght@500;600&family=Noto+Sans+SC:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web" is:inline></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" is:inline></script>
+
+    <script is:inline>
+      const applyThemeAndLang = () => {
+        // Theme
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        const theme = localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+
+        // Language
+        const lang = localStorage.getItem('lang') || 'en';
+        document.querySelectorAll('article[data-lang]').forEach(article => {
+          article.style.display = article.getAttribute('data-lang') === lang ? 'block' : 'none';
+        });
+        const sidebarEn = document.querySelector('.sidebar-lang-en');
+        const sidebarZh = document.querySelector('.sidebar-lang-zh');
+        if (sidebarEn && sidebarZh) {
+          sidebarEn.style.display = lang === 'en' ? 'block' : 'none';
+          sidebarZh.style.display = lang === 'zh' ? 'block' : 'none';
+        }
+      };
+      
+      // Run immediately on first load
+      applyThemeAndLang();
+      
+      // Run before the new page paints during Astro ViewTransitions
+      document.addEventListener('astro:after-swap', applyThemeAndLang);
+
+      // Preserve Phosphor Icons dynamically injected stylesheets across page swaps
+      document.addEventListener('astro:before-swap', (e) => {
+        const phosphorLinks = document.querySelectorAll('link[href*="phosphor"]');
+        phosphorLinks.forEach(link => {
+          e.newDocument.head.appendChild(link.cloneNode(true));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="custom-cursor-dot" transition:persist="cursor-dot"></div>
+    <div class="custom-cursor-ring" transition:persist="cursor-ring"></div>
+    <div class="background-shapes" transition:persist="bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+    
+    <div class="page-transition-curtain" id="page-curtain" style="display: none;"></div>
+
+    <nav class="navbar" id="main-nav">
+      <a href="/" class="logo-container" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+        {showNavLogo && (
+          <>
+            <img src="/favicon.ico" alt="Logo" class="app-logo" style="height: 28px; width: auto;" />
+            <div class="logo" style="font-weight: 600; font-size: 1.2rem; font-family: 'Poppins', sans-serif;">BetterLyrics</div>
+            <div class="slogan" data-i18n="heroSubtitle" id="nav-slogan" style="font-family: 'LXGW WenKai Lite', serif; font-size: 0.9rem; opacity: 0.7; border-left: 1px solid var(--text-color); padding-left: 12px; margin-left: 4px; white-space: nowrap;">Strums the Heartstrings, Graces the Wordscapes.</div>
+          </>
+        )}
+      </a>
+      <div class="controls">
+        {showNavLogo && (
+          <div class="search-container" id="nav-search">
+            <input type="text" id="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Search docs..." autocomplete="off" />
+            <i class="ph ph-magnifying-glass search-icon"></i>
+            <div id="search-results" class="search-results"></div>
+          </div>
+        )}
+        <div class="custom-lang-switch" id="lang-switch-container">
+          <button class="lang-toggle" id="lang-toggle">
+            <span id="current-lang">English</span>
+            <svg viewBox="0 0 24 24" class="chevron">
+              <path
+                d="M6 9l6 6 6-6"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <ul class="lang-menu" id="lang-menu">
+            <li data-value="en" class="active">English</li>
+            <li data-value="zh">中文</li>
+          </ul>
+        </div>
+        <button id="theme-switch" aria-label="Toggle Theme">
+          <i class="ph ph-sun sun-icon" style="font-size: 24px"></i>
+          <i class="ph ph-moon moon-icon" style="font-size: 24px"></i>
+        </button>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer id="main-footer">
+      <p>© 2026 BetterLyrics</p>
+    </footer>
+
+    <script src="/script.js" is:inline></script>
+  </body>
+</html>
