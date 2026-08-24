@@ -31,22 +31,28 @@ function applyTranslations(lang) {
     if (el.tagName === 'TITLE') {
       document.title = translations[lang][key];
     } else {
-      el.classList.add('lang-switching');
-      setTimeout(() => {
-        el.innerHTML = translations[lang][key];
-        el.classList.remove('lang-switching');
-      }, 300);
+      const newText = translations[lang][key];
+      if (el.innerHTML !== newText) {
+        el.classList.add('lang-switching');
+        setTimeout(() => {
+          el.innerHTML = newText;
+          el.classList.remove('lang-switching');
+        }, 300);
+      }
     }
   });
 
   // Translate Astro's hardcoded Footnotes title (all instances)
   const footnoteLabels = document.querySelectorAll('[id="footnote-label"]');
   footnoteLabels.forEach(footnoteLabel => {
-    footnoteLabel.classList.add('lang-switching');
-    setTimeout(() => {
-      footnoteLabel.textContent = lang === 'zh' ? '脚注' : 'Footnotes';
-      footnoteLabel.classList.remove('lang-switching');
-    }, 300);
+    const newText = lang === 'zh' ? '脚注' : 'Footnotes';
+    if (footnoteLabel.textContent !== newText) {
+      footnoteLabel.classList.add('lang-switching');
+      setTimeout(() => {
+        footnoteLabel.textContent = newText;
+        footnoteLabel.classList.remove('lang-switching');
+      }, 300);
+    }
   });
 
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
