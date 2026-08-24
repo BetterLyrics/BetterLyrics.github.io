@@ -2,34 +2,31 @@
 
 The official documentation site for [BetterLyrics](https://github.com/BetterLyrics).
 
-This is a lightweight, zero-dependency static site built with vanilla HTML, CSS, and JavaScript. It dynamically fetches and renders Markdown files on the client side using `marked.js`.
+This site is built using [Astro](https://astro.build/) to generate a lightweight, static documentation site from Markdown files.
 
 ## Local Development
 
-Since the site relies on `fetch()` to load Markdown files, you need to run it through a local web server (opening `index.html` directly will result in CORS errors).
+To run the documentation site locally:
 
-You can use any local server, for example:
-
-```bash
-# Python
-python -m http.server 8000
-
-# Node.js
-npx serve .
-```
-
-Then open `http://localhost:8000` in your browser.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+3. Open `http://localhost:4321` (or the port provided by Astro) in your browser.
 
 ## Project Structure
 
-- `index.html`: Main layout.
-- `style.css`: Styles and layout.
-- `script.js`: Core logic for Markdown parsing, custom syntax extensions (admonitions, footnotes), language switching, and routing.
-- `sidebar.json`: Navigation configuration.
-- `docs/`: The Markdown documentation files.
+- `docs/`: The Markdown documentation files (English and `zh-cn`).
+- `public/`: Static assets (images, configs, and client-side scripts).
+- `astro.config.mjs`: Astro configuration and custom Markdown plugins.
+- `package.json`: Project dependencies and NPM scripts.
 
 ## Adding Documentation
 
 1. Add your `.md` file to the `docs/` or `docs/zh-cn/` directory.
-2. Update `sidebar.json` with the path to your new file.
-3. Refresh the page to see the changes.
+2. Update `public/sidebar.json` with the path to your new file to include it in the navigation.
+3. If running the dev server, changes will be updated automatically.
