@@ -10,7 +10,7 @@ by Leon
 
 推荐与 <badge text="任务栏模式" variant="note" size="medium"></badge> 配合使用
 
-[查看配置文件](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Taskbar_Triple_View_任务栏三视图.json)
+<a href="/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Taskbar_Triple_View_任务栏三视图.json" target="_blank">查看配置文件</a>
 
 </card>
 
@@ -22,7 +22,7 @@ by jayfunc
 
 推荐与 <badge text="沉浸大图歌词" variant="note" size="medium"></badge> 配合使用
 
-[查看配置文件](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_双栏沉浸布局_Immersive_Split_Layout.json)
+<a href="/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_双栏沉浸布局_Immersive_Split_Layout.json" target="_blank">查看配置文件</a>
 
 </card>
 

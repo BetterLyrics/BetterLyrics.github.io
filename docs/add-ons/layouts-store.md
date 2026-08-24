@@ -10,7 +10,7 @@ by Leon
 
 Recommended for use with <badge text="Taskbar Mode" variant="note" size="medium"></badge>
 
-[View config file](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Taskbar_Triple_View_任务栏三视图.json)
+<a href="/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Taskbar_Triple_View_任务栏三视图.json" target="_blank">View config file</a>
 
 </card>
 
@@ -22,7 +22,7 @@ by jayfunc
 
 Recommended for use with <badge text="Immersive Cover & Lyrics" variant="note" size="medium"></badge>
 
-[View config file](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_双栏沉浸布局_Immersive_Split_Layout.json)
+<a href="/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_双栏沉浸布局_Immersive_Split_Layout.json" target="_blank">View config file</a>
 
 </card>
 
