@@ -3,7 +3,7 @@
 ## Installation Guide
 1. Click **View config file** to open the `.json` file in a new tab.
 2. Right-click on the page and select **Save as...** (or use `Ctrl + S`) to save it to your computer.
-3. Open BetterLyrics, go to **Settings** -> **Lyrics Window** -> **Layout Editor** -> **Import Config** and select the downloaded `.json` file to apply the layout.
+3. Open BetterLyrics, go to **Settings** -> **Lyrics Window Management** -> scroll to the target mode and click the wrench icon to open the configuration panel, switch to the **Layout** tab, and click **Import**.
 
 <cardGrid>
 
