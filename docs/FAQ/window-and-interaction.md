@@ -12,7 +12,7 @@ If you cannot select or move the window, please check if you have set the `Dragg
 - If the window is locked, just hover over the window, and you'll see the unlock button.
 
 **Cannot summon bottom panel:**
-When the window is too small to display the panel, you can only show the playback control panel by hovering over the bottom of the lyrics window and clicking the white line.
+When the window is too small to display the panel, you can only show the playback control panel by hovering over the bottom of the lyrics window and clicking the small white bar.
 
 ### What are the default shortcuts?
 

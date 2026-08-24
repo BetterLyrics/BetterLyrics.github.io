@@ -10,8 +10,8 @@
 
 > [The lyrics search window](betterlyrics://lyrics/search) can be opened in one of the following ways:
 >
-> - Move the mouse to the lower area of the window until the bottom control bar appears, then click the magnifying glass icon (🔍) on the bottom right to open the search window.
-> - Right-click the software icon in the system tray and select "Open Lyrics Window".
+> - Move the mouse to the lower area of the window until the bottom control bar appears, click the More button (ellipsis) on the right, and then select "Manual Lyrics Search".
+> - Right-click the software icon in the system tray and select "Lyrics Search Window".
 
 ### Lyrics keep moving back and forth (Timeline jumping)
 
@@ -47,4 +47,4 @@ The software supports two methods:
 
 ### Partial garbled text in lyrics
 
-This is usually a default font setting issue. Go to `Settings` -> [`Lyrics Window Management`](betterlyrics://settings/lyricswindowmgr) -> `Lyrics Style` -> `Lyrics Font` -> Type `Arial` to get the most stable display effect.
+This is usually a default font setting issue. Go to `Settings` -> [`Lyrics Window Management`](betterlyrics://settings/lyricswindowmgr) -> `Lyrics Style` -> `Font Family` -> Select `Arial` to get the most stable display effect.

@@ -14,7 +14,7 @@ If BetterLyrics is not displaying lyrics after launch, or if the text/progress i
 **Is your music player reporting its status to Windows SMTC?**
 
 * **Desktop Clients (QQ Music, NetEase Cloud Music, etc.)**:
-    * Many players require [additional configuration](/player-cfg). Please ensure you have installed the corresponding plugins or adjusted the player settings according to the instructions.
+    * Many players require [additional configuration](/docs/player-cfg). Please ensure you have installed the corresponding plugins or adjusted the player settings according to the instructions.
 
 ### Step Two: Check Software Settings
 **Is BetterLyrics ignoring the application?**

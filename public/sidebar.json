@@ -197,6 +197,10 @@
         {
           "title": "Translation & Romanization",
           "path": "docs/settings/translation-and-plugins.md"
+        },
+        {
+          "title": "Playback & Connections",
+          "path": "docs/settings/playback-and-connections.md"
         }
       ]
     },
@@ -450,6 +454,10 @@
         {
           "title": "翻译与注音 (扩展引擎)",
           "path": "docs/zh-cn/settings/translation-and-plugins.md"
+        },
+        {
+          "title": "播放与连接",
+          "path": "docs/zh-cn/settings/playback-and-connections.md"
         }
       ]
     },

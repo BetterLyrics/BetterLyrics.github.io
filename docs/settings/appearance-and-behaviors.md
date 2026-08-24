@@ -27,3 +27,19 @@ You can bind custom key combinations for the following actions:
   - Play / Pause
   - Previous Track
   - Next Track
+## Now Playing Notifications
+
+BetterLyrics can display a brief Toast notification whenever a new song starts playing.
+
+- **Enable Notifications**: Show a popup containing the album art, song name, and artist when a track changes.
+- **Corner Position**: Choose which corner of the screen the notification will appear in (e.g., Top Left, Bottom Right, Top Center).
+- **All Monitors**: If enabled, the notification will be shown on all connected monitors instead of just the primary one.
+- **Duration**: Adjust how long the notification stays visible on screen (2000ms to 10000ms).
+
+## System Tray Behaviors
+
+You can customize how the BetterLyrics icon behaves in your Windows system tray.
+
+- **Colorful Icon**: Toggle between the standard monochrome icon or a colorful version.
+- **Click Actions**: Assign custom actions for Single Click, Double Click, and Middle Click on the tray icon. 
+  - Available actions include: Do nothing, Toggle Lyrics Window, Open Lyrics Search, Open Music Gallery, Open Stats, Toggle Lyrics Card, or Open Settings.

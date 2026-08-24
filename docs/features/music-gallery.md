@@ -32,3 +32,12 @@ To accommodate different usage habits, the Music Gallery's state is deeply linke
   - `Stop On Window Closed`: Automatically stops music playback when you close the Gallery window.
   - `Exit On Window Closed`: Completely exits the BetterLyrics application when the Gallery window is closed.
   - `Lyrics Window Status`: You can define the default startup mode for the main lyrics window (e.g., automatically entering Fullscreen, Desktop, or Standard mode) when you double-click to play a song from the gallery.
+
+## Media Library & Scanning
+
+You can configure how BetterLyrics scans and syncs your local music library. In the Settings -> **Media Settings**, you can configure:
+
+- **Local & Network Paths**: Add multiple directories including Local Folders, SMB, FTP, and WebDAV sources.
+- **Auto Sync**: Set a schedule for automatic library scanning (e.g., Every 15 minutes, Hourly, Daily).
+- **Real-Time Scan**: For local paths, BetterLyrics can monitor file changes and update the library in real-time.
+- **Scan Subdirectories**: Choose whether to recursively scan all folders within the added paths.

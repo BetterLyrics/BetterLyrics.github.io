@@ -4,9 +4,9 @@
 
 The software has initially added all preset modes for you.
 
-You can import window status files shared by others: Go to `Settings` -> [`Lyrics Window Management`](betterlyrics://settings/lyricswindowmgr) -> Import (Down Arrow Icon) -> Select the file to import (`.json` format).
+You can import window status files shared by others: Go to `Settings` -> [`Lyrics Window Management`](betterlyrics://settings/lyricswindowmgr) -> Import -> Select the file to import (`.json` format).
 
-> To export window status, right-click the window status and select `Export`.
+> To export window status, click the ellipsis button and select `Export`.
 
 ### How to switch modes?
 
