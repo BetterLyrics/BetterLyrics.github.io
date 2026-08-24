@@ -24,6 +24,7 @@ const translations = {
 let currentLang = localStorage.getItem('lang') || 'en';
 let searchCache = {};
 let isFetchingSearchCache = false;
+let isSidebarClick = false;
 
 function applyTranslations(lang) {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -96,6 +97,22 @@ document.addEventListener('astro:page-load', () => {
       a.classList.remove('active');
     }
   });
+
+  if (!isSidebarClick) {
+    const sidebar = document.querySelector('.sidebar');
+    const activeLink = Array.from(document.querySelectorAll('#sidebar-nav a.active')).find(a => a.offsetParent !== null);
+    if (sidebar && activeLink) {
+      const sidebarRect = sidebar.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      
+      if (linkRect.top < sidebarRect.top || linkRect.bottom > sidebarRect.bottom) {
+        sidebar.scrollTop += (linkRect.top - sidebarRect.top) - (sidebarRect.height / 2) + (linkRect.height / 2);
+      }
+    }
+  }
+  // Reset for next interactions
+  isSidebarClick = false;
+
 
 
   // 1. Language logic setup
@@ -480,7 +497,23 @@ document.addEventListener('astro:page-load', () => {
 
   // --- GLOBAL LISTENERS (Attached only once) ---
   if (!isGlobalInitialized) {
+    let sidebarScroll = 0;
+    document.addEventListener('astro:before-swap', () => {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar) sidebarScroll = sidebar.scrollTop;
+    });
+    document.addEventListener('astro:after-swap', () => {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        sidebar.scrollTop = sidebarScroll;
+        // Blur active link to prevent browser's native focus auto-scroll
+        const activeLink = sidebar.querySelector('a.active');
+        if (activeLink) activeLink.blur();
+      }
+    });
+
     document.addEventListener('click', (e) => {
+      isSidebarClick = !!e.target.closest('#sidebar-nav');
       const langContainerGlobal = document.getElementById('lang-switch-container');
       if (langContainerGlobal) langContainerGlobal.classList.remove('open');
       const sr = document.getElementById('search-results');
