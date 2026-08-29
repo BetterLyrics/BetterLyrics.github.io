@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
+**Configuration required**.
+
 Please install the [Windows 10 Media Control v2.0.4 plugin](https://www.aimp.ru/?do=catalog&rec_id=1097) or [AIMP SMTC](https://github.com/NimiGames68/aimp-smtc) alternatively.
 
 [^1]: [Wikipedia](https://en.wikipedia.org/wiki/AIMP)

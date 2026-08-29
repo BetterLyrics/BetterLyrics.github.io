@@ -4,7 +4,7 @@
 
 ## Setup Guide
 
-**No configuration required**. This player natively supports System Media Transport Controls (SMTC). Simply start playback to use.
+**Limited functionality**.
 
 ### Known Limitation
 

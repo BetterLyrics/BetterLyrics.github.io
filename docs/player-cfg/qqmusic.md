@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
+**Configuration required**.
+
 ### Basic Setup
 
 Please use a newer version of the client and enable **Show System Media Transport Controls (SMTC)** in the settings.

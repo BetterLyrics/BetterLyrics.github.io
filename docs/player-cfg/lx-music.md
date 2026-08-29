@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
+**Configuration required**.
+
 Please follow these configuration steps:
 
 1. **LX Music**: In Settings under **Open API**, check **Enable Open API Service**.

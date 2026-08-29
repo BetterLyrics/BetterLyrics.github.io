@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
+**Configuration required**.
+
 ### Basic Setup
 
 Please install the following components **in order**:

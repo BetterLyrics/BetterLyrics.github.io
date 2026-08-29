@@ -6,4 +6,9 @@
 
 Please install the [bodianhelper plugin](https://github.com/Jerry-Z07/bodianhelper) and follow the instructions in the project page.
 
+
+## Setup Guide
+
+**Configuration required**.
+
 [^1]: [Baidu Baike](https://baike.baidu.com/item/%E6%B3%A2%E7%82%B9%E9%9F%B3%E4%B9%90/55508576)

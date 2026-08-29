@@ -4,7 +4,9 @@
 
 ## Setup Guide
 
-Please install the [foo_mediacontrol plugin](https://github.com/dumbie/foo_mediacontrol)。
+**Configuration required** & **Limited functionality**.
+
+Please install the [foo_mediacontrol plugin](https://github.com/dumbie/foo_mediacontrol).
 
 ### Known Limitation
 

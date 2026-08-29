@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
-Please install the [iTunes-SMTC plugin](https://github.com/thewizrd/iTunes-SMTC)。
+**Configuration required**.
+
+Please install the [iTunes-SMTC plugin](https://github.com/thewizrd/iTunes-SMTC).
 
 [^1]: [Wikipedia](https://en.wikipedia.org/wiki/ITunes)

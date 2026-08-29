@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
+**Limited functionality**.
+
 Only supports the new **Media Player**. Does **NOT** support the legacy **Windows Media Player**.
 
 [^1]: [Wikipedia](https://en.wikipedia.org/wiki/Windows_Media_Player)

@@ -4,7 +4,7 @@
 
 ## Setup Guide
 
-**Configuration required**. This player requires installing a third-party plugin to support System Media Transport Controls (SMTC).
+**Configuration required**.
 
 ### Basic Setup
 

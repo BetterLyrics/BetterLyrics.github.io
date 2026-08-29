@@ -4,6 +4,8 @@
 
 ## Setup Guide
 
+**Limited functionality**.
+
 The official client has **timeline** synchronization issues.
 We recommend using the third-party client [MoeKoe Music](https://github.com/MoeKoeMusic/MoeKoeMusic) for a better experience.
 

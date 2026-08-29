@@ -2,7 +2,9 @@
 
 > foobar2000 is an advanced freeware audio player.[^1]
 
-## 适配说明
+## 适配指南
+
+**需配置** 且 **受限**。
 
 请安装 [foo_mediacontrol 插件](https://github.com/dumbie/foo_mediacontrol)。
 
