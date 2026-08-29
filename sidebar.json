@@ -67,7 +67,11 @@
         },
         {
           "title": "Bodian Music",
-          "path": "docs/player-cfg/bodian-music.md"
+          "path": "docs/player-cfg/bodian-music.md",
+          "badge": {
+            "text": "Config",
+            "variant": "note"
+          }
         },
         {
           "title": "foobar2000",
@@ -120,6 +124,14 @@
         {
           "title": "MoeKoe Music",
           "path": "docs/player-cfg/moekoe-music.md"
+        },
+        {
+          "title": "Music Center for PC",
+          "path": "docs/player-cfg/music-center-for-pc.md",
+          "badge": {
+            "text": "Config",
+            "variant": "note"
+          }
         },
         {
           "title": "MusicBee",
@@ -320,7 +332,11 @@
         },
         {
           "title": "波点音乐",
-          "path": "docs/zh-cn/player-cfg/bodian-music.md"
+          "path": "docs/zh-cn/player-cfg/bodian-music.md",
+          "badge": {
+            "text": "Config",
+            "variant": "note"
+          }
         },
         {
           "title": "foobar2000",
@@ -373,6 +389,14 @@
         {
           "title": "MoeKoe Music",
           "path": "docs/zh-cn/player-cfg/moekoe-music.md"
+        },
+        {
+          "title": "Music Center for PC",
+          "path": "docs/zh-cn/player-cfg/music-center-for-pc.md",
+          "badge": {
+            "text": "Config",
+            "variant": "note"
+          }
         },
         {
           "title": "MusicBee",
