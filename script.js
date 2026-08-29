@@ -5,6 +5,7 @@ const translations = {
     heroTitle: "BetterLyrics",
     heroSubtitle: "曲拨心弦，词落云笺。",
     searchPlaceholder: "搜索文档...",
+    docsMenu: "文档菜单",
   },
   en: {
     logoText: "BetterLyrics",
@@ -12,6 +13,7 @@ const translations = {
     heroTitle: "BetterLyrics",
     heroSubtitle: "Strums the Heartstrings, Graces the Wordscapes.",
     searchPlaceholder: "Search docs...",
+    docsMenu: "Documentation Menu",
   },
 };
 

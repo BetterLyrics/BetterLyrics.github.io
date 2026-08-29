@@ -7,7 +7,8 @@ const translations = {
     searchPlaceholder: '搜索文档...',
     btnMsStore: '微软商店',
     btnGithub: 'GitHub 下载',
-    btnDocs: '文档'
+    btnDocs: '文档',
+    docsMenu: '文档菜单'
   },
   en: {
     logoText: 'BetterLyrics',
@@ -17,7 +18,8 @@ const translations = {
     searchPlaceholder: 'Search docs...',
     btnMsStore: 'Microsoft Store',
     btnGithub: 'GitHub Releases',
-    btnDocs: 'Documentation'
+    btnDocs: 'Documentation',
+    docsMenu: 'Documentation Menu'
   },
 };
 

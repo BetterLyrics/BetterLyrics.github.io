@@ -788,6 +788,11 @@ footer {
   opacity: 1;
 }
 
+#markdown-content article > *:first-child,
+#markdown-content > *:first-child {
+  margin-top: 0 !important;
+}
+
 #markdown-content h1,
 #markdown-content h2,
 #markdown-content h3,
@@ -1077,16 +1082,23 @@ footer {
 }
 
 @media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    height: auto;
+  }
+  
   .docs-container {
     flex-direction: column;
+    height: auto;
+    gap: 0;
   }
   .sidebar {
     width: 100%;
     height: auto;
     position: static;
     border-right: none;
-    border-bottom: 1px solid var(--shape-color);
-    padding-bottom: 20px;
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }
 
