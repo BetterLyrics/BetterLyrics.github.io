@@ -2,7 +2,7 @@
 
 ## Install via Sideloading Package
 
-:::caution[Attention]
+::: warning Attention
 Please save your current work before proceeding.
 :::
 
@@ -14,7 +14,7 @@ Please save your current work before proceeding.
 
 3. Type `Y` to install the certificate.
 
-   :::caution[Attention]
+   ::: warning Attention
    Wait for the installation to complete. This step may take some time, and other applications might close or restart automatically. Please ensure your work is saved before starting.
    :::
 

@@ -20,7 +20,7 @@ Some legacy players or heavily customized software require **installing specific
 | Badge | Meaning | Description |
 | :--- | :--- | :--- |
 | (None) | **Native** | Out-of-the-box support. No setup required. |
-| <badge variant="note" text="Config"></badge> | **Config** | Requires changing settings or installing third-party plugins. |
-| <badge variant="caution" text="Limited"></badge> | **Limited** | Functional limitations (e.g., read-only seek, timeline offset). |
+| <Badge type="info" text="Config" /> | **Config** | Requires changing settings or installing third-party plugins. |
+| <Badge type="warning" text="Limited" /> | **Limited** | Functional limitations (e.g., read-only seek, timeline offset). |
 
 > ⚠️ **Note**: The support list is continuously updated. Please refer to the actual experience with the software.

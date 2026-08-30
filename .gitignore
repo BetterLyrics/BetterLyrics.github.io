@@ -1,9 +1,10 @@
 # Dependencies
 node_modules/
 
-# Astro build output
+# VitePress generated files
+.vitepress/dist
+.vitepress/cache
 dist/
-.astro/
 
 # Environment variables
 .env

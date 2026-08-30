@@ -2,11 +2,11 @@
 
 ### 我在使用网易云音乐作为音乐播放器
 
-强烈建议首先浏览 [此处](/docs/player-cfg/neteasecloudmusic) 的配置指南。
+强烈建议首先浏览 [此处](/zh-cn/docs/player-cfg/neteasecloudmusic) 的配置指南。
 
 ### 显示没有音乐正在播放
 
-部分播放器需要额外配置，请查看 [此处](/docs/player-cfg/index)。
+部分播放器需要额外配置，请查看 [此处](/zh-cn/docs/player-cfg/index)。
 
 ### 怎么通过本软件播放本地歌曲？
 

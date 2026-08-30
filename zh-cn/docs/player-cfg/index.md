@@ -24,7 +24,7 @@ BetterLyrics 主要通过 **[系统媒体传输控制（SMTC）](https://learn.m
 | 标签 | 含义 | 说明 |
 | :--- | :--- | :--- |
 | （无） | **免配置** | 开箱即用，原生支持 SMTC，无需任何操作。 |
-| <badge variant="note" text="Config"></badge> | **需配置** | 需在软件设置中开启特定开关，或安装第三方插件。 |
-| <badge variant="caution" text="Limited"></badge> | **受限** | 存在功能缺失（如无法拖拽进度条、时间轴偏差等）。 |
+| <Badge type="info" text="Config" /> | **需配置** | 需在软件设置中开启特定开关，或安装第三方插件。 |
+| <Badge type="warning" text="Limited" /> | **受限** | 存在功能缺失（如无法拖拽进度条、时间轴偏差等）。 |
 
 > ⚠️ **注意**：支持列表持续更新中，请以软件实际体验为准。
