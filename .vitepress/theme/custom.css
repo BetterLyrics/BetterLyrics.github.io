@@ -62,7 +62,8 @@
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--vp-c-divider) transparent;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable !important;
 }
 
 ::-webkit-scrollbar {
@@ -85,7 +86,7 @@ html {
 
 
 /* Page Content Transition */
-.page-transition {
+#VPContent {
   animation: page-fade-in 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 

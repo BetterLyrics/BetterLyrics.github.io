@@ -59,12 +59,18 @@ export default defineConfig({
                 "link": "/docs/features/music-gallery"
               },
               {
-                "text": "Apple Music",
-                "link": "/docs/features/lyrics-cfg/apple-music"
-              },
-              {
-                "text": "Local Lyric Sources (and Music Files)",
-                "link": "/docs/features/lyrics-cfg/locallyrics"
+                "text": "Lyrics Configuration",
+                "collapsed": false,
+                "items": [
+                  {
+                    "text": "Apple Music",
+                    "link": "/docs/features/lyrics-cfg/apple-music"
+                  },
+                  {
+                    "text": "Local Lyric Sources (and Music Files)",
+                    "link": "/docs/features/lyrics-cfg/locallyrics"
+                  }
+                ]
               }
             ]
           },
@@ -312,12 +318,18 @@ export default defineConfig({
                 "link": "/zh-cn/docs/features/music-gallery"
               },
               {
-                "text": "Apple Music",
-                "link": "/zh-cn/docs/features/lyrics-cfg/apple-music"
-              },
-              {
-                "text": "本地歌词源（及音乐文件）",
-                "link": "/zh-cn/docs/features/lyrics-cfg/locallyrics"
+                "text": "歌词配置",
+                "collapsed": false,
+                "items": [
+                  {
+                    "text": "Apple Music",
+                    "link": "/zh-cn/docs/features/lyrics-cfg/apple-music"
+                  },
+                  {
+                    "text": "本地歌词源（及音乐文件）",
+                    "link": "/zh-cn/docs/features/lyrics-cfg/locallyrics"
+                  }
+                ]
               }
             ]
           },
