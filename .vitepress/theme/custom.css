@@ -1,4 +1,18 @@
 /* Custom Components for VitePress */
+:root {
+  --vp-c-brand-1: #f4ae26;
+  --vp-c-brand-2: #f1a30c;
+  --vp-c-brand-3: #d6910a;
+  --vp-c-brand-soft: rgba(244, 174, 38, 0.14);
+}
+
+.dark {
+  --vp-c-brand-1: #f5b840;
+  --vp-c-brand-2: #f4ae26;
+  --vp-c-brand-3: #f1a30c;
+  --vp-c-brand-soft: rgba(244, 174, 38, 0.16);
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
