@@ -8,11 +8,11 @@
 
 by Owleam
 
-![](https://github.com/jayfunc/BetterLyrics/blob/dev/resources/lyrics-window-status/narrow-rhythm-vert.png?raw=true)
+![](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Narrow_Rhythm_窄屏律动.png?raw=true)
 
 Recommended for use with <Badge type="info" text="Top Album Art Bottom Lyrics Layout (Compact)" />
 
-<a href="https://raw.githubusercontent.com/jayfunc/BetterLyrics/refs/heads/dev/resources/lyrics-window-status/narrow-rhythm-vert.json" target="_blank">View config file</a>
+<a href="/res/lyrics-window-status/BetterLyrics_LyricsWindow_Narrow_Rhythm_窄屏律动.json" target="_blank">View config file</a>
 
 
 
