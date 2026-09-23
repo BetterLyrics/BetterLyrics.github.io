@@ -37,6 +37,11 @@ Recommended for use with <Badge type="info" text="Immersive Split Layout" />
 </div>
 
 ## Installation Guide
+
+::: tip
+If there is a recommended layout, please install the layout first; if you do not wish to install the recommended layout, please manually select or create a new layout after installing the mode and associate it with the mode.
+:::
+
 1. Click **View config file** to open the `.json` file in a new tab.
 2. Right-click on the page and select **Save as...** (or use `Ctrl + S`) to save it to your computer.
 3. Open BetterLyrics, go to **Settings** -> **Lyrics Window Management** -> **Import** and select the downloaded `.json` file to apply the mode/status.
