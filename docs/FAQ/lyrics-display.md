@@ -48,3 +48,7 @@ The software supports two methods:
 ### Partial garbled text in lyrics
 
 This is usually a default font setting issue. Go to `Settings` -> [`Lyrics Window Management`](betterlyrics://settings/lyricswindowmgr) -> `Lyrics Style` -> `Font Family` -> Select `Arial` to get the most stable display effect.
+
+## How do I load local lyric files (.lrc, .ttml)?
+
+To use local lyric sources (`local .LRC files`, `local .ESLRC files`, `local .TTML files`, and `local music files`), you must add the folder containing these files to the [Media Library](../settings/media-library.md). Once added, BetterLyrics will be able to recognize and load them during playback.

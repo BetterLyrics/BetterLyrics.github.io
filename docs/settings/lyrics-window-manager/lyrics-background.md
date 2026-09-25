@@ -1,4 +1,4 @@
-# Background & Visuals
+# Lyrics Background
 
 BetterLyrics features a powerful background rendering engine that supports multi-layered display of stunning visual effects. You can combine these effects to create a unique and immersive music playback experience.
 

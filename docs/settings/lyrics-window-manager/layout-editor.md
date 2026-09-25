@@ -1,4 +1,5 @@
-# Layout Editor
+# Visual Layout Editor
+
 
 Welcome to the BetterLyrics Custom Layout Editor! This powerful visual tool allows you to freely design the typography of your lyrics window. Whether adjusting the grid, dragging and dropping components, or fine-tuning properties, you can easily accomplish it all through intuitive interactions.
 

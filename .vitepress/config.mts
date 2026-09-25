@@ -47,40 +47,13 @@ export default defineConfig({
             ]
           },
           {
-            "text": "Features",
-            "collapsed": false,
-            "items": [
-              {
-                "text": "Layout Editor",
-                "link": "/docs/features/layout-editor"
-              },
-              {
-                "text": "Music Gallery & Local Library",
-                "link": "/docs/features/music-gallery"
-              },
-              {
-                "text": "Lyrics Configuration",
-                "collapsed": false,
-                "items": [
-                  {
-                    "text": "Apple Music",
-                    "link": "/docs/features/lyrics-cfg/apple-music"
-                  },
-                  {
-                    "text": "Local Lyric Sources (and Music Files)",
-                    "link": "/docs/features/lyrics-cfg/locallyrics"
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "text": "Player Configuration",
-            "collapsed": false,
+            "link": "/docs/player-cfg/intro",
+            "collapsed": true,
             "items": [
               {
                 "text": "Player Setup Guide",
-                "link": "/docs/player-cfg/index"
+                "link": "/docs/player-cfg/intro"
               },
               {
                 "text": "AIMP <span class=\"VPBadge info\" style=\"margin-left:6px;transform:translateY(-2px);\">Config</span>",
@@ -178,29 +151,90 @@ export default defineConfig({
                 "text": "Windows Media Player <span class=\"VPBadge warning\" style=\"margin-left:6px;transform:translateY(-2px);\">Limited</span>",
                 "link": "/docs/player-cfg/windows-media-player"
               }
-            ]
+            ],
           },
           {
             "text": "Settings",
             "collapsed": false,
             "items": [
               {
-                "text": "General & Behaviors",
-                "link": "/docs/settings/appearance-and-behaviors"
+                "text": "Playback Source & Lyrics Processing",
+                "link": "/docs/settings/playback-source-and-lyrics-processing/playback-source",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Playback Source",
+                    "link": "/docs/settings/playback-source-and-lyrics-processing/playback-source"
+                  },
+                  {
+                    "text": "Lyrics Processing",
+                    "link": "/docs/settings/playback-source-and-lyrics-processing/lyrics-processing"
+                  },
+                  {
+                    "text": "Integration",
+                    "link": "/docs/settings/playback-source-and-lyrics-processing/integration"
+                  },
+                  {
+                    "text": "Realtime Status",
+                    "link": "/docs/settings/playback-source-and-lyrics-processing/realtime-status"
+                  }
+                ]
               },
               {
-                "text": "Background & Visuals",
-                "link": "/docs/settings/background-visuals"
+                "text": "Lyrics Window Manager",
+                "link": "/docs/settings/lyrics-window-manager/index",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Window (General)",
+                    "link": "/docs/settings/lyrics-window-manager/window"
+                  },
+                  {
+                    "text": "Layout",
+                    "link": "/docs/settings/lyrics-window-manager/layout",
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "text": "Visual Layout Editor",
+                        "link": "/docs/settings/lyrics-window-manager/layout-editor"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Album Art",
+                    "link": "/docs/settings/lyrics-window-manager/album-art"
+                  },
+                  {
+                    "text": "Lyrics Style",
+                    "link": "/docs/settings/lyrics-window-manager/lyrics-style"
+                  },
+                  {
+                    "text": "Lyrics Effect",
+                    "link": "/docs/settings/lyrics-window-manager/lyrics-effect"
+                  },
+                  {
+                    "text": "Lyrics Background",
+                    "link": "/docs/settings/lyrics-window-manager/lyrics-background"
+                  }
+                ]
               },
               {
-                "text": "Lyrics Styles & Effects",
-                "link": "/docs/settings/lyrics-style-and-effects"
+                "text": "App Appearance & Behavior",
+                "link": "/docs/settings/app-appearance-and-behavior"
               },
               {
-                "text": "Translation & Romanization",
-                "link": "/docs/settings/translation-and-plugins"
+                "text": "Media Library",
+                "link": "/docs/settings/media-library"
+              },
+              {
+                "text": "Plugins",
+                "link": "/docs/settings/plugins"
               }
             ]
+          },
+          {
+            "text": "Music Gallery",
+            "link": "/docs/music-gallery"
           },
           {
             "text": "Add-ons",
@@ -257,8 +291,7 @@ export default defineConfig({
             ]
           }
         ]
-      }
-    },
+      }},
     'zh-cn': {
       label: '简体中文',
       lang: 'zh-CN',
@@ -306,40 +339,13 @@ export default defineConfig({
             ]
           },
           {
-            "text": "功能介绍",
-            "collapsed": false,
-            "items": [
-              {
-                "text": "布局编辑器",
-                "link": "/zh-cn/docs/features/layout-editor"
-              },
-              {
-                "text": "媒体库与本地音乐",
-                "link": "/zh-cn/docs/features/music-gallery"
-              },
-              {
-                "text": "歌词配置",
-                "collapsed": false,
-                "items": [
-                  {
-                    "text": "Apple Music",
-                    "link": "/zh-cn/docs/features/lyrics-cfg/apple-music"
-                  },
-                  {
-                    "text": "本地歌词源（及音乐文件）",
-                    "link": "/zh-cn/docs/features/lyrics-cfg/locallyrics"
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "text": "播放器配置",
-            "collapsed": false,
+            "link": "/zh-cn/docs/player-cfg/intro",
+            "collapsed": true,
             "items": [
               {
                 "text": "播放器适配指南",
-                "link": "/zh-cn/docs/player-cfg/index"
+                "link": "/zh-cn/docs/player-cfg/intro"
               },
               {
                 "text": "AIMP <span class=\"VPBadge info\" style=\"margin-left:6px;transform:translateY(-2px);\">Config</span>",
@@ -437,29 +443,90 @@ export default defineConfig({
                 "text": "Windows Media Player <span class=\"VPBadge warning\" style=\"margin-left:6px;transform:translateY(-2px);\">Limited</span>",
                 "link": "/zh-cn/docs/player-cfg/windows-media-player"
               }
-            ]
+            ],
           },
           {
             "text": "设置",
             "collapsed": false,
             "items": [
               {
-                "text": "通用设置与行为",
-                "link": "/zh-cn/docs/settings/appearance-and-behaviors"
+                "text": "播放源及歌词处理",
+                "link": "/zh-cn/docs/settings/playback-source-and-lyrics-processing/playback-source",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "播放源配置",
+                    "link": "/zh-cn/docs/settings/playback-source-and-lyrics-processing/playback-source"
+                  },
+                  {
+                    "text": "歌词处理",
+                    "link": "/zh-cn/docs/settings/playback-source-and-lyrics-processing/lyrics-processing"
+                  },
+                  {
+                    "text": "外部集成",
+                    "link": "/zh-cn/docs/settings/playback-source-and-lyrics-processing/integration"
+                  },
+                  {
+                    "text": "实时状态",
+                    "link": "/zh-cn/docs/settings/playback-source-and-lyrics-processing/realtime-status"
+                  }
+                ]
               },
               {
-                "text": "背景与视觉渲染",
-                "link": "/zh-cn/docs/settings/background-visuals"
+                "text": "歌词窗口管理",
+                "link": "/zh-cn/docs/settings/lyrics-window-manager/index",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "窗口",
+                    "link": "/zh-cn/docs/settings/lyrics-window-manager/window"
+                  },
+                  {
+                    "text": "布局",
+                    "link": "/zh-cn/docs/settings/lyrics-window-manager/layout",
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "text": "可视化布局编辑器",
+                        "link": "/zh-cn/docs/settings/lyrics-window-manager/layout-editor"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "封面",
+                    "link": "/zh-cn/docs/settings/lyrics-window-manager/album-art"
+                  },
+                  {
+                    "text": "歌词样式",
+                    "link": "/zh-cn/docs/settings/lyrics-window-manager/lyrics-style"
+                  },
+                  {
+                    "text": "歌词动效",
+                    "link": "/zh-cn/docs/settings/lyrics-window-manager/lyrics-effect"
+                  },
+                  {
+                    "text": "歌词背景",
+                    "link": "/zh-cn/docs/settings/lyrics-window-manager/lyrics-background"
+                  }
+                ]
               },
               {
-                "text": "歌词样式与动效",
-                "link": "/zh-cn/docs/settings/lyrics-style-and-effects"
+                "text": "应用外观与行为",
+                "link": "/zh-cn/docs/settings/app-appearance-and-behavior"
               },
               {
-                "text": "翻译与注音 (扩展引擎)",
-                "link": "/zh-cn/docs/settings/translation-and-plugins"
+                "text": "媒体库",
+                "link": "/zh-cn/docs/settings/media-library"
+              },
+              {
+                "text": "插件",
+                "link": "/zh-cn/docs/settings/plugins"
               }
             ]
+          },
+          {
+            "text": "音乐库",
+            "link": "/zh-cn/docs/music-gallery"
           },
           {
             "text": "附加组件",
@@ -516,8 +583,7 @@ export default defineConfig({
             ]
           }
         ]
-      }
-    }
+      }}
   },
   themeConfig: {
     logo: '/favicon.ico',

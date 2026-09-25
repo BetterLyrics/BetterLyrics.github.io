@@ -1,4 +1,4 @@
-# General & Behaviors
+# [App Appearance & Behavior](betterlyrics://settings/App)
 
 ## Appearance
 This section contains settings for the application's base interface language.
