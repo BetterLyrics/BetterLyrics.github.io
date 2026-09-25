@@ -34,6 +34,22 @@ Recommended for use with <Badge type="info" text="Immersive Cover & Lyrics" />
 
 </div></div>
 
+<div class="card"><div class="card-title">Quick Controls Layout</div><div class="card-content">
+
+
+
+by jayfunc
+
+![](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Quick_Controls_Layout_快捷控制布局.png?raw=true)
+
+Recommended for use with <Badge type="info" text="Taskbar Quick Controls Mode" />
+
+<a href="/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Quick_Controls_Layout_快捷控制布局.json" target="_blank">View config file</a>
+
+
+
+</div></div>
+
 </div>
 
 ## Installation Guide

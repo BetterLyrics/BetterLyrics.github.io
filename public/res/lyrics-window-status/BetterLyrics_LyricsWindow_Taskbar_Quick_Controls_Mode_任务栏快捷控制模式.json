@@ -1,0 +1,323 @@
+{
+  "Name": "Taskbar Quick Controls Mode 任务栏快捷控制模式",
+  "IsDefault": false,
+  "MonitorDeviceName": "\\\\.\\DISPLAY1",
+  "IsWorkArea": false,
+  "IsAlwaysOnTop": false,
+  "IsAlwaysOnTopPolling": false,
+  "IsShownInSwitchers": false,
+  "IsWallpaper": false,
+  "IsLocked": true,
+  "IsBorderlessWhenLocked": true,
+  "IsAlwaysHideUnlockButton": true,
+  "KeepNowPlayingBarInteractiveWhenLocked": true,
+  "IsTimelineLyricsPreviewEnabled": true,
+  "IsAlwaysHidePlayingBar": false,
+  "IsNowPlayingBarAutoAdaptive": false,
+  "NowPlayingBarShowTimeArea": false,
+  "NowPlayingBarShowProgressBar": false,
+  "NowPlayingBarShowMoreButton": false,
+  "IsNowPlayingBarResident": false,
+  "NowPlayingBarBackgroundStyle": 0,
+  "IsPinToTaskbar": true,
+  "TaskbarPlacement": 1,
+  "IsMaximized": false,
+  "IsFullscreen": false,
+  "LayoutProfileId": "8e591520-da67-40ec-83d9-d7d669221029",
+  "WindowBounds": {
+    "X": 0,
+    "Y": 1016,
+    "Width": 1920,
+    "Height": 64
+  },
+  "DockHeight": 64,
+  "MonitorBounds": {
+    "X": 0,
+    "Y": 0,
+    "Width": 1920,
+    "Height": 1080
+  },
+  "DockPlacement": 0,
+  "LyricsStyleSettings": {
+    "IsDynamicLyricsFontSize": true,
+    "PhoneticLyricsFontSize": 12,
+    "OriginalLyricsFontSize": 24,
+    "TranslatedLyricsFontSize": 12,
+    "PhoneticLyricsOpacity": 60,
+    "PlayedOriginalLyricsOpacity": 100,
+    "OriginalLyricsOpacity": 30,
+    "TranslatedLyricsOpacity": 60,
+    "LyricsAlignmentType": 0,
+    "UseInternalLyricsAlignment": true,
+    "LyricsLayoutOrientation": 0,
+    "LyricsLayerOrder": [
+      {
+        "LyricsLayerType": 2
+      },
+      {
+        "LyricsLayerType": 0
+      },
+      {
+        "LyricsLayerType": 1
+      }
+    ],
+    "AutoWrap": false,
+    "LyricsFontStrokeWidth": 0,
+    "LyricsCustomBgFontColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "LyricsCustomFgFontColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "LyricsCustomUnplayedFgFontColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "LyricsCustomStrokeFontColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "LyricsCustomUnplayedStrokeFontColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "LyricsBgFontColorType": 1,
+    "LyricsFgFontColorType": 1,
+    "LyricsUnplayedFgFontColorType": 1,
+    "LyricsStrokeFontColorType": 1,
+    "LyricsUnplayedStrokeFontColorType": 1,
+    "LyricsFontWeight": 7,
+    "LyricsLineSpacingFactor": 0.5,
+    "LyricsLineInnerSpacingFactor": 0.1,
+    "LyricsCJKFontFamily": "Arial",
+    "LyricsWesternFontFamily": "Arial",
+    "PlayingLineTopOffset": 50,
+    "IsActive": false
+  },
+  "LyricsEffectSettings": {
+    "WordByWordEffectMode": 0,
+    "IsLyricsBlurEffectEnabled": true,
+    "IsLyricsFadeOutEffectEnabled": true,
+    "IsLyricsEdgeFeatheringEffectEnabled": false,
+    "IsLyricsOutOfSightEffectEnabled": true,
+    "IsLyricsGlowEffectEnabled": true,
+    "LyricsGlowEffectScope": 0,
+    "LyricsGlowEffectLongSyllableDuration": 700,
+    "IsLyricsGlowEffectAmountAutoAdjust": true,
+    "LyricsGlowEffectAmount": 8,
+    "IsLyricsShadowEffectEnabled": false,
+    "IsLyricsScaleEffectEnabled": true,
+    "LyricsScaleEffectLongSyllableDuration": 700,
+    "IsLyricsScaleEffectAmountAutoAdjust": true,
+    "LyricsScaleEffectAmount": 115,
+    "IsLyricsFloatAnimationEnabled": true,
+    "IsLyricsFloatAnimationAmountAutoAdjust": true,
+    "LyricsFloatAnimationAmount": 8,
+    "LyricsFloatAnimationDuration": 450,
+    "LyricsScrollEasingType": 3,
+    "LyricsScrollEasingMode": 1,
+    "LyricsScrollDuration": 500,
+    "LyricsScrollTopDuration": 500,
+    "LyricsScrollBottomDuration": 500,
+    "LyricsScrollTopDelay": 0,
+    "LyricsScrollBottomDelay": 0,
+    "IsFanLyricsEnabled": false,
+    "FanLyricsAngle": 30,
+    "Is3DLyricsEnabled": false,
+    "IsAuto3DLyricsEnabled": false,
+    "Lyrics3DXAngle": 0,
+    "Lyrics3DYAngle": 0,
+    "Lyrics3DZAngle": 0,
+    "Lyrics3DDepth": 800,
+    "IsLyricsBrethingEffectEnabled": false,
+    "LyricsBreathingIntensity": 80,
+    "IsActive": false
+  },
+  "LyricsBackgroundSettings": {
+    "IsPureColorOverlayEnabled": false,
+    "PureColorOverlayOpacity": 100,
+    "PureColorOverlayColorType": 0,
+    "PureColorOverlayCustomColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "IsCoverOverlayEnabled": false,
+    "CoverOverlayOpacity": 100,
+    "CoverOverlaySpeed": 50,
+    "CoverOverlayBlurAmount": 100,
+    "IsCoverOverlayBrethingEffectEnabled": false,
+    "CoverOverlayBreathingIntensity": 80,
+    "IsCoverOverlayParallaxEnabled": false,
+    "IsFluidOverlayEnabled": false,
+    "FluidOverlayOpacity": 100,
+    "FluidOverlaySpeed": 100,
+    "IsFluidOverlayBrethingEffectEnabled": false,
+    "FluidOverlayBreathingIntensity": 80,
+    "IsFluidOverlayLightWaveEnabled": false,
+    "IsColorDitheringEnabled": true,
+    "IsFluidOverlayStatic": false,
+    "IsFluidOverlayParallaxEnabled": false,
+    "IsSpectrumOverlayEnabled": false,
+    "SpectrumPlacement": 1,
+    "SpectrumStyle": 0,
+    "SpectrumCount": 32,
+    "SpectrumSensitivity": 100,
+    "IsSpectrumGlowEffectEnabled": false,
+    "IsSpectrumBrethingEffectEnabled": false,
+    "SpectrumBreathingIntensity": 80,
+    "SpectrumOpacity": 100,
+    "SpectrumColorType": 1,
+    "SpectrumCustomColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "IsSpectrumOverlayParallaxEnabled": false,
+    "SpectrumDelayMs": 0,
+    "IsSnowFlakeOverlayEnabled": false,
+    "SnowFlakeOverlayAmount": 10,
+    "SnowFlakeOverlaySpeed": 1,
+    "IsSnowFlakeOverlayBrethingEffectEnabled": false,
+    "SnowFlakeOverlayBreathingIntensity": 80,
+    "IsSnowFlakeOverlayParallaxEnabled": false,
+    "IsFogOverlayEnabled": false,
+    "IsFogOverlayBrethingEffectEnabled": false,
+    "FogOverlayBreathingIntensity": 80,
+    "IsFogOverlayParallaxEnabled": false,
+    "IsRaindropOverlayEnabled": false,
+    "RaindropSpeed": 100,
+    "RaindropSize": 100,
+    "RaindropDensity": 40,
+    "RaindropLightAngle": 135,
+    "RaindropShadowIntensity": 0,
+    "IsRaindropOverlayBrethingEffectEnabled": false,
+    "RaindropOverlayBreathingIntensity": 80,
+    "IsRaindropOverlayParallaxEnabled": false,
+    "IsActive": false
+  },
+  "AlbumArtLayoutSettings": {
+    "CoverImageRadius": 12,
+    "CoverImageShadowAmount": 12,
+    "IsActive": false
+  },
+  "AlbumArtAreaEffectSettings": {
+    "SongInfoAutoScroll": false,
+    "ImageSwitchType": 1,
+    "FadeOut": false,
+    "FadeOutStartPointX": 0,
+    "FadeOutStartPointY": 0,
+    "FadeOutEndPointX": 1,
+    "FadeOutEndPointY": 0,
+    "IsParallaxEnabled": false,
+    "IsActive": false
+  },
+  "IsAdaptToEnvironment": true,
+  "IsAdaptToAlbumArt": false,
+  "EnvironmentSampleMode": 0,
+  "WindowTheme": 2,
+  "PaletteGeneratorType": 0,
+  "PaletteChromaWeight": 1,
+  "PaletteToneWeight": -0.75,
+  "PalettePopulationWeight": 3,
+  "PaletteDarkToneThreshold": 75,
+  "PaletteLightToneThreshold": 25,
+  "WindowPalette": {
+    "SpectrumColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "NonCurrentLineFillColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "PlayedCurrentLineFillColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "UnplayedCurrentLineFillColor": {
+      "A": 255,
+      "R": 255,
+      "G": 255,
+      "B": 255
+    },
+    "PlayedTextStrokeColor": {
+      "A": 255,
+      "R": 178,
+      "G": 178,
+      "B": 178
+    },
+    "UnplayedTextStrokeColor": {
+      "A": 255,
+      "R": 178,
+      "G": 178,
+      "B": 178
+    },
+    "UnderlayColor": {
+      "A": 255,
+      "R": 0,
+      "G": 0,
+      "B": 0
+    },
+    "AccentColor1": {
+      "A": 255,
+      "R": 18,
+      "G": 15,
+      "B": 21
+    },
+    "AccentColor2": {
+      "A": 255,
+      "R": 7,
+      "G": 7,
+      "B": 8
+    },
+    "AccentColor3": {
+      "A": 255,
+      "R": 35,
+      "G": 34,
+      "B": 40
+    },
+    "AccentColor4": {
+      "A": 255,
+      "R": 25,
+      "G": 27,
+      "B": 48
+    },
+    "ThemeType": 2
+  },
+  "AutoShowOrHideWindow": false,
+  "HideWindowWhenNullSession": false,
+  "AutoShowOrHideWindowDelay": 250,
+  "TitleBarArea": 1,
+  "IsKeepScreenOpen": false,
+  "IsEdgeFeatheringEnabled": false,
+  "EdgeFeatheringLeft": 0,
+  "EdgeFeatheringTop": 0,
+  "EdgeFeatheringRight": 0,
+  "EdgeFeatheringBottom": 0,
+  "LyricsCardStyleKey": "LyricsCardStickyNoteStyle",
+  "IsSpoutOutputEnabled": false,
+  "FPS": 60,
+  "ShowDebugOverlay": false,
+  "IsActive": false
+}

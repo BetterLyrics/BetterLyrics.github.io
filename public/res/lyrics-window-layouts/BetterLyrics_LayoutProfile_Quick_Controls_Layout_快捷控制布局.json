@@ -1,0 +1,82 @@
+{
+  "Id": "8f77e3de-50a8-4c04-bbcd-8c396cc2aec0",
+  "IsPlaybackControlMigrated": false,
+  "Mode": 999,
+  "Name": "Quick Controls Layout 快捷控制布局",
+  "RowDefinitions": [
+    "1*"
+  ],
+  "ColumnDefinitions": [
+    "Auto",
+    "1*"
+  ],
+  "RowSpacing": 0,
+  "ColumnSpacing": 12,
+  "Placements": [
+    {
+      "ComponentType": 3,
+      "Row": 0,
+      "Column": 0,
+      "RowSpan": 1,
+      "ColumnSpan": 1,
+      "MarginLeft": 0,
+      "MarginTop": 10,
+      "MarginRight": 0,
+      "MarginBottom": 10,
+      "HorizontalAlignment": 1,
+      "VerticalAlignment": 1,
+      "Width": "NaN",
+      "Height": "NaN",
+      "PaddingLeft": 0,
+      "PaddingTop": 0,
+      "PaddingRight": 0,
+      "PaddingBottom": 0,
+      "IsActive": false
+    },
+    {
+      "ComponentType": 1,
+      "Row": 0,
+      "Column": 1,
+      "RowSpan": 1,
+      "ColumnSpan": 1,
+      "MarginLeft": 0,
+      "MarginTop": 0,
+      "MarginRight": 0,
+      "MarginBottom": 0,
+      "HorizontalAlignment": 3,
+      "VerticalAlignment": 3,
+      "Width": "NaN",
+      "Height": "NaN",
+      "PaddingLeft": 0,
+      "PaddingTop": 0,
+      "PaddingRight": 0,
+      "PaddingBottom": 0,
+      "IsActive": false
+    },
+    {
+      "ComponentType": 7,
+      "Row": 0,
+      "Column": 0,
+      "RowSpan": 1,
+      "ColumnSpan": 2,
+      "MarginLeft": 0,
+      "MarginTop": 0,
+      "MarginRight": 0,
+      "MarginBottom": 0,
+      "HorizontalAlignment": 2,
+      "VerticalAlignment": 1,
+      "Width": "NaN",
+      "Height": "NaN",
+      "PaddingLeft": 0,
+      "PaddingTop": 0,
+      "PaddingRight": 0,
+      "PaddingBottom": 0,
+      "IsActive": false
+    }
+  ],
+  "PaddingLeft": 12,
+  "PaddingTop": 0,
+  "PaddingRight": 12,
+  "PaddingBottom": 0,
+  "IsActive": false
+}

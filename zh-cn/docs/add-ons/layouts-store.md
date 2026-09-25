@@ -34,6 +34,22 @@ by jayfunc
 
 </div></div>
 
+<div class="card"><div class="card-title">快捷控制布局</div><div class="card-content">
+
+
+
+by jayfunc
+
+![](/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Quick_Controls_Layout_快捷控制布局.png?raw=true)
+
+推荐与 <Badge type="info" text="任务栏快捷控制模式" /> 配合使用
+
+<a href="/res/lyrics-window-layouts/BetterLyrics_LayoutProfile_Quick_Controls_Layout_快捷控制布局.json" target="_blank">查看配置文件</a>
+
+
+
+</div></div>
+
 </div>
 
 ## 如何安装

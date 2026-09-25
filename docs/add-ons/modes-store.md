@@ -34,6 +34,22 @@ Recommended for use with <Badge type="info" text="Immersive Split Layout" />
 
 </div></div>
 
+<div class="card"><div class="card-title">Taskbar Quick Controls Mode</div><div class="card-content">
+
+
+
+by jayfunc
+
+![](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Taskbar_Quick_Controls_Mode_任务栏快捷控制模式.png?raw=true)
+
+Recommended for use with <Badge type="info" text="Quick Controls Layout" />
+
+<a href="/res/lyrics-window-status/BetterLyrics_LyricsWindow_Taskbar_Quick_Controls_Mode_任务栏快捷控制模式.json" target="_blank">View config file</a>
+
+
+
+</div></div>
+
 </div>
 
 ## Installation Guide

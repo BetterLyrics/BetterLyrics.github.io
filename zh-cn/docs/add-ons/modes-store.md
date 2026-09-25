@@ -34,6 +34,22 @@ by jayfunc
 
 </div></div>
 
+<div class="card"><div class="card-title">任务栏快捷控制模式</div><div class="card-content">
+
+
+
+by jayfunc
+
+![](/res/lyrics-window-status/BetterLyrics_LyricsWindow_Taskbar_Quick_Controls_Mode_任务栏快捷控制模式.png?raw=true)
+
+推荐与 <Badge type="info" text="快捷控制布局" /> 搭配使用
+
+<a href="/res/lyrics-window-status/BetterLyrics_LyricsWindow_Taskbar_Quick_Controls_Mode_任务栏快捷控制模式.json" target="_blank">查看配置文件</a>
+
+
+
+</div></div>
+
 </div>
 
 ## 如何安装
