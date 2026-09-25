@@ -6,7 +6,7 @@ It is strongly recommended to first browse the configuration guide [here](/docs/
 
 ### Shows "No music playing"
 
-Some players require extra configuration. Please check [here](/docs/player-cfg/index).
+Some players require extra configuration. Please check [here](/docs/player-cfg/intro).
 
 ### How to play local songs via this software?
 

@@ -53,6 +53,16 @@ Recommended for use with <Badge type="info" text="Taskbar Quick Controls Mode" /
 </div>
 
 ## Installation Guide
+
+::: tip
+If there is a mutually associated (recommended) layout/mode, to get the best experience, please follow these steps for a complete installation:
+1. First, download and import the corresponding **Mode** from the **Modes Store**, but **do not open this mode yet**.
+2. Find the newly imported mode in the Lyrics Window Management, and click its "wrench" icon to enter the configuration panel.
+3. Switch to the "**Layout**" section, and import this recommended **Layout** you just downloaded.
+4. Manually associate this layout with the mode.
+At this point, the complete installation is considered finished.
+:::
+
 1. Click **View config file** to open the `.json` file in a new tab.
 2. Right-click on the page and select **Save as...** (or use `Ctrl + S`) to save it to your computer.
-3. Open BetterLyrics, go to **Settings** -> **Lyrics Window Management** -> scroll to the target mode and click the wrench icon to open the configuration panel, switch to the **Layout** tab, and click **Import**.
+3. Open BetterLyrics, go to **Settings** -> [**Lyrics Window Management**](betterlyrics://settings/LyricsWindowMgr) -> scroll to the target mode and click the wrench icon to open the configuration panel, switch to the **Layout** tab, and click **Import**.

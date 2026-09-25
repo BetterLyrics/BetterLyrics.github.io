@@ -55,9 +55,14 @@ Recommended for use with <Badge type="info" text="Quick Controls Layout" />
 ## Installation Guide
 
 ::: tip
-If there is a recommended layout, please install the layout first; if you do not wish to install the recommended layout, please manually select or create a new layout after installing the mode and associate it with the mode.
+If there is a mutually associated (recommended) layout/mode, to get the best experience, please follow these steps for a complete installation:
+1. First, download and import the corresponding **Mode**, but **do not open this mode yet**.
+2. Click the "wrench" icon on the mode to enter the configuration panel.
+3. Switch to the "**Layout**" section and import the recommended **Layout**.
+4. Manually associate them.
+At this point, the complete installation is considered finished. If you do not wish to use the recommended layout, you can manually select or create a new layout to associate with it after installing the mode.
 :::
 
 1. Click **View config file** to open the `.json` file in a new tab.
 2. Right-click on the page and select **Save as...** (or use `Ctrl + S`) to save it to your computer.
-3. Open BetterLyrics, go to **Settings** -> **Lyrics Window Management** -> **Import** and select the downloaded `.json` file to apply the mode/status.
+3. Open BetterLyrics, go to **Settings** -> [**Lyrics Window Management**](betterlyrics://settings/LyricsWindowMgr) -> **Import** and select the downloaded `.json` file to apply the mode.

@@ -27,6 +27,6 @@ Before building, please perform the following replacements:
     - `DiscordTemplate` -> `Discord.cs`
     - `LastFMTemplate` -> `LastFM.cs`
   - `BetterLyrics.WinUI3/BetterLyrics.WinUI3/Assets`
-    - `Wiki82.profile.xml.template` -> `Wiki82.profile.xml` (download the zip and extra the file from https://github.com/ivanakcheurov/ntextcat/blob/master/src/LanguageModels/Wiki.profiles.7z)
+    - `Wiki82.profile.xml.template` -> `Wiki82.profile.xml` (download the zip and extract the file from [Wiki.profiles.7z](https://github.com/ivanakcheurov/ntextcat/blob/master/src/LanguageModels/Wiki.profiles.7z))
 
 Add `https://pkgs.dev.azure.com/dotnet/CommunityToolkit/_packaging/CommunityToolkit-Labs/nuget/v3/index.json` to the NuGet source if necessary.

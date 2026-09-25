@@ -6,7 +6,7 @@
 
 ### 显示没有音乐正在播放
 
-部分播放器需要额外配置，请查看 [此处](/zh-cn/docs/player-cfg/index)。
+部分播放器需要额外配置，请查看 [此处](/zh-cn/docs/player-cfg/intro)。
 
 ### 怎么通过本软件播放本地歌曲？
 

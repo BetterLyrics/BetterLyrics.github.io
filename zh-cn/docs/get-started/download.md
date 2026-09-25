@@ -27,6 +27,6 @@ git clone https://github.com/jayfunc/BetterLyrics.git
     - `DiscordTemplate` -> `Discord.cs`
     - `LastFMTemplate` -> `LastFM.cs`
   - `BetterLyrics.WinUI3/BetterLyrics.WinUI3/Assets`
-    - `Wiki82.profile.xml.template` -> `Wiki82.profile.xml`（下载解压 https://github.com/ivanakcheurov/ntextcat/blob/master/src/LanguageModels/Wiki.profiles.7z 以获取该文件）
+    - `Wiki82.profile.xml.template` -> `Wiki82.profile.xml`（下载解压 [Wiki.profiles.7z](https://github.com/ivanakcheurov/ntextcat/blob/master/src/LanguageModels/Wiki.profiles.7z) 以获取该文件）
 
 如有必要，请将如下链接添加至 NuGet 源 `https://pkgs.dev.azure.com/dotnet/CommunityToolkit/_packaging/CommunityToolkit-Labs/nuget/v3/index.json`。
