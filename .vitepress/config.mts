@@ -25,7 +25,17 @@ export default defineConfig({
         },
         nav: [
           { text: 'Home', link: '/' },
-          { text: 'Documentation', link: '/docs/get-started/welcome' }
+          { text: 'Documentation', link: '/docs/get-started/welcome' },
+          {
+            text: 'Community',
+            items: [
+              { text: 'Discord', link: 'https://discord.gg/5yAQPnyCKv' },
+              { text: 'Telegram', link: 'https://t.me/+svhSLZ7awPsxNGY1' },
+              { text: 'QQ Group 1', link: 'https://qm.qq.com/q/yArcw3n8pq' },
+              { text: 'QQ Group 2', link: 'https://qm.qq.com/q/27rzSjFXt6' },
+              { text: 'QQ Channel', link: 'https://pd.qq.com/s/1u1ntkyzr?b=9' }
+            ]
+          }
         ],
         sidebar: [
           {
@@ -317,7 +327,17 @@ export default defineConfig({
         },
         nav: [
           { text: '首页', link: '/zh-cn/' },
-          { text: '文档', link: '/zh-cn/docs/get-started/welcome' }
+          { text: '文档', link: '/zh-cn/docs/get-started/welcome' },
+          {
+            text: '社群',
+            items: [
+              { text: 'QQ 1 群 (1054700388)', link: 'https://qm.qq.com/q/yArcw3n8pq' },
+              { text: 'QQ 2 群 (1076554669)', link: 'https://qm.qq.com/q/27rzSjFXt6' },
+              { text: 'QQ 频道', link: 'https://pd.qq.com/s/1u1ntkyzr?b=9' },
+              { text: 'Discord', link: 'https://discord.gg/5yAQPnyCKv' },
+              { text: 'Telegram', link: 'https://t.me/+svhSLZ7awPsxNGY1' }
+            ]
+          }
         ],
         sidebar: [
           {
@@ -588,7 +608,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/favicon.ico',
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/BetterLyrics/BetterLyrics' }
+      { icon: 'github', link: 'https://github.com/jayfunc/BetterLyrics' }
     ],
     search: {
       provider: 'local',
