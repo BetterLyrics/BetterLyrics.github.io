@@ -4,9 +4,19 @@
 
 ## Setup Guide
 
-**Configuration required**. This player requires a plugin to support System Media Transport Controls (SMTC).
+**Configuration may be required**. Support for System Media Transport Controls (SMTC) depends on your JRiver Media Center version.
 
-### Basic Setup
+### Version 35.0.20 and Later
+
+Starting from [version 35.0.20](https://yabb.jriver.com/interact/index.php/topic,142527.0.html), JRiver Media Center **natively supports SMTC**. BetterLyrics can detect the playback directly without any additional configuration.
+
+::: warning
+The native SMTC support is not yet fully perfect. However, if you continue to use the `JRiverSmtcBridge` plugin with version 35.0.20 and later, you may experience a slight delay.
+:::
+
+### Earlier Versions (Before 35.0.20)
+
+For earlier versions, a plugin is required to support SMTC.
 
 1. Download and install the [JRiverSmtcBridge](https://github.com/Feyiyy/JRiverSmtcBridge) plugin.
 2. Follow the plugin instructions to configure it with JRiver Media Center.
