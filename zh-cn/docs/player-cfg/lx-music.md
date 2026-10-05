@@ -7,7 +7,7 @@
 **需配置**。
 
 请按以下步骤进行配置：
- **LX Music 端**：在设置的 **开放 API** 中，勾选 **启用开放 API 服务**。
+1. **LX Music 端**：在设置的 **开放 API** 中，勾选 **启用开放 API 服务**。
 2. **BetterLyrics 端**：在 [**播放源**](betterlyrics://settings/playbacklib) 中填入对应的服务器地址。
 
 - 格式示例：`http://127.0.0.1:23330/`

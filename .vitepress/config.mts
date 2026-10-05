@@ -102,6 +102,10 @@ export default defineConfig({
                 "link": "/docs/player-cfg/itunes"
               },
               {
+                "text": "JRiver Media Center <span class=\"VPBadge info\" style=\"margin-left:6px;transform:translateY(-2px);\">Config</span>",
+                "link": "/docs/player-cfg/jriver-media-center"
+              },
+              {
                 "text": "KuGou <span class=\"VPBadge warning\" style=\"margin-left:6px;transform:translateY(-2px);\">Limited</span>",
                 "link": "/docs/player-cfg/kugoumusic"
               },
@@ -402,6 +406,10 @@ export default defineConfig({
               {
                 "text": "iTunes <span class=\"VPBadge info\" style=\"margin-left:6px;transform:translateY(-2px);\">Config</span>",
                 "link": "/zh-cn/docs/player-cfg/itunes"
+              },
+              {
+                "text": "JRiver Media Center <span class=\"VPBadge info\" style=\"margin-left:6px;transform:translateY(-2px);\">Config</span>",
+                "link": "/zh-cn/docs/player-cfg/jriver-media-center"
               },
               {
                 "text": "酷狗音乐 <span class=\"VPBadge warning\" style=\"margin-left:6px;transform:translateY(-2px);\">Limited</span>",
