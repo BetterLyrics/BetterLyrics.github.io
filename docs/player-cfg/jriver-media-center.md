@@ -11,7 +11,7 @@
 Starting from [version 35.0.20](https://yabb.jriver.com/interact/index.php/topic,142527.0.html), JRiver Media Center **natively supports SMTC**. BetterLyrics can detect the playback directly without any additional configuration.
 
 ::: warning
-The native SMTC support is not yet fully perfect. However, if you continue to use the `JRiverSmtcBridge` plugin with version 35.0.20 and later, you may experience a slight delay.
+The native SMTC support is not yet fully perfect. However, if you continue to use the `JRiverSmtcBridge` plugin with version 35.0.20 and later, you may experience a slight delay. This delay can be resolved by configuring it to the original format. The specific setting path is: **Tools** > **Options...** > **Media Network** > **Use Media Network to share this library and enable DLNA** > **Next** > **Next** > **OK** > **Original format** > **Finish**.
 :::
 
 ### Earlier Versions (Before 35.0.20)
