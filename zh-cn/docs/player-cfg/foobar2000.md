@@ -2,7 +2,7 @@
 
 > foobar2000 is an advanced freeware audio player.[^1]
 
-## 适配指南
+## 适配说明
 
 **需配置** 且 **受限**。
 

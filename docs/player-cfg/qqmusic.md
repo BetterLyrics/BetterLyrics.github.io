@@ -14,7 +14,8 @@ Please use a newer version of the client and enable **Show System Media Transpor
 
 Please install the [QQMusic-ID-Injector plugin](https://github.com/apoint123/QQMusic-ID-Injector) and place **QQ Music** at the top of the lyrics source list.
 
-> ⚠️ **Disclaimer**
+> [!WARNING]
+> **Disclaimer**
 >
 > 1. **Unofficial Declaration**: The QQMusic-ID-Injector plugin is a third-party open-source project and is not affiliated with Tencent Music Entertainment Group (TME) in any way.
 > 2. **Use at Your Own Risk**: The plugin is for technical research and exchange only. Using the plugin may violate QQ Music's Terms of Service. The developer is not responsible for any account bans, software crashes, or legal disputes resulting from its use.

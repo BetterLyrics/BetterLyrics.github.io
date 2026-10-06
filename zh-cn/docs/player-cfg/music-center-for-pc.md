@@ -2,11 +2,11 @@
 
 > An application for organizing and transferring music on audio devices manufactured by Sony[^1]
 
-## 适配指南
+## 适配说明
 
 **需配置**。
 
-### 基础配置
+### 基础设置
 
 要将 Music Center for PC 与 BetterLyrics 配合使用，您需要安装以下插件：
 

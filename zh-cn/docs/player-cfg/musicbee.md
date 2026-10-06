@@ -2,7 +2,7 @@
 
 > The Ultimate Music Manager and Player[^1]
 
-## 适配指南
+## 适配说明
 
 **需配置**。
 
